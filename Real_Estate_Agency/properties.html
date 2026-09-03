@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Properties | Elite Estates</title>
+  <meta name="description" content="Browse premium property listings, advanced search filters, and luxury homes available through Elite Estates.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand"><span>Elite</span>Estates</a>
+      <button class="menu-toggle" aria-label="Toggle navigation"><span></span></button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html" class="active">Properties</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="agents.html">Agents</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80');"></div>
+      <div class="hero-inner container fade-up">
+        <small>Advanced Property Search</small>
+        <h1>Explore curated luxury listings with precision filters and seamless browsing</h1>
+        <p>Search by location, price, bedrooms, property type and status to discover residences, penthouses, waterfront homes and commercial spaces.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="card fade-up">
+          <div class="card-content">
+            <form class="search-panel" onsubmit="event.preventDefault(); alert('Filter applied. Browse the refined results below.');">
+              <select class="filter-select">
+                <option>Location</option>
+                <option>Dubai</option>
+                <option>Malibu</option>
+                <option>Monaco</option>
+                <option>London</option>
+              </select>
+              <select class="filter-select">
+                <option>Property Type</option>
+                <option>Villa</option>
+                <option>Penthouse</option>
+                <option>Apartment</option>
+                <option>Commercial</option>
+              </select>
+              <select class="filter-select">
+                <option>Status</option>
+                <option>For Sale</option>
+                <option>For Rent</option>
+                <option>Available</option>
+                <option>Under Offer</option>
+              </select>
+              <select class="filter-select">
+                <option>Bedrooms</option>
+                <option>2+</option>
+                <option>3+</option>
+                <option>4+</option>
+                <option>5+</option>
+              </select>
+              <select class="filter-select">
+                <option>Price Range</option>
+                <option>$1M - $3M</option>
+                <option>$3M - $7M</option>
+                <option>$7M - $12M</option>
+                <option>$12M+</option>
+              </select>
+              <button type="submit">Update Search</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="section-header fade-up">
+          <span>Property Collection</span>
+          <h2>Featured luxury residences designed for exceptional living</h2>
+          <p>Refine your search or schedule a private showing with our specialist team.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card fade-up">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" alt="Luxury villa with pool">
+            </div>
+            <div class="card-content">
+              <span class="card-badge">Luxury Villa</span>
+              <h3 class="card-title">Cove Heights Retreat</h3>
+              <p class="card-subtitle">Amalfi Coast, Italy</p>
+              <p class="card-label">$12,450,000 Â· 5 beds Â· 6 baths</p>
+              <div class="feature-list">
+                <span class="feature-chip">Waterfront</span>
+                <span class="feature-chip">Guest House</span>
+                <span class="feature-chip">Meditation Deck</span>
+              </div>
+              <div class="button-group">
+                <a href="property-detail.html" class="cta-button">View Property</a>
+                <button class="cta-button favorite-button"><span>Save</span></button>
+              </div>
+            </div>
+          </article>
+          <article class="card fade-up">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Penthouse with city skyline">
+            </div>
+            <div class="card-content">
+              <span class="card-badge">Penthouse</span>
+              <h3 class="card-title">Aurum Sky Suite</h3>
+              <p class="card-subtitle">New York, USA</p>
+              <p class="card-label">$8,950,000 Â· 4 beds Â· 4 baths</p>
+              <div class="feature-list">
+                <span class="feature-chip">Skyline Views</span>
+                <span class="feature-chip">Private Terrace</span>
+                <span class="feature-chip">Smart Automation</span>
+              </div>
+              <div class="button-group">
+                <a href="property-detail.html" class="cta-button">View Property</a>
+                <button class="cta-button favorite-button"><span>Save</span></button>
+              </div>
+            </div>
+          </article>
+          <article class="card fade-up">
+            <div class="card-image">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXA3XI08_aE_Ln9weqraIuP-N6oE1YivuhP6EmE1LMXg&s=10" alt="Modern mansion exterior">
+            </div>
+            <div class="card-content">
+              <span class="card-badge">Modern Mansion</span>
+              <h3 class="card-title">Emerald Ridge Manor</h3>
+              <p class="card-subtitle">Paris, France</p>
+              <p class="card-label">$16,800,000 Â· 7 beds Â· 9 baths</p>
+              <div class="feature-list">
+                <span class="feature-chip">Cinema</span>
+                <span class="feature-chip">Pool House</span>
+                <span class="feature-chip">Grand Terrace</span>
+              </div>
+              <div class="button-group">
+                <a href="property-detail.html" class="cta-button">View Property</a>
+                <button class="cta-button favorite-button"><span>Save</span></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <a href="index.html" class="brand"><span>Elite</span>Estates</a>
+        <p>Global luxury real estate advisory, bespoke investments, and high-end residential marketing designed for elite clients.</p>
+      </div>
+      <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <a href="blog.html">Market Insights</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="properties.html">Properties</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <small>Â© 2026 Elite Estates. Crafted for the modern luxury property experience.</small>
+      <small>Designed for trust, performance and timeless luxury.</small>
+    </div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
+
+

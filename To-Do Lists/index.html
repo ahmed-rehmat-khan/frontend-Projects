@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR|To-do Lists App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="navbar-container">
+            <div class="navbar-brand" onclick="showAbout()">
+                <span>📝</span>
+                <span>AR-To-Do-List</span>
+            </div>
+            <ul class="navbar-menu">
+                <button class="navbar-btn" onclick="clearCompleted()" title="Clear all completed tasks">
+                    <span>🗑️</span> Clear Completed
+                </button>
+                <div class="separator"></div>
+                <button class="navbar-btn" onclick="exportTodos()" title="Export tasks as JSON">
+                    <span>📥</span> Export
+                </button>
+                <button class="navbar-btn" onclick="importTodos()" title="Import tasks from JSON">
+                    <span>📤</span> Import
+                </button>
+                <div class="separator"></div>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+                    🌙
+                </button>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>📝 AR Todo List</h1>
+        
+        <div class="input-container">
+            <input 
+                type="text" 
+                id="todoInput" 
+                placeholder="Add a new task..." 
+                autocomplete="off"
+            >
+            <button onclick="addTodo()">Add</button>
+        </div>
+
+        <ul class="todo-list" id="todoList"></ul>
+
+        <div class="empty-state" id="emptyState">
+            No tasks yet. Add one to get started! 🎯
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalCount">0</div>
+                <div>Total</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="completedCount">0</div>
+                <div>Completed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="remainingCount">0</div>
+                <div>Remaining</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

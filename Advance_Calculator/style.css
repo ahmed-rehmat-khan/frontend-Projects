@@ -1,0 +1,219 @@
+* { box-sizing: border-box;
+  font-family: Imprint MT Shadow;
+
+}
+
+.calc-root {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(1200px 800px at 10% 10%, rgba(109, 40, 217, 0.45), transparent 60%),
+    radial-gradient(900px 700px at 90% 90%, rgba(6, 182, 212, 0.40), transparent 60%),
+    linear-gradient(135deg, #06070d 0%, #0a0f1e 50%, #06070d 100%);
+  color: #e6f0ff;
+  cursor: none;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+  animation: float 14s ease-in-out infinite;
+}
+.bg-orb-1 { width: 420px; height: 420px; background: #6d28d9; top: -80px; left: -80px; }
+.bg-orb-2 { width: 520px; height: 520px; background: #06b6d4; bottom: -120px; right: -120px; animation-delay: -4s; }
+.bg-orb-3 { width: 320px; height: 320px; background: #ec4899; top: 40%; left: 60%; animation-delay: -8s; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(30px,-40px) scale(1.08); }
+}
+
+.calc-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 48px 20px 32px;
+}
+
+.calc-title {
+  font-family: Imprint MT Shadow;
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #a5f3fc 0%, #c4b5fd 50%, #f0abfc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 40px rgba(165, 243, 252, 0.25);
+  margin: 0;
+}
+.calc-subtitle {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(230, 240, 255, 0.55);
+}
+
+.calc-glass {
+  position: relative;
+  padding: 22px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow:
+    0 30px 80px -20px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.calc-display {
+  min-height: 130px;
+  padding: 20px 18px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(6,10,20,0.65), rgba(6,10,20,0.35));
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: right;
+  margin-bottom: 18px;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+.expr {
+  font-size: 1.1rem;
+  color: rgba(230, 240, 255, 0.65);
+  min-height: 1.6rem;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.result {
+  margin-top: 8px;
+  font-family: Imprint MT Shadow;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(125, 211, 252, 0.55);
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.result.pop { animation: pop 0.25s ease-out; }
+@keyframes pop {
+  from { transform: scale(0.96); opacity: 0.6; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.col-span-2 { grid-column: span 2 / span 2; }
+
+.calc-btn {
+  position: relative;
+  overflow: hidden;
+  padding: 16px 0;
+  border-radius: 16px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  cursor: none;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 6px 18px -8px rgba(0,0,0,0.5);
+  font-family: inherit;
+}
+.calc-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08));
+  box-shadow: 0 10px 30px -8px rgba(125, 211, 252, 0.35);
+}
+.calc-btn:active { transform: translateY(0) scale(0.97); }
+
+.btn-op {
+  background: linear-gradient(135deg, rgba(125,211,252,0.30), rgba(167,139,250,0.22));
+  border-color: rgba(165,243,252,0.30);
+  color: #ecfeff;
+}
+.btn-equals {
+  background: linear-gradient(135deg, #22d3ee 0%, #6366f1 60%, #a855f7 100%);
+  border-color: rgba(255,255,255,0.30);
+  box-shadow: 0 10px 30px -6px rgba(99,102,241,0.6);
+}
+.btn-danger {
+  background: linear-gradient(135deg, rgba(244,63,94,0.35), rgba(244,63,94,0.18));
+  border-color: rgba(244,63,94,0.40);
+}
+.btn-warn {
+  background: linear-gradient(135deg, rgba(251,191,36,0.30), rgba(251,191,36,0.15));
+  border-color: rgba(251,191,36,0.40);
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.45);
+  transform: scale(0);
+  animation: ripple 0.6s ease-out;
+  pointer-events: none;
+}
+@keyframes ripple { to { transform: scale(2.4); opacity: 0; } }
+
+.calc-foot {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(230,240,255,0.45);
+  letter-spacing: 0.06em;
+}
+
+.animate-in { animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cursor-layer { position: fixed; inset: 0; pointer-events: none; z-index: 50; }
+.cursor-particle {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, #7dd3fc 0%, rgba(125,211,252,0) 70%);
+  box-shadow: 0 0 12px #38bdf8, 0 0 24px #38bdf8;
+  transform: translate(-50%, -50%);
+}
+@keyframes particleFade {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -120%) scale(0.3); }
+}
+.cursor-text {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-family: Imprint MT Shadow;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #7dd3fc;
+  text-shadow: 0 0 8px #38bdf8, 0 0 16px #0ea5e9;
+  white-space: nowrap;
+}
+@keyframes textFloat {
+  from { opacity: 0.9; transform: translate(-50%, -50%) scale(0.9); }
+  to { opacity: 0; transform: translate(-50%, -140%) scale(1.1); }
+}
+
+@media (max-width: 480px) {
+  .calc-title { font-size: 1.5rem; }
+  .result { font-size: 2rem; }
+  .calc-btn { padding: 14px 0; font-size: 1.1rem; }
+}

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Motors — Drive Excellence. Own the Extraordinary.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0b;
+    --panel:#131315;
+    --panel-2:#1b1b1e;
+    --line: rgba(245,245,240,0.10);
+    --platinum:#f5f5f0;
+    --silver:#aeb4bd;
+    --red:#c1121f;
+    --red-dim: rgba(193,18,31,0.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--platinum);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Libre Caslon Display', serif;
+    font-weight:400;
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'Space Mono', monospace; letter-spacing:0.08em; }
+  img{ display:block; width:100%; height:100%; object-fit:cover; background:linear-gradient(135deg,#1b1b1e,#0a0a0b); }
+  .container{ max-width:1360px; margin:0 auto; padding:0 clamp(20px,4vw,64px); }
+  .eyebrow{
+    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--red); display:flex; align-items:center; gap:10px; margin-bottom:18px;
+  }
+  .eyebrow::before{ content:''; width:24px; height:1px; background:var(--red); }
+  section{ position:relative; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; padding:15px 30px;
+    font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    border:1px solid var(--platinum); color:var(--platinum); background:transparent;
+    cursor:pointer; transition:all .35s ease; white-space:nowrap;
+  }
+  .btn:hover{ background:var(--platinum); color:var(--ink); }
+  .btn-solid{ background:var(--red); border-color:var(--red); color:var(--platinum); }
+  .btn-solid:hover{ background:transparent; color:var(--platinum); }
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px clamp(20px,4vw,64px);
+    background:linear-gradient(to bottom, rgba(10,10,11,0.85), transparent);
+    backdrop-filter:blur(6px);
+    transition:background .3s ease;
+  }
+  .logo{ font-family:'Libre Caslon Display',serif; font-size:22px; letter-spacing:0.02em; }
+  .logo span{ color:var(--red); }
+  .nav-links{ display:flex; gap:38px; list-style:none; font-size:13px; letter-spacing:0.04em; }
+  .nav-links a{ color:var(--silver); text-decoration:none; transition:color .25s; }
+  .nav-links a:hover{ color:var(--platinum); }
+  .nav-cta{ display:flex; gap:14px; }
+  .burger{ display:none; }
+
+  /* HERO */
+  .hero{ height:100vh; min-height:680px; position:relative; display:flex; align-items:flex-end; }
+  .hero img{ position:absolute; inset:0; z-index:0; }
+  .hero::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(10,10,11,0.96) 0%, rgba(10,10,11,0.35) 48%, rgba(10,10,11,0.55) 100%);
+  }
+  .hero-content{ position:relative; z-index:2; width:100%; padding-bottom:70px; }
+  .hero h1{ font-size:clamp(42px,7vw,96px); line-height:0.98; max-width:1000px; }
+  .hero h1 em{ font-style:italic; color:var(--red); }
+  .hero p{ max-width:480px; color:var(--silver); margin:26px 0 36px; font-size:15px; line-height:1.6; }
+  .hero-btns{ display:flex; gap:16px; flex-wrap:wrap; }
+  .scroll-cue{
+    position:absolute; right:clamp(20px,4vw,64px); bottom:70px; z-index:2;
+    writing-mode:vertical-rl; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.2em;
+    color:var(--silver); display:flex; align-items:center; gap:12px;
+  }
+  .scroll-cue::after{ content:''; width:1px; height:60px; background:var(--silver); }
+
+  /* SPEC TICKER */
+  .ticker-wrap{ background:var(--red); overflow:hidden; padding:14px 0; border-top:1px solid rgba(0,0,0,0.2); }
+  .ticker{ display:flex; width:max-content; animation:scroll 28s linear infinite; }
+  .ticker span{
+    font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;
+    padding:0 40px; white-space:nowrap; color:#fff; opacity:0.95;
+  }
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* SECTION HEAD */
+  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; gap:24px; flex-wrap:wrap; }
+  .section-head h2{ font-size:clamp(30px,4vw,54px); max-width:560px; line-height:1.05; }
+  .section-head p{ color:var(--silver); max-width:360px; font-size:14px; line-height:1.6; padding-bottom:6px; }
+
+  section.pad{ padding:110px 0; }
+  .panel-bg{ background:var(--panel); }
+
+  /* FEATURED VEHICLES */
+  .veh-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--line); }
+  .veh-card{ background:var(--ink); position:relative; overflow:hidden; }
+  .veh-img{ height:340px; overflow:hidden; position:relative; }
+  .veh-img img{ transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .veh-card:hover .veh-img img{ transform:scale(1.08); }
+  .veh-tag{ position:absolute; top:16px; left:16px; background:rgba(10,10,11,0.7); backdrop-filter:blur(4px);
+    padding:6px 12px; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; z-index:2; }
+  .veh-body{ padding:26px 26px 30px; }
+  .veh-body .row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; }
+  .veh-body h3{ font-size:22px; }
+  .veh-price{ font-family:'Space Mono',monospace; color:var(--red); font-size:14px; }
+  .veh-body .spec{ color:var(--silver); font-size:12.5px; letter-spacing:0.03em; margin-bottom:20px; }
+  .veh-link{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--platinum); text-decoration:none;
+    border-bottom:1px solid var(--red); padding-bottom:4px; }
+
+  /* COLLECTIONS - horizontal scroll */
+  .collections{ display:flex; gap:2px; overflow-x:auto; scrollbar-width:none; }
+  .collections::-webkit-scrollbar{ display:none; }
+  .coll-card{ min-width:300px; height:420px; position:relative; flex-shrink:0; overflow:hidden; }
+  .coll-card img{ transition:transform .8s ease; }
+  .coll-card:hover img{ transform:scale(1.06); }
+  .coll-card::after{ content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,11,0.9), transparent 55%); }
+  .coll-label{ position:absolute; bottom:26px; left:26px; z-index:2; }
+  .coll-label .mono{ font-size:11px; color:var(--red); display:block; margin-bottom:6px; }
+  .coll-label h3{ font-size:24px; }
+
+  /* WHY CHOOSE US */
+  .why-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:70px; align-items:center; }
+  .why-list{ display:flex; flex-direction:column; }
+  .why-item{ display:flex; gap:24px; padding:26px 0; border-top:1px solid var(--line); }
+  .why-item:last-child{ border-bottom:1px solid var(--line); }
+  .why-num{ font-family:'Space Mono',monospace; font-size:12px; color:var(--red); padding-top:4px; }
+  .why-item h4{ font-family:'Inter'; font-weight:600; font-size:16px; margin-bottom:6px; }
+  .why-item p{ color:var(--silver); font-size:13.5px; line-height:1.6; max-width:400px; }
+  .why-img{ height:560px; overflow:hidden; }
+
+  /* TESTIMONIALS */
+  .test-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--line); }
+  .test-card{ background:var(--panel); padding:34px 30px; display:flex; flex-direction:column; }
+  .test-img{ height:180px; margin-bottom:22px; overflow:hidden; }
+  .test-card p{ color:var(--silver); font-size:14px; line-height:1.7; margin-bottom:20px; flex-grow:1; }
+  .test-name{ font-size:14px; font-weight:600; }
+  .test-role{ font-size:12px; color:var(--red); font-family:'Space Mono',monospace; }
+
+  /* GALLERY MASONRY */
+  .masonry{ column-count:3; column-gap:2px; }
+  .masonry img{ margin-bottom:2px; cursor:pointer; transition:opacity .3s; }
+  .masonry img:hover{ opacity:0.82; }
+  .masonry .h1{ height:260px; } .masonry .h2{ height:380px; } .masonry .h3{ height:320px; }
+
+  /* SERVICES */
+  .serv-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--line); }
+  .serv-card{ background:var(--ink); }
+  .serv-img{ height:220px; overflow:hidden; }
+  .serv-body{ padding:22px; }
+  .serv-body h4{ font-size:16px; margin-bottom:8px; font-family:'Inter'; font-weight:600; }
+  .serv-body p{ font-size:12.5px; color:var(--silver); line-height:1.6; }
+
+  /* FINANCING CALC */
+  .calc-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); }
+  .calc-form, .calc-result{ background:var(--panel); padding:50px; }
+  .field{ margin-bottom:26px; }
+  .field label{ display:flex; justify-content:space-between; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--silver); margin-bottom:10px; }
+  .field label b{ color:var(--platinum); font-family:'Space Mono',monospace; font-weight:400; }
+  input[type=range]{ width:100%; accent-color:var(--red); }
+  .calc-result{ display:flex; flex-direction:column; justify-content:center; }
+  .calc-result .mono{ color:var(--silver); font-size:12px; }
+  .calc-result .big{ font-family:'Libre Caslon Display'; font-size:56px; color:var(--red); margin:12px 0 30px; }
+  .calc-line{ display:flex; justify-content:space-between; padding:14px 0; border-top:1px solid var(--line); font-size:13px; }
+  .calc-line span:last-child{ font-family:'Space Mono',monospace; }
+
+  /* ABOUT */
+  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+  .about-img{ height:600px; overflow:hidden; position:relative; }
+  .about-stats{ display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:40px; }
+  .stat b{ font-family:'Libre Caslon Display'; font-size:38px; display:block; color:var(--red); }
+  .stat span{ font-size:12px; color:var(--silver); letter-spacing:0.04em; }
+
+  /* NEWSLETTER / FOOTER */
+  .cta-strip{ padding:100px 0; text-align:center; background:var(--panel); }
+  .cta-strip h2{ font-size:clamp(32px,5vw,64px); max-width:760px; margin:0 auto 30px; line-height:1.05; }
+  footer{ padding:70px 0 30px; border-top:1px solid var(--line); }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:60px; }
+  .foot-grid h5{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--silver); margin-bottom:18px; }
+  .foot-grid ul{ list-style:none; }
+  .foot-grid li{ margin-bottom:10px; }
+  .foot-grid a{ color:var(--platinum); text-decoration:none; font-size:13.5px; opacity:0.85; }
+  .foot-grid a:hover{ opacity:1; color:var(--red); }
+  .foot-bottom{ display:flex; justify-content:space-between; padding-top:26px; border-top:1px solid var(--line); font-size:12px; color:var(--silver); flex-wrap:wrap; gap:14px; }
+
+  /* LIGHTBOX */
+  .lightbox{ position:fixed; inset:0; background:rgba(10,10,11,0.97); z-index:999; display:none; align-items:center; justify-content:center; padding:40px; }
+  .lightbox.active{ display:flex; }
+  .lightbox img{ max-width:90vw; max-height:85vh; width:auto; height:auto; object-fit:contain; }
+  .lightbox-close{ position:absolute; top:30px; right:40px; color:var(--platinum); font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.1em; cursor:pointer; }
+
+  [data-reveal]{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+  [data-reveal].in{ opacity:1; transform:translateY(0); }
+
+  @media (max-width: 980px){
+    .nav-links, .nav-cta{ display:none; }
+    .veh-grid, .test-grid{ grid-template-columns:1fr; }
+    .serv-grid{ grid-template-columns:repeat(2,1fr); }
+    .why-grid, .about-grid, .calc-wrap{ grid-template-columns:1fr; }
+    .why-img, .about-img{ height:340px; }
+    .masonry{ column-count:1; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">ELITE<span>MOTORS</span></div>
+  <ul class="nav-links">
+    <li><a href="#inventory">Inventory</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#financing">Financing</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#test-drive" class="btn">Book Test Drive</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1800&auto=format&fit=crop" alt="Luxury car hero">
+  <div class="hero-content container">
+    <div class="eyebrow">Elite Motors — Est. Karachi</div>
+    <h1>Drive Excellence.<br>Own the <em>Extraordinary.</em></h1>
+    <p>A curated collection of the world's most desirable vehicles — sports cars, SUVs, and electric performance — delivered with white-glove service.</p>
+    <div class="hero-btns">
+      <a href="#inventory" class="btn btn-solid">Browse Inventory</a>
+      <a href="#test-drive" class="btn">Book Test Drive</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>0–100 KM/H · 2.9S</span><span>TOP SPEED · 340 KM/H</span><span>V8 TWIN-TURBO · 630HP</span><span>ELECTRIC RANGE · 620KM</span><span>AWD TORQUE VECTORING</span><span>CERAMIC BRAKES</span>
+    <span>0–100 KM/H · 2.9S</span><span>TOP SPEED · 340 KM/H</span><span>V8 TWIN-TURBO · 630HP</span><span>ELECTRIC RANGE · 620KM</span><span>AWD TORQUE VECTORING</span><span>CERAMIC BRAKES</span>
+  </div>
+</div>
+
+<!-- FEATURED VEHICLES -->
+<section class="pad" id="inventory">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <h2>Featured this week</h2>
+      <p>Hand-selected arrivals from our showroom floor, ready for immediate delivery.</p>
+    </div>
+  </div>
+  <div class="veh-grid" data-reveal>
+    <div class="veh-card">
+      <div class="veh-img"><span class="veh-tag">New Arrival</span><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1200&auto=format&fit=crop" alt="Sports coupe"></div>
+      <div class="veh-body">
+        <div class="row"><h3>Vantera GT Coupe</h3><span class="veh-price">$184,500</span></div>
+        <div class="spec">3.9L Twin-Turbo V8 · 630HP · 0–100 in 2.9s</div>
+        <a href="#" class="veh-link">Quick View →</a>
+      </div>
+    </div>
+    <div class="veh-card">
+      <div class="veh-img"><span class="veh-tag">Electric</span><img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1200&auto=format&fit=crop" alt="Electric performance sedan"></div>
+      <div class="veh-body">
+        <div class="row"><h3>Solace EV Sedan</h3><span class="veh-price">$96,900</span></div>
+        <div class="spec">Dual Motor AWD · 620km Range · 3.2s 0–100</div>
+        <a href="#" class="veh-link">Quick View →</a>
+      </div>
+    </div>
+    <div class="veh-card">
+      <div class="veh-img"><span class="veh-tag">Certified</span><img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=1200&auto=format&fit=crop" alt="Luxury SUV"></div>
+      <div class="veh-body">
+        <div class="row"><h3>Highland Overland SUV</h3><span class="veh-price">$112,300</span></div>
+        <div class="spec">4.0L V8 · Air Suspension · 7-Seat Luxury</div>
+        <a href="#" class="veh-link">Quick View →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="pad panel-bg" id="collections">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <h2>Luxury collections</h2>
+      <p>Every category, curated. Scroll to explore the full range.</p>
+    </div>
+  </div>
+  <div class="collections" data-reveal>
+    <div class="coll-card">
+      <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=900&auto=format&fit=crop" alt="Sports cars">
+      <div class="coll-label"><span class="mono">01</span><h3>Sports Cars</h3></div>
+    </div>
+    <div class="coll-card">
+      <img src="data:image/jpeg;base64,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" alt="SUVs">
+      <div class="coll-label"><span class="mono">02</span><h3>SUVs</h3></div>
+    </div>
+    <div class="coll-card">
+      <img src="https://images.unsplash.com/photo-1554744512-d6c603f27c54?q=80&w=900&auto=format&fit=crop" alt="Electric vehicles">
+      <div class="coll-label"><span class="mono">03</span><h3>Electric Vehicles</h3></div>
+    </div>
+    <div class="coll-card">
+      <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=900&auto=format&fit=crop" alt="Luxury sedans">
+      <div class="coll-label"><span class="mono">04</span><h3>Luxury Sedans</h3></div>
+    </div>
+    <div class="coll-card">
+      <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=900&auto=format&fit=crop" alt="Performance cars">
+      <div class="coll-label"><span class="mono">05</span><h3>Performance Cars</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="pad">
+  <div class="container why-grid">
+    <div data-reveal>
+      <div class="eyebrow">Why Elite Motors</div>
+      <h2 style="font-size:clamp(28px,3.6vw,46px); max-width:480px; margin-bottom:20px;">Ownership, made effortless</h2>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="why-num">01</div>
+          <div><h4>Certified Vehicles</h4><p>Every car passes a 150-point inspection before it reaches our floor.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">02</div>
+          <div><h4>Competitive Financing</h4><p>Flexible terms and rates tailored to your ownership goals.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">03</div>
+          <div><h4>Expert Support</h4><p>A dedicated advisor guides you from first visit to delivery day.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">04</div>
+          <div><h4>Extended Warranty</h4><p>Comprehensive coverage options for total peace of mind.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">05</div>
+          <div><h4>Nationwide Delivery</h4><p>Your vehicle, delivered to your door, anywhere in the country.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="why-img" data-reveal>
+      <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000&auto=format&fit=crop" alt="Showroom interior">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="pad panel-bg">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <h2>Recent deliveries</h2>
+      <p>Real clients, real handovers, from our showroom floor.</p>
+    </div>
+  </div>
+  <div class="test-grid" data-reveal>
+    <div class="test-card">
+      <div class="test-img"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop" alt="Delivery moment"></div>
+      <p>"The entire process, from selection to delivery, felt effortless. My advisor understood exactly what I wanted."</p>
+      <div class="test-name">Amir Raza</div>
+      <div class="test-role">Vantera GT Owner</div>
+    </div>
+    <div class="test-card">
+      <div class="test-img"><img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=800&auto=format&fit=crop" alt="Delivery moment"></div>
+      <p>"Financing was straightforward and transparent. No surprises — just a beautiful car handed over on time."</p>
+      <div class="test-name">Sana Khalid</div>
+      <div class="test-role">Solace EV Owner</div>
+    </div>
+    <div class="test-card">
+      <div class="test-img"><img src="https://images.unsplash.com/photo-1533323693937-08eb43d92cff?q=80&w=800&auto=format&fit=crop" alt="Delivery moment"></div>
+      <p>"Nationwide delivery meant I didn't have to travel at all. The car arrived detailed and ready to go."</p>
+      <div class="test-name">Farhan Iqbal</div>
+      <div class="test-role">Highland SUV Owner</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="pad" id="services">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <h2>Service &amp; care</h2>
+      <p>Full-service support to keep your vehicle at its best.</p>
+    </div>
+  </div>
+  <div class="serv-grid" data-reveal>
+    <div class="serv-card">
+      <div class="serv-img"><img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=700&auto=format&fit=crop" alt="Maintenance"></div>
+      <div class="serv-body"><h4>Maintenance</h4><p>Scheduled servicing by factory-trained technicians.</p></div>
+    </div>
+    <div class="serv-card">
+      <div class="serv-img"><img src="https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=700&auto=format&fit=crop" alt="Repairs"></div>
+      <div class="serv-body"><h4>Repairs</h4><p>OEM parts and diagnostic-grade equipment on site.</p></div>
+    </div>
+    <div class="serv-card">
+      <div class="serv-img"><img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=700&auto=format&fit=crop" alt="Detailing"></div>
+      <div class="serv-body"><h4>Detailing</h4><p>Paint correction and ceramic coating for showroom finish.</p></div>
+    </div>
+    <div class="serv-card">
+      <div class="serv-img"><img src="https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=700&auto=format&fit=crop" alt="Service center"></div>
+      <div class="serv-body"><h4>Service Center</h4><p>State-of-the-art bays across our nationwide network.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCING CALCULATOR -->
+<section class="pad panel-bg" id="financing">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <h2>Estimate your payment</h2>
+      <p>Adjust the sliders to see monthly financing estimates.</p>
+    </div>
+    <div class="calc-wrap" data-reveal>
+      <div class="calc-form">
+        <div class="field">
+          <label>Vehicle Price <b id="priceOut">$120,000</b></label>
+          <input type="range" id="price" min="30000" max="400000" step="1000" value="120000">
+        </div>
+        <div class="field">
+          <label>Down Payment <b id="downOut">$24,000</b></label>
+          <input type="range" id="down" min="0" max="200000" step="1000" value="24000">
+        </div>
+        <div class="field">
+          <label>Loan Term <b id="termOut">60 months</b></label>
+          <input type="range" id="term" min="24" max="84" step="6" value="60">
+        </div>
+        <div class="field">
+          <label>APR <b id="aprOut">6.5%</b></label>
+          <input type="range" id="apr" min="2" max="15" step="0.1" value="6.5">
+        </div>
+      </div>
+      <div class="calc-result">
+        <span class="mono">Estimated Monthly Payment</span>
+        <div class="big" id="monthlyOut">$1,890</div>
+        <div class="calc-line"><span>Loan Amount</span><span id="loanOut">$96,000</span></div>
+        <div class="calc-line"><span>Total Interest</span><span id="intOut">$17,400</span></div>
+        <div class="calc-line"><span>Total Repaid</span><span id="totalOut">$113,400</span></div>
+        <a href="#" class="btn btn-solid" style="margin-top:30px; width:fit-content;">Get Pre-Approved</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="pad" id="gallery">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <h2>Gallery</h2>
+      <p>Showroom, events, and automotive lifestyle. Click any image to expand.</p>
+    </div>
+  </div>
+  <div class="masonry" data-reveal>
+    <img class="h2" src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=900&auto=format&fit=crop" alt="Night car">
+    <img class="h1" src="https://images.unsplash.com/photo-1494905998402-395d579af36f?q=80&w=900&auto=format&fit=crop" alt="Car detail">
+    <img class="h3" src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=900&auto=format&fit=crop" alt="Sedan">
+    <img class="h1" src="https://images.unsplash.com/photo-1571607388263-1044f9ea01dd?q=80&w=900&auto=format&fit=crop" alt="Interior">
+    <img class="h2" src="https://images.unsplash.com/photo-1605559911160-a3d95d213904?q=80&w=900&auto=format&fit=crop" alt="Dashboard">
+    <img class="h3" src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=900&auto=format&fit=crop" alt="Engine">
+    <img class="h1" src="https://images.unsplash.com/photo-1620891549027-942fdc95d3f5?q=80&w=900&auto=format&fit=crop" alt="Wheel detail">
+    <img class="h2" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=900&auto=format&fit=crop" alt="Showroom">
+    <img class="h1" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=900&auto=format&fit=crop" alt="Drone dealership">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="pad panel-bg" id="about">
+  <div class="container about-grid">
+    <div class="about-img" data-reveal>
+      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1100&auto=format&fit=crop" alt="Dealership showroom">
+    </div>
+    <div data-reveal>
+      <div class="eyebrow">About Elite Motors</div>
+      <h2 style="font-size:clamp(28px,3.6vw,46px); margin-bottom:20px;">Two decades of automotive excellence</h2>
+      <p style="color:var(--silver); font-size:14.5px; line-height:1.75; max-width:460px;">
+        Since our founding, Elite Motors has curated an uncompromising selection of the world's finest vehicles.
+        What began as a single showroom has grown into a nationwide network — built on trust, craftsmanship,
+        and an obsession with getting every detail right.
+      </p>
+      <div class="about-stats">
+        <div class="stat"><b>4,200+</b><span>Vehicles Delivered</span></div>
+        <div class="stat"><b>18</b><span>Showroom Locations</span></div>
+        <div class="stat"><b>98%</b><span>Client Satisfaction</span></div>
+        <div class="stat"><b>20 Yrs</b><span>In Business</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / NEWSLETTER -->
+<section class="cta-strip" id="test-drive" data-reveal>
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;">Book Your Test Drive</div>
+    <h2>Get behind the wheel of the extraordinary.</h2>
+    <a href="#" class="btn btn-solid">Schedule Now</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:16px;">ELITE<span>MOTORS</span></div>
+        <p style="color:var(--silver); font-size:13.5px; line-height:1.7; max-width:280px;">Curated luxury and performance vehicles, delivered nationwide with white-glove service.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#inventory">Inventory</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#financing">Financing</a></li>
+          <li><a href="#services">Maintenance</a></li>
+          <li><a href="#test-drive">Test Drive</a></li>
+          <li><a href="#">Trade-In</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Newsletter</h5>
+        <p style="color:var(--silver); font-size:13px; margin-bottom:14px;">New arrivals, first look.</p>
+        <div style="display:flex; border-bottom:1px solid var(--line); padding-bottom:10px;">
+          <input type="email" placeholder="Your email" style="background:transparent; border:none; color:var(--platinum); font-size:13px; outline:none; flex:1;">
+          <span class="mono" style="font-size:11px; color:var(--red); cursor:pointer;">SUBMIT →</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Elite Motors. All rights reserved.</span>
+      <span>Karachi · Lahore · Islamabad · Dubai</span>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightboxClose">CLOSE ✕</div>
+  <img id="lightboxImg" src="" alt="Expanded view">
+</div>
+
+<script>
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el=>io.observe(el));
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.masonry img').forEach(img=>{
+    img.addEventListener('click', ()=>{
+      lightboxImg.src = img.src;
+      lightbox.classList.add('active');
+    });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', ()=> lightbox.classList.remove('active'));
+  lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('active'); });
+
+  // Financing calculator
+  const price = document.getElementById('price');
+  const down = document.getElementById('down');
+  const term = document.getElementById('term');
+  const apr = document.getElementById('apr');
+  const fmt = n => '$' + Math.round(n).toLocaleString('en-US');
+
+  function calc(){
+    const p = +price.value, d = +down.value, t = +term.value, r = +apr.value/100/12;
+    const loan = Math.max(p - d, 0);
+    const monthly = r === 0 ? loan/t : (loan * r) / (1 - Math.pow(1+r, -t));
+    const total = monthly * t;
+    const interest = total - loan;
+
+    document.getElementById('priceOut').textContent = fmt(p);
+    document.getElementById('downOut').textContent = fmt(d);
+    document.getElementById('termOut').textContent = t + ' months';
+    document.getElementById('aprOut').textContent = (+apr.value).toFixed(1) + '%';
+    document.getElementById('monthlyOut').textContent = fmt(monthly) + '/mo';
+    document.getElementById('loanOut').textContent = fmt(loan);
+    document.getElementById('intOut').textContent = fmt(interest);
+    document.getElementById('totalOut').textContent = fmt(total);
+  }
+  [price, down, term, apr].forEach(el => el.addEventListener('input', calc));
+  calc();
+</script>
+
+</body>
+</html>

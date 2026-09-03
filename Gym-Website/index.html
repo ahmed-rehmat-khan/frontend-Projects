@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Titan Strength Gym — Build Strength. Build Discipline. Build Greatness.</title>
+<meta name="description" content="Titan Strength Gym — an elite men's strength, bodybuilding and powerlifting facility. Premium coaching, iron-forged discipline, real results." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0a0a0c;
+    --charcoal:#151519;
+    --charcoal-2:#1d1e23;
+    --steel:#2a2c33;
+    --silver:#c7cad1;
+    --silver-dim:#8b8e97;
+    --white:#f4f4f6;
+    --blue:#2e6fff;
+    --blue-dim:#1a3fa0;
+    --rust:#ff5a2b;
+    --line:rgba(199,202,209,.12);
+    --radius:2px;
+    --ff-display:'Bebas Neue', sans-serif;
+    --ff-label:'Barlow Condensed', sans-serif;
+    --ff-body:'Barlow', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:var(--ff-body);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:1280px; margin:0 auto; padding:0 32px;}
+  h1,h2,h3{font-family:var(--ff-display); letter-spacing:.01em; text-transform:uppercase; font-weight:400; line-height:1.02;}
+  .eyebrow{
+    font-family:var(--ff-label); font-weight:600; letter-spacing:.28em; text-transform:uppercase;
+    font-size:13px; color:var(--blue); display:flex; align-items:center; gap:12px; margin-bottom:18px;
+  }
+  .eyebrow::before{content:''; width:28px; height:2px; background:var(--blue); display:block;}
+  .btn{
+    font-family:var(--ff-label); font-weight:600; letter-spacing:.14em; text-transform:uppercase; font-size:15px;
+    padding:16px 34px; border-radius:var(--radius); border:1px solid transparent; cursor:pointer;
+    display:inline-flex; align-items:center; gap:10px; transition:transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+  }
+  .btn-primary{background:var(--blue); color:#fff;}
+  .btn-primary:hover{background:#4a80ff; transform:translateY(-2px);}
+  .btn-ghost{border-color:rgba(244,244,246,.35); color:var(--white); background:transparent;}
+  .btn-ghost:hover{border-color:var(--white); transform:translateY(-2px);}
+  .btn-block{border-color:var(--blue); color:var(--blue); background:transparent; width:100%; justify-content:center;}
+  .btn-block:hover{background:var(--blue); color:#fff;}
+
+  /* ---------- photo cards ---------- */
+  .plate{
+    position:relative; overflow:hidden; background:linear-gradient(150deg, var(--charcoal-2), var(--black) 70%);
+  }
+  .plate::before{
+    content:''; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(10,10,12,0) 45%, rgba(10,10,12,.75) 100%);
+    pointer-events:none;
+  }
+  .plate::after{
+    content:''; position:absolute; inset:0; z-index:1;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Ccircle cx='1' cy='1' r='.5' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay; pointer-events:none;
+  }
+  .plate-img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;
+    z-index:0; filter:saturate(1.02) contrast(1.05); transition:transform .6s ease;
+  }
+  .plate:hover .plate-img{transform:scale(1.06);}
+  .plate-icon{position:absolute; opacity:.5; color:var(--silver-dim); z-index:1;}
+  .plate-tag{
+    position:absolute; bottom:14px; left:16px; z-index:2; font-family:var(--ff-label); font-size:11px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--silver-dim); border:1px solid var(--line);
+    padding:4px 10px; border-radius:var(--radius); background:rgba(10,10,12,.55); backdrop-filter:blur(6px);
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,10,12,.72); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);
+    transition:background .3s ease;
+  }
+  nav{display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1280px; margin:0 auto;}
+  .logo{font-family:var(--ff-display); font-size:26px; letter-spacing:.03em; display:flex; align-items:center; gap:10px;}
+  .logo span{color:var(--blue);}
+  .nav-links{display:flex; gap:34px; align-items:center;}
+  .nav-links a{
+    font-family:var(--ff-label); font-weight:600; letter-spacing:.1em; text-transform:uppercase; font-size:14px;
+    color:var(--silver); position:relative; padding:6px 0;
+  }
+  .nav-links a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--blue); transition:width .25s ease;}
+  .nav-links a:hover{color:var(--white);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex; gap:12px; align-items:center;}
+  .burger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; z-index:110; padding:6px;}
+  .burger span{width:24px; height:2px; background:var(--white); transition:transform .25s ease, opacity .25s ease;}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:center; padding-top:110px;
+    background:
+      radial-gradient(ellipse 60% 50% at 75% 30%, rgba(46,111,255,.22), transparent 60%),
+      radial-gradient(ellipse 50% 60% at 10% 80%, rgba(255,90,43,.10), transparent 60%),
+      var(--black);
+  }
+  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center; width:100%;}
+  .hero h1{font-size:clamp(52px,7vw,92px); margin:0 0 24px;}
+  .hero h1 em{font-style:normal; color:var(--blue);}
+  .hero p.lead{font-size:19px; color:var(--silver); max-width:520px; margin-bottom:36px;}
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:52px;}
+  .hero-stats{display:flex; gap:44px; flex-wrap:wrap;}
+  .hero-stat b{font-family:var(--ff-display); font-size:38px; color:var(--white); display:block;}
+  .hero-stat span{font-family:var(--ff-label); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--silver-dim);}
+  .hero-visual{position:relative; aspect-ratio:4/5; border-radius:var(--radius); border:1px solid var(--line);}
+  .barbell{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
+
+  /* plate-loading signature animation */
+  .plate-stack{display:flex; align-items:center;}
+  .plate-disc{
+    width:14px; height:78px; border-radius:6px; background:linear-gradient(90deg, #1c1d22, #34353d 45%, #1c1d22);
+    border:1px solid rgba(255,255,255,.08); margin:0 -1px; transform:scaleX(0); transform-origin:center;
+    animation:loadPlate .6s ease forwards; box-shadow:0 0 0 1px rgba(0,0,0,.4) inset;
+  }
+  .plate-disc.big{width:20px; height:110px;}
+  .plate-disc:nth-child(1){animation-delay:.1s;}
+  .plate-disc:nth-child(2){animation-delay:.22s;}
+  .plate-disc:nth-child(3){animation-delay:.34s;}
+  .plate-disc:nth-child(4){animation-delay:.46s;}
+  .plate-disc:nth-child(5){animation-delay:.58s;}
+  .plate-disc:nth-child(6){animation-delay:.7s;}
+  .plate-disc:nth-child(7){animation-delay:.82s;}
+  @keyframes loadPlate{to{transform:scaleX(1);}}
+  .bar{width:340px; height:6px; background:linear-gradient(90deg,#3a3c44,#57596300); position:absolute; border-radius:3px;}
+
+  section{padding:120px 0; position:relative;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(36px,4.6vw,56px);}
+  .section-head p{color:var(--silver-dim); font-size:17px; margin-top:16px;}
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-head.center .eyebrow{justify-content:center;}
+  .section-head.center .eyebrow::before{display:none;}
+
+  /* ---------- why choose us ---------- */
+  .why{background:var(--charcoal); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .why-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .why-card{background:var(--charcoal); padding:38px 26px; transition:background .25s ease;}
+  .why-card:hover{background:var(--charcoal-2);}
+  .why-card .num{font-family:var(--ff-label); font-size:13px; color:var(--blue); letter-spacing:.2em; margin-bottom:22px; display:block;}
+  .why-card h3{font-family:var(--ff-label); text-transform:uppercase; font-size:19px; font-weight:700; letter-spacing:.02em; margin-bottom:10px;}
+  .why-card p{color:var(--silver-dim); font-size:14.5px;}
+
+  /* ---------- programs ---------- */
+  .programs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .program-card{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--charcoal); transition:transform .3s ease, border-color .3s ease;}
+  .program-card:hover{transform:translateY(-6px); border-color:rgba(46,111,255,.5);}
+  .program-media{aspect-ratio:16/10;}
+  .program-body{padding:26px;}
+  .program-body h3{font-family:var(--ff-label); font-weight:700; font-size:22px; text-transform:uppercase; margin-bottom:8px;}
+  .program-body p{color:var(--silver-dim); font-size:14.5px; margin-bottom:18px;}
+  .program-body a{font-family:var(--ff-label); font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--blue); font-weight:600;}
+
+  /* ---------- stats / success ---------- */
+  .stats-band{background:var(--charcoal-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:70px 0;}
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center;}
+  .stat b{font-family:var(--ff-display); font-size:56px; color:var(--white); display:block;}
+  .stat b .plus{color:var(--blue);}
+  .stat span{font-family:var(--ff-label); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--silver-dim);}
+
+  .transform-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .transform-card{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+  .transform-media{display:grid; grid-template-columns:1fr 1fr; aspect-ratio:16/9;}
+  .transform-media .plate-tag{position:static; margin:14px; align-self:end;}
+  .transform-info{padding:20px 22px; background:var(--charcoal);}
+  .transform-info h4{font-family:var(--ff-label); font-weight:700; text-transform:uppercase; font-size:17px; margin-bottom:4px;}
+  .transform-info span{color:var(--blue); font-family:var(--ff-label); font-size:13px; letter-spacing:.1em;}
+
+  /* ---------- membership ---------- */
+  .membership{background:var(--charcoal);}
+  .plans-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .plan{border:1px solid var(--line); border-radius:var(--radius); padding:34px 28px; background:var(--black); display:flex; flex-direction:column; transition:border-color .25s ease, transform .25s ease;}
+  .plan:hover{transform:translateY(-6px);}
+  .plan.featured{border-color:var(--blue); background:linear-gradient(180deg, rgba(46,111,255,.12), var(--black) 40%); position:relative;}
+  .plan.featured::before{
+    content:'MOST POPULAR'; position:absolute; top:-13px; left:28px; background:var(--blue); color:#fff;
+    font-family:var(--ff-label); font-size:11px; letter-spacing:.16em; padding:5px 12px; border-radius:2px;
+  }
+  .plan h3{font-family:var(--ff-label); font-weight:700; font-size:19px; text-transform:uppercase; margin-bottom:14px;}
+  .plan .price{font-family:var(--ff-display); font-size:48px; margin-bottom:4px;}
+  .plan .price sup{font-size:16px; font-family:var(--ff-label); color:var(--silver-dim);}
+  .plan .per{color:var(--silver-dim); font-size:13px; margin-bottom:26px; display:block;}
+  .plan ul{margin-bottom:30px; flex:1;}
+  .plan li{font-size:14.5px; color:var(--silver); padding:9px 0; border-top:1px solid var(--line); display:flex; gap:10px;}
+  .plan li:first-child{border-top:none;}
+  .plan li::before{content:'✓'; color:var(--blue); font-weight:700;}
+
+  /* ---------- about ---------- */
+  .about{}
+  .about-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:70px; align-items:center;}
+  .about-media{aspect-ratio:4/5;}
+  .about-copy p{color:var(--silver); font-size:16.5px; margin-bottom:18px;}
+  .about-quote{border-left:3px solid var(--blue); padding-left:20px; margin:28px 0; font-family:var(--ff-label); font-size:20px; font-style:italic; color:var(--white);}
+  .about-quote span{display:block; font-family:var(--ff-body); font-style:normal; font-size:13px; color:var(--silver-dim); margin-top:8px;}
+
+  /* ---------- trainers ---------- */
+  .trainers-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .trainer-card{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--charcoal);}
+  .trainer-media{aspect-ratio:3/4;}
+  .trainer-body{padding:20px;}
+  .trainer-body h3{font-family:var(--ff-label); font-weight:700; text-transform:uppercase; font-size:18px;}
+  .trainer-body .role{color:var(--blue); font-family:var(--ff-label); font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:10px; display:block;}
+  .trainer-body p{color:var(--silver-dim); font-size:13.5px;}
+
+  /* ---------- gallery ---------- */
+  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; gap:12px;}
+  .gallery-grid .plate{border-radius:var(--radius);}
+  .g-tall{grid-row:span 2;}
+  .g-wide{grid-column:span 2;}
+
+  /* ---------- calculators ---------- */
+  .tools{background:var(--charcoal-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .tools-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .tool-card{background:var(--black); border:1px solid var(--line); border-radius:var(--radius); padding:34px;}
+  .tool-card h3{font-family:var(--ff-label); font-weight:700; text-transform:uppercase; font-size:20px; margin-bottom:6px;}
+  .tool-card p.desc{color:var(--silver-dim); font-size:14px; margin-bottom:24px;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;}
+  label{font-family:var(--ff-label); font-size:12.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--silver-dim); display:block; margin-bottom:6px;}
+  input,select{
+    width:100%; background:var(--charcoal); border:1px solid var(--line); color:var(--white);
+    padding:12px 14px; border-radius:var(--radius); font-family:var(--ff-body); font-size:14.5px;
+  }
+  input:focus,select:focus,button:focus,a:focus{outline:2px solid var(--blue); outline-offset:2px;}
+  .tool-result{margin-top:20px; padding:18px; border:1px dashed var(--line); border-radius:var(--radius); font-family:var(--ff-label);}
+  .tool-result .big{font-family:var(--ff-display); font-size:38px; color:var(--blue);}
+  .tool-result .tag{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--silver-dim);}
+
+  /* ---------- blog ---------- */
+  .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .blog-card{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--charcoal);}
+  .blog-media{aspect-ratio:16/10;}
+  .blog-body{padding:22px;}
+  .blog-cat{font-family:var(--ff-label); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--blue); margin-bottom:10px; display:block;}
+  .blog-body h3{font-family:var(--ff-label); font-weight:700; text-transform:uppercase; font-size:19px; margin-bottom:10px;}
+  .blog-body p{color:var(--silver-dim); font-size:14px;}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .contact-info li{display:flex; gap:16px; padding:18px 0; border-top:1px solid var(--line);}
+  .contact-info li:first-child{border-top:none;}
+  .contact-info h4{font-family:var(--ff-label); text-transform:uppercase; font-size:13px; letter-spacing:.12em; color:var(--silver-dim); margin-bottom:4px;}
+  .contact-info p{font-size:15px;}
+  .contact-form input, .contact-form textarea{margin-bottom:16px;}
+  .contact-form textarea{width:100%; min-height:120px; background:var(--charcoal); border:1px solid var(--line); color:var(--white); padding:12px 14px; border-radius:var(--radius); font-family:var(--ff-body); resize:vertical;}
+  .map-plate{aspect-ratio:16/9; margin-top:28px; overflow:hidden; border-radius:var(--radius); border:1px solid var(--line);}
+
+  footer{background:var(--charcoal); border-top:1px solid var(--line); padding:70px 0 30px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px;}
+  .footer-col h4{font-family:var(--ff-label); text-transform:uppercase; font-size:13px; letter-spacing:.14em; color:var(--silver-dim); margin-bottom:18px;}
+  .footer-col li{margin-bottom:10px; font-size:14.5px; color:var(--silver);}
+  .footer-col li a:hover{color:var(--blue);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; border-top:1px solid var(--line); font-size:13px; color:var(--silver-dim); flex-wrap:wrap; gap:12px;}
+  .socials{display:flex; gap:14px;}
+  .socials a{width:36px; height:36px; border:1px solid var(--line); border-radius:50%; display:flex; align-items:center; justify-content:center;}
+  .socials a:hover{border-color:var(--blue); color:var(--blue);}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:none;}
+
+  .counter{font-variant-numeric:tabular-nums;}
+
+  /* mobile chat / whatsapp fab */
+  .fab{
+    position:fixed; bottom:26px; right:26px; z-index:90; width:58px; height:58px; border-radius:50%;
+    background:var(--blue); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(46,111,255,.4);
+    transition:transform .25s ease;
+  }
+  .fab:hover{transform:scale(1.08);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1080px){
+    .wrap{padding:0 28px;}
+    .why-grid{grid-template-columns:repeat(3,1fr);}
+    .programs-grid,.trainers-grid,.transform-grid,.blog-grid{grid-template-columns:repeat(2,1fr);}
+    .plans-grid{grid-template-columns:repeat(2,1fr);}
+    .stats-grid{grid-template-columns:repeat(2,1fr); gap:36px 20px;}
+    .hero-grid{grid-template-columns:1fr; gap:44px;}
+    .hero-visual{max-width:460px;}
+    .about-grid{grid-template-columns:1fr; gap:36px;}
+    .about-media{max-width:420px;}
+    .tools-grid,.contact-grid{grid-template-columns:1fr; gap:32px;}
+    .footer-grid{grid-template-columns:1fr 1fr; gap:32px 24px;}
+    section{padding:96px 0;}
+  }
+  @media (max-width:860px){
+    nav{padding:16px 24px;}
+    .nav-links{
+      position:fixed; top:0; right:0; height:100vh; width:min(78vw,320px);
+      background:rgba(10,10,12,.98); backdrop-filter:blur(16px); border-left:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; justify-content:center; gap:26px; padding:32px;
+      transform:translateX(100%); transition:transform .35s ease; z-index:105;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{font-size:18px;}
+    .nav-cta .btn-ghost{display:none;}
+    .nav-cta .btn-primary{padding:11px 20px; font-size:13px;}
+    .burger{display:flex;}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:720px){
+    .wrap{padding:0 20px;}
+    section{padding:72px 0;}
+    .hero{padding-top:100px;}
+    .hero-actions{gap:12px;}
+    .hero-stats{gap:28px;}
+    .programs-grid,.trainers-grid,.transform-grid,.blog-grid,.plans-grid,.stats-grid,.footer-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:130px;}
+    .g-tall,.g-wide{grid-column:span 1; grid-row:span 1;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .field-row{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 16px;}
+    section{padding:60px 0;}
+    .logo{font-size:21px;}
+    .hero h1{font-size:clamp(38px,11vw,52px);}
+    .hero p.lead{font-size:16.5px;}
+    .hero-actions{flex-direction:column; align-items:stretch;}
+    .hero-actions .btn{justify-content:center;}
+    .hero-stats{gap:20px 28px;}
+    .hero-stat b{font-size:30px;}
+    .why-grid,.programs-grid,.trainers-grid,.transform-grid,.blog-grid,.plans-grid,.stats-grid,.footer-grid,.gallery-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-auto-rows:220px;}
+    .transform-media{grid-template-columns:1fr 1fr;}
+    .stat b{font-size:42px;}
+    .section-head h2{font-size:clamp(28px,8vw,38px);}
+    .plan.featured::before{top:-11px; font-size:10px; padding:4px 10px;}
+    .footer-bottom{flex-direction:column; align-items:flex-start;}
+    nav{padding:14px 16px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#home" class="logo">TITAN<span>STRENGTH</span></a>
+    <ul class="nav-links">
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#trainers">Trainers</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#membership">Membership</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#membership" class="btn btn-ghost">Free Trial</a>
+      <a href="#membership" class="btn btn-primary">Join Now</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Men's Strength &amp; Performance</div>
+      <h1>Build strength.<br>Build discipline.<br><em>Build greatness.</em></h1>
+      <p class="lead">Titan Strength Gym is a men's-only training ground for bodybuilding, powerlifting and functional performance — built for men who train with purpose.</p>
+      <div class="hero-actions">
+        <a href="#membership" class="btn btn-primary">Join Now →</a>
+        <a href="#membership" class="btn btn-ghost">Start Free Trial</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b><span class="counter" data-target="4200">0</span>+</b><span>Members Trained</span></div>
+        <div class="hero-stat"><b><span class="counter" data-target="18">0</span></b><span>Certified Coaches</span></div>
+        <div class="hero-stat"><b><span class="counter" data-target="12">0</span></b><span>Years Forging Iron</span></div>
+      </div>
+    </div>
+    <div class="hero-visual plate reveal">
+      <img class="plate-img" src="https://loremflickr.com/900/1125/gym,weightlifting,man/all?lock=1" alt="Man performing a heavy barbell lift at Titan Strength Gym" loading="eager">
+      <div class="barbell" style="inset:auto 20px 20px auto; justify-content:flex-end;">
+        <div class="plate-stack">
+          <div class="plate-disc big"></div>
+          <div class="plate-disc"></div>
+          <div class="plate-disc"></div>
+          <div class="plate-disc" style="width:8px;height:56px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why Titan</div>
+      <h2>Five reasons men train here</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="why-grid reveal">
+      <div class="why-card"><span class="num">01</span><h3>Elite Coaches</h3><p>Certified strength coaches with competitive lifting backgrounds.</p></div>
+      <div class="why-card"><span class="num">02</span><h3>Pro Equipment</h3><p>Competition-grade barbells, plates and power racks — no waiting.</p></div>
+      <div class="why-card"><span class="num">03</span><h3>Men's-Only Floor</h3><p>A focused, judgment-free environment built for men, by men.</p></div>
+      <div class="why-card"><span class="num">04</span><h3>Personalized Plans</h3><p>Programming built around your goals, not a generic template.</p></div>
+      <div class="why-card"><span class="num">05</span><h3>Flexible Membership</h3><p>Monthly to VIP tiers — train on your schedule, not ours.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Training Programs</div>
+      <h2>Pick your discipline</h2>
+      <p>Seven programs, one standard: measurable results.</p>
+    </div>
+    <div class="programs-grid reveal">
+      <div class="program-card">
+        <div class="program-media plate"><img class="plate-img" src="https://loremflickr.com/640/400/bodybuilder,muscles,gym/all?lock=2" alt="Bodybuilder training for size and symmetry" loading="lazy"></div>
+        <div class="program-body"><h3>Bodybuilding</h3><p>Hypertrophy-focused splits for size, symmetry and conditioning.</p><a href="#membership">Explore program →</a></div>
+      </div>
+      <div class="program-card">
+        <div class="program-media plate"><img class="plate-img" src="https://loremflickr.com/640/400/man,barbell,strength/all?lock=3" alt="Man loading a barbell for strength training" loading="lazy"></div>
+        <div class="program-body"><h3>Strength Training</h3><p>Progressive overload built on the big compound lifts.</p><a href="#membership">Explore program →</a></div>
+      </div>
+      <div class="program-card">
+        <div class="program-media plate"><img class="plate-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKp_kgN3B07V99rsjBjAuWz0flPeON1ZNkV2atH1CFAQ&s=10" alt="Man performing a powerlifting deadlift" loading="lazy"></div>
+        <div class="program-body"><h3>Powerlifting</h3><p>Squat, bench, deadlift — periodized for competition PRs.</p><a href="#membership">Explore program →</a></div>
+      </div>
+      <div class="program-card">
+        <div class="program-media plate"><img class="plate-img" src="https://loremflickr.com/640/400/man,cardio,gym/all?lock=5" alt="Man doing cardio conditioning for fat loss" loading="lazy"></div>
+        <div class="program-body"><h3>Weight Loss</h3><p>Metabolic conditioning paired with a sustainable nutrition plan.</p><a href="#membership">Explore program →</a></div>
+      </div>
+      <div class="program-card">
+        <div class="program-media plate"><img class="plate-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmAPeMX8NCcYpsulIloOlRX3aYCLX_zbZMFYfT2y04NA&s=10"></div>
+        <div class="program-body"><h3>Functional Fitness</h3><p>Real-world strength, mobility and conditioning training.</p><a href="#membership">Explore program →</a></div>
+      </div>
+      <div class="program-card">
+        <div class="program-media plate"><img class="plate-img" src="https://loremflickr.com/640/400/boxing,training,gym/all?lock=7" alt="Man boxing training on pads" loading="lazy"></div>
+        <div class="program-body"><h3>Boxing Fitness</h3><p>Combat conditioning — bag work, pad rounds and footwork.</p><a href="#membership">Explore program →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="wrap">
+    <div class="stats-grid reveal">
+      <div class="stat"><b><span class="counter" data-target="4200">0</span><span class="plus">+</span></b><span>Members Trained</span></div>
+      <div class="stat"><b><span class="counter" data-target="860">0</span><span class="plus">+</span></b><span>Transformations Logged</span></div>
+      <div class="stat"><b><span class="counter" data-target="18">0</span></b><span>Certified Coaches</span></div>
+      <div class="stat"><b><span class="counter" data-target="12">0</span></b><span>Years Operating</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS STORIES -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Success Stories</div>
+      <h2>Real transformations</h2>
+    </div>
+    <div class="transform-grid reveal">
+      <div class="transform-card">
+        <div class="transform-media">
+          <div class="plate"><img class="plate-img" src="https://loremflickr.com/400/450/man,fitness/all?lock=8" alt="Adeel R. before transformation" loading="lazy"><div class="plate-tag">Before</div></div>
+          <div class="plate"><img class="plate-img" src="https://loremflickr.com/400/450/man,fit,gym/all?lock=9" alt="Adeel R. after transformation" loading="lazy"><div class="plate-tag">After</div></div>
+        </div>
+        <div class="transform-info"><h4>Adeel R.</h4><span>-19kg · 8 months · Weight Loss Program</span></div>
+      </div>
+      <div class="transform-card">
+        <div class="transform-media">
+          <div class="plate"><img class="plate-img" src="https://loremflickr.com/400/450/man,gym/all?lock=10" alt="Hamza K. before transformation" loading="lazy"><div class="plate-tag">Before</div></div>
+          <div class="plate"><img class="plate-img" src="https://loremflickr.com/400/450/bodybuilder,muscle/all?lock=11" alt="Hamza K. after transformation" loading="lazy"><div class="plate-tag">After</div></div>
+        </div>
+        <div class="transform-info"><h4>Hamza K.</h4><span>+11kg lean mass · 12 months · Bodybuilding</span></div>
+      </div>
+      <div class="transform-card">
+        <div class="transform-media">
+          <div class="plate"><img class="plate-img" src="https://loremflickr.com/400/450/man,weightroom/all?lock=12" alt="Bilal S. before transformation" loading="lazy"><div class="plate-tag">Before</div></div>
+          <div class="plate"><img class="plate-img" src="https://loremflickr.com/400/450/deadlift,powerlifting/all?lock=13" alt="Bilal S. after transformation" loading="lazy"><div class="plate-tag">After</div></div>
+        </div>
+        <div class="transform-info"><h4>Bilal S.</h4><span>220kg deadlift PR · 10 months · Powerlifting</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section style="background:var(--charcoal); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Facilities</div>
+      <h2>Built like a strength lab</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="plate g-tall"><img class="plate-img" src="https://loremflickr.com/500/700/gym,freeweights/all?lock=14" alt="Free weights area" loading="lazy"><div class="plate-tag">Free Weights</div></div>
+      <div class="plate"><img class="plate-img" src="https://loremflickr.com/500/350/squat,rack,gym/all?lock=15" alt="Power racks" loading="lazy"><div class="plate-tag">Power Racks</div></div>
+      <div class="plate g-wide"><img class="plate-img" src="https://loremflickr.com/700/350/gym,cardio,machine/all?lock=16" alt="Cardio equipment" loading="lazy"><div class="plate-tag">Cardio Deck</div></div>
+      <div class="plate"><img class="plate-img" src="https://loremflickr.com/500/350/locker,room/all?lock=17" alt="Locker room" loading="lazy"><div class="plate-tag">Locker Room</div></div>
+      <div class="plate g-tall"><img class="plate-img" src="https://loremflickr.com/500/700/recovery,stretching,man/all?lock=18" alt="Recovery zone" loading="lazy"><div class="plate-tag">Recovery Zone</div></div>
+      <div class="plate g-wide"><img class="plate-img" src="https://loremflickr.com/700/350/supplements,gym/all?lock=19" alt="Supplement bar" loading="lazy"><div class="plate-tag">Supplement Bar</div></div>
+      <div class="plate"><img class="plate-img" src="https://loremflickr.com/500/350/boxing,gym,training/all?lock=20" alt="Boxing training area" loading="lazy"><div class="plate-tag">Boxing Area</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section id="membership" class="membership">
+  <div class="wrap">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="eyebrow">Membership</div>
+      <h2>Choose your tier</h2>
+      <p>Cancel or upgrade anytime. No hidden fees, no contracts you can't leave.</p>
+    </div>
+    <div class="plans-grid reveal">
+      <div class="plan">
+        <h3>Monthly</h3>
+        <div class="price">$49<sup>/mo</sup></div>
+        <span class="per">Billed monthly</span>
+        <ul>
+          <li>Full gym floor access</li>
+          <li>Locker room access</li>
+          <li>1 free trainer session</li>
+          <li>App workout tracking</li>
+        </ul>
+        <a href="#contact" class="btn btn-block">Join Now</a>
+      </div>
+      <div class="plan featured">
+        <h3>Quarterly</h3>
+        <div class="price">$129<sup>/3mo</sup></div>
+        <span class="per">Save 12% vs monthly</span>
+        <ul>
+          <li>Everything in Monthly</li>
+          <li>2 trainer sessions / month</li>
+          <li>Nutrition check-in</li>
+          <li>Priority equipment booking</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary btn-block">Join Now</a>
+      </div>
+      <div class="plan">
+        <h3>Annual</h3>
+        <div class="price">$449<sup>/yr</sup></div>
+        <span class="per">Save 24% vs monthly</span>
+        <ul>
+          <li>Everything in Quarterly</li>
+          <li>4 trainer sessions / month</li>
+          <li>Quarterly progress scan</li>
+          <li>Free merch pack</li>
+        </ul>
+        <a href="#contact" class="btn btn-block">Join Now</a>
+      </div>
+      <div class="plan">
+        <h3>VIP</h3>
+        <div class="price">$899<sup>/yr</sup></div>
+        <span class="per">Full personal coaching</span>
+        <ul>
+          <li>Dedicated personal trainer</li>
+          <li>Custom program + macros</li>
+          <li>Unlimited sessions</li>
+          <li>24/7 facility access</li>
+        </ul>
+        <a href="#contact" class="btn btn-block">Join Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-media plate reveal"><img class="plate-img" src="https://loremflickr.com/560/700/man,portrait,gym/all?lock=21" alt="Founder of Titan Strength Gym" loading="lazy"></div>
+    <div class="about-copy reveal">
+      <div class="eyebrow">Our Story</div>
+      <h2 style="font-size:clamp(32px,4vw,46px); margin-bottom:20px;">Twelve years of forging strength</h2>
+      <p>Titan Strength Gym opened with one rack and a simple standard: train hard, track progress, respect the iron. Today it's a full strength lab built for men serious about bodybuilding, powerlifting and long-term performance.</p>
+      <p>Our mission is straightforward — give every member a real program, real coaching, and a floor where discipline is the culture, not the exception.</p>
+      <div class="about-quote">"We don't sell memberships. We build routines that stick."<span>— Founder, Titan Strength Gym</span></div>
+      <a href="#trainers" class="btn btn-ghost">Meet the Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS -->
+<section id="trainers" style="background:var(--charcoal); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Our Coaches</div>
+      <h2>Trainers who've done the work</h2>
+    </div>
+    <div class="trainers-grid reveal">
+      <div class="trainer-card">
+        <div class="trainer-media plate"><img class="plate-img" src="https://loremflickr.com/450/600/man,portrait,fitness/all?lock=22" alt="Umar Farooq, Head Strength Coach" loading="lazy"></div>
+        <div class="trainer-body"><h3>Umar Farooq</h3><span class="role">Head Strength Coach</span><p>CSCS certified · 10 yrs · Powerlifting specialist</p></div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-media plate"><img class="plate-img" src="https://loremflickr.com/450/600/bodybuilder,portrait/all?lock=23" alt="Danish Ali, Bodybuilding Coach" loading="lazy"></div>
+        <div class="trainer-body"><h3>Danish Ali</h3><span class="role">Bodybuilding Coach</span><p>NASM-CPT · 8 yrs · Hypertrophy &amp; contest prep</p></div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-media plate"><img class="plate-img" src="https://loremflickr.com/450/600/boxing,coach,portrait/all?lock=24" alt="Faizan Sheikh, Boxing &amp; Conditioning Coach" loading="lazy"></div>
+        <div class="trainer-body"><h3>Faizan Sheikh</h3><span class="role">Boxing &amp; Conditioning</span><p>Former amateur boxer · 6 yrs coaching</p></div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-media plate"><img class="plate-img" src="https://loremflickr.com/450/600/man,trainer,portrait/all?lock=25" alt="Rayyan Malik, Functional Fitness Coach" loading="lazy"></div>
+        <div class="trainer-body"><h3>Rayyan Malik</h3><span class="role">Functional Fitness Coach</span><p>FMS certified · 7 yrs · Athletic conditioning</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Gallery</div>
+      <h2>Inside the gym</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="plate g-tall"><img class="plate-img" src="https://loremflickr.com/500/700/gym,interior/all?lock=26" alt="Gym interior" loading="lazy"></div>
+      <div class="plate"><img class="plate-img" src="https://loremflickr.com/500/350/man,weightlifting/all?lock=27" alt="Man weightlifting" loading="lazy"></div>
+      <div class="plate"><img class="plate-img" src="https://loremflickr.com/500/350/dumbbell,workout/all?lock=28" alt="Dumbbell workout" loading="lazy"></div>
+      <div class="plate g-wide"><img class="plate-img" src="https://loremflickr.com/700/350/gym,equipment/all?lock=29" alt="Gym equipment" loading="lazy"></div>
+      <div class="plate"><img class="plate-img" src="https://loremflickr.com/500/350/squat,gym,man/all?lock=30" alt="Man squatting" loading="lazy"></div>
+      <div class="plate g-tall"><img class="plate-img" src="https://loremflickr.com/500/700/boxing,gym/all?lock=31" alt="Boxing training" loading="lazy"></div>
+      <div class="plate g-wide"><img class="plate-img" src="https://loremflickr.com/700/350/cardio,machine,gym/all?lock=32" alt="Cardio machines" loading="lazy"></div>
+      <div class="plate"><img class="plate-img" src="https://loremflickr.com/500/350/gym,men,training/all?lock=33" alt="Group training session" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS: BMI + CALORIE -->
+<section class="tools">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Free Tools</div>
+      <h2>Know your numbers</h2>
+    </div>
+    <div class="tools-grid reveal">
+      <div class="tool-card">
+        <h3>BMI Calculator</h3>
+        <p class="desc">Estimate your Body Mass Index from height and weight.</p>
+        <div class="field-row">
+          <div><label for="bmi-height">Height (cm)</label><input id="bmi-height" type="number" placeholder="178"></div>
+          <div><label for="bmi-weight">Weight (kg)</label><input id="bmi-weight" type="number" placeholder="82"></div>
+        </div>
+        <button class="btn btn-primary" onclick="calcBMI()">Calculate BMI</button>
+        <div class="tool-result" id="bmi-result" style="display:none;">
+          <div class="big" id="bmi-value">--</div>
+          <div class="tag" id="bmi-tag">Category</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <h3>Calorie Calculator</h3>
+        <p class="desc">Estimate daily maintenance calories (Mifflin-St Jeor).</p>
+        <div class="field-row">
+          <div><label for="cal-age">Age</label><input id="cal-age" type="number" placeholder="28"></div>
+          <div><label for="cal-weight">Weight (kg)</label><input id="cal-weight" type="number" placeholder="82"></div>
+        </div>
+        <div class="field-row">
+          <div><label for="cal-height">Height (cm)</label><input id="cal-height" type="number" placeholder="178"></div>
+          <div><label for="cal-activity">Activity Level</label>
+            <select id="cal-activity">
+              <option value="1.2">Sedentary</option>
+              <option value="1.375">Light (1-3x/wk)</option>
+              <option value="1.55" selected>Moderate (3-5x/wk)</option>
+              <option value="1.725">Heavy (6-7x/wk)</option>
+              <option value="1.9">Athlete</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calcCalories()">Calculate Calories</button>
+        <div class="tool-result" id="cal-result" style="display:none;">
+          <div class="big" id="cal-value">--</div>
+          <div class="tag">Estimated maintenance kcal/day</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Journal</div>
+      <h2>Training &amp; nutrition insights</h2>
+    </div>
+    <div class="blog-grid reveal">
+      <div class="blog-card">
+        <div class="blog-media plate"><img class="plate-img" src="https://loremflickr.com/640/400/man,barbell,gym/all?lock=34" alt="Man performing a compound barbell lift" loading="lazy"></div>
+        <div class="blog-body"><span class="blog-cat">Workout Guides</span><h3>5 compound lifts every lifter needs</h3><p>Build your foundation around movements that carry the most return.</p></div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-media plate"><img class="plate-img" src="https://loremflickr.com/640/400/healthy,food,protein/all?lock=35" alt="Healthy high-protein meal" loading="lazy"></div>
+        <div class="blog-body"><span class="blog-cat">Nutrition</span><h3>Protein timing: does it really matter?</h3><p>What the research says about meal timing versus total daily intake.</p></div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-media plate"><img class="plate-img" src="https://loremflickr.com/640/400/man,stretching,recovery/all?lock=36" alt="Man stretching for recovery" loading="lazy"></div>
+        <div class="blog-body"><span class="blog-cat">Recovery</span><h3>Why rest days build more muscle</h3><p>The science of supercompensation and programming true rest.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--charcoal); border-top:1px solid var(--line);">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="eyebrow">Get In Touch</div>
+      <h2 style="font-size:clamp(32px,4vw,46px); margin-bottom:24px;">Visit the floor</h2>
+      <ul class="contact-info">
+        <li><div><h4>Address</h4><p>14 Iron Yard Road, Karachi, Sindh</p></div></li>
+        <li><div><h4>Phone</h4><p>+92 300 1234567</p></div></li>
+        <li><div><h4>Email</h4><p>train@titanstrengthgym.com</p></div></li>
+        <li><div><h4>Hours</h4><p>Mon–Sat 5:00am–11:00pm · Sun 7:00am–9:00pm</p></div></li>
+      </ul>
+      <div class="map-plate">
+        <iframe src="https://www.google.com/maps?q=Karachi,Sindh,Pakistan&output=embed" width="100%" height="100%" style="border:0; border-radius:var(--radius); filter:grayscale(.3) invert(.92) contrast(.9);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Titan Strength Gym location map"></iframe>
+      </div>
+    </div>
+    <form class="contact-form reveal" onsubmit="event.preventDefault(); this.reset(); alert('Thanks — we\'ll be in touch shortly.');">
+      <div class="field-row">
+        <div><label for="c-name">Name</label><input id="c-name" required placeholder="Your name"></div>
+        <div><label for="c-phone">Phone</label><input id="c-phone" placeholder="+92"></div>
+      </div>
+      <label for="c-email">Email</label><input id="c-email" type="email" required placeholder="you@email.com">
+      <label for="c-msg">Message</label><textarea id="c-msg" placeholder="Tell us your goals..."></textarea>
+      <button class="btn btn-primary btn-block" type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="#home" class="logo" style="margin-bottom:16px; display:inline-flex;">TITAN<span>STRENGTH</span></a>
+        <p style="color:var(--silver-dim); font-size:14.5px; max-width:280px;">An elite men's strength facility for bodybuilding, powerlifting and functional performance.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul><li><a href="#programs">Programs</a></li><li><a href="#trainers">Trainers</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#blog">Blog</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Membership</h4>
+        <ul><li><a href="#membership">Monthly</a></li><li><a href="#membership">Quarterly</a></li><li><a href="#membership">Annual</a></li><li><a href="#membership">VIP</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul><li><a href="#contact">14 Iron Yard Road, Karachi</a></li><li><a href="tel:+923001234567">+92 300 1234567</a></li><li><a href="mailto:train@titanstrengthgym.com">train@titanstrengthgym.com</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Titan Strength Gym. All rights reserved.</span>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="YouTube">YT</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/923001234567" target="_blank" rel="noopener" aria-label="WhatsApp us" title="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.13L2 22l5.1-1.54a9.83 9.83 0 0 0 4.94 1.33h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2m0 1.8c2.16 0 4.19.85 5.72 2.38a8.03 8.03 0 0 1 2.36 5.73c0 4.47-3.64 8.11-8.1 8.11a8.1 8.1 0 0 1-4.11-1.12l-.3-.17-3.03.91.92-2.95-.19-.31a8.06 8.06 0 0 1-1.24-4.31c0-4.47 3.64-8.27 8.97-8.27M8.5 7.2c-.19 0-.5.07-.76.36-.26.28-1 .98-1 2.4s1.02 2.78 1.17 2.97c.14.19 2 3.05 4.85 4.28.68.29 1.2.46 1.62.6.68.21 1.3.18 1.79.11.55-.08 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.19-.55-.33-.28-.14-1.68-.83-1.94-.92-.26-.1-.45-.14-.64.14-.19.28-.73.92-.9 1.11-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.24-1.38-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.5-.07-.14-.64-1.56-.89-2.13-.23-.55-.47-.48-.64-.49z"/></svg>
+</a>
+
+<script>
+  // mobile nav toggle
+  const burger = document.getElementById('burger');
+  const navLinks = document.querySelector('.nav-links');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.classList.remove('open');
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // animated counters
+  const counters = document.querySelectorAll('.counter');
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(eased * target).toLocaleString();
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = target.toLocaleString();
+      }
+      requestAnimationFrame(tick);
+      counterIO.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(c => counterIO.observe(c));
+
+  // BMI calculator
+  function calcBMI(){
+    const h = parseFloat(document.getElementById('bmi-height').value);
+    const w = parseFloat(document.getElementById('bmi-weight').value);
+    const resultBox = document.getElementById('bmi-result');
+    if(!h || !w){ resultBox.style.display='block'; document.getElementById('bmi-value').textContent='--'; document.getElementById('bmi-tag').textContent='Enter height and weight'; return; }
+    const bmi = w / Math.pow(h/100, 2);
+    let tag = 'Normal';
+    if (bmi < 18.5) tag = 'Underweight';
+    else if (bmi < 25) tag = 'Normal';
+    else if (bmi < 30) tag = 'Overweight';
+    else tag = 'Obese';
+    resultBox.style.display = 'block';
+    document.getElementById('bmi-value').textContent = bmi.toFixed(1);
+    document.getElementById('bmi-tag').textContent = tag + ' — for reference only, not medical advice';
+  }
+
+  // Calorie calculator (Mifflin-St Jeor, male)
+  function calcCalories(){
+    const age = parseFloat(document.getElementById('cal-age').value);
+    const w = parseFloat(document.getElementById('cal-weight').value);
+    const h = parseFloat(document.getElementById('cal-height').value);
+    const activity = parseFloat(document.getElementById('cal-activity').value);
+    const resultBox = document.getElementById('cal-result');
+    if(!age || !w || !h){ resultBox.style.display='block'; document.getElementById('cal-value').textContent='--'; return; }
+    const bmr = 10*w + 6.25*h - 5*age + 5;
+    const cals = Math.round(bmr * activity);
+    resultBox.style.display = 'block';
+    document.getElementById('cal-value').textContent = cals.toLocaleString() + ' kcal';
+  }
+</script>
+</body>
+</html>

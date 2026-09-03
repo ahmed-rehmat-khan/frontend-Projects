@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR-Weather App — Weather Reimagined</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-orbit"></div>
+  <div class="loader-logo">AR-WEATHER</div>
+  <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+  <div class="loader-tag" id="loaderTag">Calibrating atmosphere</div>
+</div>
+
+<canvas id="bg-canvas"></canvas>
+<canvas id="particle-canvas"></canvas>
+<div id="aurora"></div>
+<div id="cursor"></div>
+
+<div class="app">
+
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-mark">AR</div>
+      <div class="logo-text">AR-Weather</div>
+      <div class="logo-tag">Weather Reimagined</div>
+    </div>
+    <div class="search-wrap">
+      <input class="search-input" id="searchInput" placeholder="Search city, country, or zip..." autocomplete="off">
+      <span class="search-icon">⌕</span>
+      <div class="suggest" id="suggest"></div>
+    </div>
+    <div class="topbar-actions">
+      <div class="icon-btn" id="geoBtn" title="Use my location">◎</div>
+      <div class="icon-btn" id="unitBtn" title="Toggle °C/°F">°C</div>
+      <div class="icon-btn" id="favBtn" title="Save city">♡</div>
+    </div>
+  </div>
+
+  <div class="geo-banner" id="geoBanner">
+    <span>Allow location access for automatic local weather, or search a city above.</span>
+    <button id="geoAllow">Enable location</button>
+  </div>
+
+  <div class="hero" id="hero">
+    <canvas class="hero-3d" id="hero3d"></canvas>
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span id="heroDate">—</span></div>
+      <div class="hero-city" id="heroCity">Loading…</div>
+      <div class="hero-temp" id="heroTemp">--°</div>
+      <div class="hero-cond" id="heroCond">—</div>
+      <div class="hero-feel" id="heroFeel">Feels like --°</div>
+      <div class="hero-hilo">
+        <span>H <b id="heroHi">--°</b></span>
+        <span>L <b id="heroLo">--°</b></span>
+        <span>Sunrise <b id="heroSunrise">--</b></span>
+        <span>Sunset <b id="heroSunset">--</b></span>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="side-stat"><span class="lbl">Humidity</span><span class="val" id="statHumidity">--%</span></div>
+      <div class="side-stat"><span class="lbl">Wind</span><span class="val" id="statWind">-- km/h</span></div>
+      <div class="side-stat"><span class="lbl">Pressure</span><span class="val" id="statPressure">-- hPa</span></div>
+      <div class="side-stat"><span class="lbl">Visibility</span><span class="val" id="statVisibility">-- km</span></div>
+      <div class="side-stat"><span class="lbl">UV Index</span><span class="val" id="statUv">--</span></div>
+    </div>
+  </div>
+
+  <div class="favs" id="favs" style="margin-top:18px;"></div>
+
+  <div class="sec-head"><div class="sec-title">Hourly forecast</div><div class="sec-sub">Next 24 hours</div></div>
+  <div class="hourly-scroll" id="hourlyScroll"></div>
+
+  <div class="sec-head"><div class="sec-title">7-day forecast</div><div class="sec-sub">Extended outlook</div></div>
+  <div class="grid-2">
+    <div class="days" id="daysList"></div>
+    <div class="detail-grid" id="detailGrid">
+      <div class="aqi-card" id="aqiCard" style="display:none;">
+        <div class="aqi-ring" id="aqiRing">
+          <svg viewBox="0 0 76 76" width="76" height="76">
+            <circle cx="38" cy="38" r="32" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="6"/>
+            <circle cx="38" cy="38" r="32" fill="none" stroke="var(--cyan)" stroke-width="6" stroke-linecap="round" id="aqiArc" stroke-dasharray="201" stroke-dashoffset="201"/>
+          </svg>
+          <div class="aqi-num" id="aqiNum">--</div>
+        </div>
+        <div class="aqi-body">
+          <div class="aqi-status" id="aqiStatus">Air quality</div>
+          <div class="aqi-rec" id="aqiRec">Fetching air quality data…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Powered by Open-Meteo · Built as <strong>AR-Weather App</strong> — Weather Reimagined ·
+    <a href="https://ahmed-rehmat.lovable.app" target="_blank">ahmed-rehmat.lovable.app</a>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/128/three.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

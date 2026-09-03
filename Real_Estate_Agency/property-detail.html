@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emerald Ridge Manor | Elite Estates</title>
+  <meta name="description" content="Explore Emerald Ridge Manor, a luxury modern mansion with full-width gallery, floor plan, mortgage calculator and private inquiry options.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand"><span>Elite</span>Estates</a>
+      <button class="menu-toggle" aria-label="Toggle navigation"><span></span></button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="agents.html">Agents</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1632627206007-8c61dc3fe32d?auto=format&fit=crop&w=1600&q=80');"></div>
+      <div class="hero-inner container fade-up">
+        <small>Property Overview</small>
+        <h1>Emerald Ridge Manor</h1>
+        <p>A luminous modern mansion with private pool, cinematic interiors, and panoramic rooftop terraces in the French Riviera.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="grid-2 fade-up">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-badge">Overview</span>
+              <h3>7 beds Â· 9 baths Â· 15,300 sqft</h3>
+              <p>Emerald Ridge Manor is a private estate that blends iconic architecture with advanced smart home amenities, a full spa, and seamless indoor/outdoor entertaining spaces.</p>
+              <div class="feature-list">
+                <span class="feature-chip">Private Pool</span>
+                <span class="feature-chip">Cinema</span>
+                <span class="feature-chip">Rooftop Garden</span>
+                <span class="feature-chip">Wine Cellar</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <span class="card-badge">Location</span>
+              <h3>CÃ´te d'Azur, France</h3>
+              <p>Perched above the Mediterranean coastline, the property is steps from luxury marinas, golf clubs, Michelin dining and private aviation services.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span>Gallery & Virtual Tour</span>
+          <h2>Full-width photography, aerial views, and immersive spaces</h2>
+        </div>
+        <div class="gallery-grid fade-up">
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80" alt="Villa exterior"></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" alt="Luxury penthouse interior"></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80" alt="Modern kitchen"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="grid-2 fade-up">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-badge">Amenities</span>
+              <ul class="feature-list">
+                <li class="feature-chip">Smart climate control</li>
+                <li class="feature-chip">Private spa and sauna</li>
+                <li class="feature-chip">Cinematic theater</li>
+                <li class="feature-chip">Wine cellar</li>
+                <li class="feature-chip">Staff quarters</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <span class="card-badge">Floor Plans</span>
+              <p>Three levels of meticulously designed living spaces, guest suites, and outdoor terraces ideal for entertaining and quiet retreat.</p>
+              <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=900&q=80" alt="Architectural floor plan" style="border-radius: 24px; margin-top: 1rem;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span>Mortgage Calculator</span>
+          <h2>Estimate monthly payments and financing for this exceptional estate</h2>
+        </div>
+        <div class="card fade-up">
+          <div class="card-content">
+            <form id="mortgage-form">
+              <div class="grid-2" style="gap: 1rem;">
+                <input id="price" type="number" placeholder="Purchase Price" value="16800000" required>
+                <input id="down-payment" type="number" placeholder="Down Payment" value="3360000" required>
+                <input id="interest-rate" type="number" placeholder="Interest Rate (%)" value="4.1" required>
+                <input id="term-years" type="number" placeholder="Loan Term (years)" value="20" required>
+              </div>
+              <button class="cta-button" type="submit">Calculate Payment</button>
+            </form>
+            <p id="mortgage-result" style="margin-top: 1rem; color: var(--text);"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="grid-2 fade-up">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-badge">Location Map</span>
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80" alt="Map placeholder" style="border-radius: 24px; margin-top: 1rem;">
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <span class="card-badge">Inquiry</span>
+              <h3>Request a private viewing or investment consultation</h3>
+              <form onsubmit="event.preventDefault(); alert('Inquiry submitted. One of our specialists will contact you shortly.');">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <textarea placeholder="Tell us about your interest" rows="4" required></textarea>
+                <button class="cta-button" type="submit">Submit Inquiry</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <a href="index.html" class="brand"><span>Elite</span>Estates</a>
+        <p>Global luxury real estate advisory, bespoke investments, and high-end residential marketing designed for elite clients.</p>
+      </div>
+      <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <a href="blog.html">Market Insights</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="properties.html">Properties</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <small>Â© 2026 Elite Estates. Crafted for the modern luxury property experience.</small>
+      <small>Designed for trust, performance and timeless luxury.</small>
+    </div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
+
+

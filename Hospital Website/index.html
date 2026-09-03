@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeCare Hospital — World-Class Care, Close to Home</title>
+<meta name="description" content="LifeCare Hospital is a premium multi-specialty hospital offering 24/7 emergency care, expert doctors, and advanced medical technology. Book your appointment today.">
+
+<!-- SEO / Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Hospital",
+  "name": "LifeCare Hospital",
+  "url": "https://www.lifecarehospital.example",
+  "logo": "https://www.lifecarehospital.example/logo.png",
+  "telephone": "+1-800-555-0142",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "482 Meridian Avenue",
+    "addressLocality": "Riverbend",
+    "addressRegion": "CA",
+    "postalCode": "90210",
+    "addressCountry": "US"
+  },
+  "medicalSpecialty": ["Cardiology","Neurology","Orthopedics","Pediatrics","Gynecology","Oncology","Radiology","Emergency Medicine","General Surgery"],
+  "openingHours": "Mo-Su 00:00-24:00"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0B1F2A',
+          primary: { DEFAULT:'#0A5C7A', 50:'#EAF4F6', 100:'#D3E9EC', 400:'#0E7C9D', 500:'#0A5C7A', 600:'#08495F', 700:'#063A4C' },
+          teal: { DEFAULT:'#12B3A6', soft:'#E5F7F4' },
+          mist: '#F6FAFB',
+          line: '#E2E9EC'
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"','sans-serif'],
+          body: ['Inter','sans-serif'],
+          mono: ['"IBM Plex Mono"','monospace']
+        },
+        boxShadow: {
+          card: '0 1px 2px rgba(11,31,42,0.04), 0 12px 32px -12px rgba(11,31,42,0.14)',
+          float: '0 24px 60px -20px rgba(10,92,122,0.35)'
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family:'Inter',sans-serif; color:#0B1F2A; background:#F6FAFB; }
+  h1,h2,h3,h4, .font-display { font-family:'Space Grotesk',sans-serif; }
+  .font-mono-num { font-family:'IBM Plex Mono',monospace; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  /* Vital line signature motif */
+  .vital-path {
+    stroke-dasharray: 900;
+    stroke-dashoffset: 900;
+    animation: draw 3.2s ease-in-out infinite;
+  }
+  @keyframes draw { 0%{stroke-dashoffset:900;} 45%{stroke-dashoffset:0;} 100%{stroke-dashoffset:-900;} }
+
+  .reveal { opacity:0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity:1; transform: translateY(0); }
+
+  .card-hover { transition: transform .35s ease, box-shadow .35s ease; }
+  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -20px rgba(10,92,122,0.25); }
+
+  .img-zoom { overflow:hidden; }
+  .img-zoom img { transition: transform .6s ease; }
+  .img-zoom:hover img { transform: scale(1.08); }
+
+  .glass { background: rgba(255,255,255,0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+
+  .heartbeat-btn { animation: pulseRing 2.4s ease-out infinite; }
+  @keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(220,38,38,0.45); }
+    70% { box-shadow: 0 0 0 14px rgba(220,38,38,0); }
+    100% { box-shadow: 0 0 0 0 rgba(220,38,38,0); }
+  }
+
+  .marquee-track { animation: marquee 28s linear infinite; }
+  @keyframes marquee { from{ transform: translateX(0);} to { transform: translateX(-50%);} }
+
+  ::selection { background:#12B3A6; color:#fff; }
+
+  .num-counter { font-variant-numeric: tabular-nums; }
+
+  .chip { border:1px solid #E2E9EC; }
+
+  input:focus, textarea:focus, select:focus { outline: none; box-shadow: 0 0 0 3px rgba(18,179,166,0.25); border-color:#12B3A6; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ================= HEADER ================= -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="bg-primary-700 text-white text-xs">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between h-8">
+      <div class="hidden sm:flex items-center gap-5 font-medium tracking-wide">
+        <span class="flex items-center gap-1.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Appointments: +1 (800) 555-0142</span>
+        <span>Mon–Sun · Open 24 Hours</span>
+      </div>
+      <div class="flex items-center gap-4 ml-auto">
+        <a href="#" class="hover:text-teal transition-colors">Patient Portal</a>
+        <a href="#" class="hover:text-teal transition-colors">Careers</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="header-main" class="glass border-b border-line/70 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between h-[72px]">
+      <a href="#" class="flex items-center gap-2.5">
+        <span class="relative w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round"><path d="M12 21s-7-4.6-9.5-9C.6 8.1 2 4 6 4c2.2 0 3.6 1.3 4.5 2.6C11.4 5.3 12.8 4 15 4c4 0 5.4 4.1 3.5 8-2.5 4.4-9.5 9-9.5 9z"/><path d="M4 11h3l1.5-3 2 6 1.5-3H18" stroke="white" stroke-width="1.6"/></svg>
+        </span>
+        <span class="font-display font-bold text-lg tracking-tight text-ink">LifeCare <span class="text-primary">Hospital</span></span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-ink/80">
+        <a href="#home" class="hover:text-primary transition-colors">Home</a>
+        <a href="#about" class="hover:text-primary transition-colors">About</a>
+        <div class="relative group">
+          <button class="flex items-center gap-1 hover:text-primary transition-colors">Departments
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <div class="bg-white rounded-2xl shadow-float border border-line p-3 w-64 grid grid-cols-1 gap-1">
+              <a href="#departments" class="px-3 py-2 rounded-lg hover:bg-teal-soft text-sm flex items-center gap-2">🫀 Cardiology</a>
+              <a href="#departments" class="px-3 py-2 rounded-lg hover:bg-teal-soft text-sm flex items-center gap-2">🧠 Neurology</a>
+              <a href="#departments" class="px-3 py-2 rounded-lg hover:bg-teal-soft text-sm flex items-center gap-2">🦴 Orthopedics</a>
+              <a href="#departments" class="px-3 py-2 rounded-lg hover:bg-teal-soft text-sm flex items-center gap-2">👶 Pediatrics</a>
+              <a href="#departments" class="px-3 py-2 rounded-lg hover:bg-teal-soft text-sm flex items-center gap-2 font-semibold text-primary">View all departments →</a>
+            </div>
+          </div>
+        </div>
+        <a href="#doctors" class="hover:text-primary transition-colors">Doctors</a>
+        <a href="#gallery" class="hover:text-primary transition-colors">Gallery</a>
+        <a href="#blog" class="hover:text-primary transition-colors">Health Blog</a>
+        <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="document.getElementById('search-overlay').classList.remove('hidden')" class="hidden md:flex w-10 h-10 items-center justify-center rounded-full border border-line hover:border-primary hover:text-primary transition-colors" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a href="#emergency" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-red-600 text-white text-sm font-semibold px-4 py-2.5 heartbeat-btn hover:bg-red-700 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Emergency
+        </a>
+        <a href="#appointment" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-primary text-white text-sm font-semibold px-5 py-2.5 hover:bg-primary-600 transition-colors shadow-card">
+          Book Appointment
+        </a>
+        <button id="menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full border border-line" aria-label="Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-line px-5 py-4 space-y-1">
+    <a href="#home" class="block py-2.5 text-ink/80 font-medium">Home</a>
+    <a href="#about" class="block py-2.5 text-ink/80 font-medium">About</a>
+    <a href="#departments" class="block py-2.5 text-ink/80 font-medium">Departments</a>
+    <a href="#doctors" class="block py-2.5 text-ink/80 font-medium">Doctors</a>
+    <a href="#gallery" class="block py-2.5 text-ink/80 font-medium">Gallery</a>
+    <a href="#blog" class="block py-2.5 text-ink/80 font-medium">Health Blog</a>
+    <a href="#contact" class="block py-2.5 text-ink/80 font-medium">Contact</a>
+    <div class="flex gap-2 pt-3">
+      <a href="#emergency" class="flex-1 text-center rounded-full bg-red-600 text-white text-sm font-semibold px-4 py-2.5">Emergency</a>
+      <a href="#appointment" class="flex-1 text-center rounded-full bg-primary text-white text-sm font-semibold px-4 py-2.5">Book Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- Search overlay -->
+<div id="search-overlay" class="hidden fixed inset-0 z-[60] bg-ink/60 backdrop-blur-sm">
+  <div class="max-w-2xl mx-auto mt-28 px-5">
+    <div class="bg-white rounded-2xl shadow-float p-5">
+      <div class="flex items-center gap-3 border-b border-line pb-4">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink/40"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search doctors, departments, symptoms…" class="flex-1 text-lg outline-none placeholder:text-ink/40">
+        <button onclick="document.getElementById('search-overlay').classList.add('hidden')" class="text-ink/40 hover:text-ink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+      <div class="pt-4 flex flex-wrap gap-2 text-sm text-ink/60">
+        <span class="px-3 py-1.5 rounded-full bg-mist chip">Cardiology</span>
+        <span class="px-3 py-1.5 rounded-full bg-mist chip">Dr. Amara Chen</span>
+        <span class="px-3 py-1.5 rounded-full bg-mist chip">Emergency Room</span>
+        <span class="px-3 py-1.5 rounded-full bg-mist chip">Pediatrics</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="relative pt-32 lg:pt-36 pb-28 overflow-hidden bg-gradient-to-b from-primary-50/60 to-mist">
+  <div class="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-teal-soft blur-3xl opacity-70"></div>
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 relative">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+      <div class="lg:col-span-6 reveal">
+        <div class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-1.5 text-xs font-semibold text-primary shadow-card">
+          <span class="w-1.5 h-1.5 rounded-full bg-teal animate-pulse"></span>
+          JCI-Accredited · Est. 1994
+        </div>
+        <h1 class="font-display font-bold text-4xl sm:text-5xl xl:text-[3.4rem] leading-[1.08] text-ink mt-5">
+          Expert care, delivered with <span class="text-primary">precision</span> and heart.
+        </h1>
+        <p class="text-ink/65 text-lg mt-5 max-w-xl leading-relaxed">
+          LifeCare Hospital brings together 340+ specialists, advanced diagnostic technology, and round-the-clock emergency care — so every patient gets the right treatment, right on time.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="#appointment" class="inline-flex items-center gap-2 rounded-full bg-primary text-white font-semibold px-6 py-3.5 hover:bg-primary-600 transition-colors shadow-float">
+            Book an Appointment
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#emergency" class="inline-flex items-center gap-2 rounded-full bg-white border border-line text-ink font-semibold px-6 py-3.5 hover:border-red-300 hover:text-red-600 transition-colors">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            24/7 Emergency: (800) 555-0199
+          </a>
+        </div>
+
+        <div class="flex items-center gap-5 mt-9">
+          <div class="flex -space-x-3">
+            <img class="w-10 h-10 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=100&q=60" alt="Patient">
+            <img class="w-10 h-10 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=100&q=60" alt="Patient">
+            <img class="w-10 h-10 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=100&q=60" alt="Patient">
+          </div>
+          <div class="text-sm">
+            <div class="flex items-center gap-1 text-amber-500">★★★★★ <span class="text-ink/70 font-medium ml-1">4.9/5</span></div>
+            <p class="text-ink/50">from 12,400+ patient reviews</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 relative reveal">
+        <div class="relative rounded-[2rem] overflow-hidden shadow-float img-zoom">
+          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80" alt="LifeCare Hospital modern reception and lobby" class="w-full h-[480px] object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent"></div>
+        </div>
+
+        <!-- Vitals floating card (signature element) -->
+        <div class="absolute -left-6 bottom-8 w-56 sm:w-64 bg-ink text-white rounded-2xl p-4 shadow-float">
+          <div class="flex items-center justify-between text-xs text-white/60">
+            <span>Live Patient Monitor</span>
+            <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-teal animate-pulse"></span>Stable</span>
+          </div>
+          <svg viewBox="0 0 220 60" class="w-full h-12 mt-1">
+            <polyline class="vital-path" points="0,30 30,30 40,10 50,50 60,30 90,30 100,15 110,45 120,30 220,30" fill="none" stroke="#12B3A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="flex justify-between text-[11px] font-mono-num text-white/70 mt-1">
+            <span>HR 72 bpm</span><span>SpO₂ 98%</span>
+          </div>
+        </div>
+
+        <div class="absolute -right-4 -top-4 sm:-right-8 sm:-top-6 bg-white rounded-2xl p-4 shadow-float w-40">
+          <div class="flex items-center gap-2 text-teal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M2 12h20"/></svg>
+            <span class="font-mono-num text-xs font-semibold">24/7</span>
+          </div>
+          <p class="text-xs text-ink/60 mt-1">Emergency &amp; trauma response</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="mt-16 lg:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 reveal">
+      <div class="bg-white rounded-2xl border border-line p-6 shadow-card">
+        <p class="font-display font-bold text-3xl text-primary"><span class="counter num-counter" data-target="340">0</span>+</p>
+        <p class="text-sm text-ink/60 mt-1">Specialist Doctors</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-line p-6 shadow-card">
+        <p class="font-display font-bold text-3xl text-primary"><span class="counter num-counter" data-target="52">0</span>k+</p>
+        <p class="text-sm text-ink/60 mt-1">Patients Treated / yr</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-line p-6 shadow-card">
+        <p class="font-display font-bold text-3xl text-primary"><span class="counter num-counter" data-target="30">0</span>+</p>
+        <p class="text-sm text-ink/60 mt-1">Years of Service</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-line p-6 shadow-card">
+        <p class="font-display font-bold text-3xl text-primary"><span class="counter num-counter" data-target="98">0</span>%</p>
+        <p class="text-sm text-ink/60 mt-1">Patient Satisfaction</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST STRIP ================= -->
+<section class="border-y border-line bg-white py-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center gap-6">
+    <span class="text-xs uppercase tracking-widest text-ink/40 font-semibold whitespace-nowrap">Accredited by</span>
+    <div class="flex-1 overflow-hidden">
+      <div class="flex gap-14 items-center whitespace-nowrap marquee-track w-max text-ink/35 font-display font-semibold text-lg">
+        <span>Joint Commission Intl.</span><span>ISO 9001:2015</span><span>NABH Certified</span><span>HIMSS Stage 7</span><span>Magnet Recognition</span>
+        <span>Joint Commission Intl.</span><span>ISO 9001:2015</span><span>NABH Certified</span><span>HIMSS Stage 7</span><span>Magnet Recognition</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES OVERVIEW ================= -->
+<section class="py-24">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="text-teal font-mono-num text-xs font-semibold tracking-widest uppercase">What we offer</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-ink mt-3">Comprehensive care under one roof</h2>
+      <p class="text-ink/60 mt-4 leading-relaxed">From routine checkups to complex surgeries, our integrated care model connects specialists so nothing falls through the cracks.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+      <div class="reveal bg-white rounded-2xl border border-line p-6 card-hover">
+        <div class="w-11 h-11 rounded-xl bg-primary-50 text-primary flex items-center justify-center mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg">24/7 Emergency</h3>
+        <p class="text-sm text-ink/60 mt-2 leading-relaxed">Rapid-response trauma team and fully-equipped ambulances on standby, every hour of every day.</p>
+      </div>
+      <div class="reveal bg-white rounded-2xl border border-line p-6 card-hover">
+        <div class="w-11 h-11 rounded-xl bg-primary-50 text-primary flex items-center justify-center mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg">Same-Day Consults</h3>
+        <p class="text-sm text-ink/60 mt-2 leading-relaxed">Online booking with real-time doctor availability — most appointments confirmed in minutes.</p>
+      </div>
+      <div class="reveal bg-white rounded-2xl border border-line p-6 card-hover">
+        <div class="w-11 h-11 rounded-xl bg-primary-50 text-primary flex items-center justify-center mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg">Advanced Diagnostics</h3>
+        <p class="text-sm text-ink/60 mt-2 leading-relaxed">On-site MRI, CT, and a full-service lab, delivering results your care team can act on fast.</p>
+      </div>
+      <div class="reveal bg-white rounded-2xl border border-line p-6 card-hover">
+        <div class="w-11 h-11 rounded-xl bg-primary-50 text-primary flex items-center justify-center mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg">Compassionate Nursing</h3>
+        <p class="text-sm text-ink/60 mt-2 leading-relaxed">A nurse-to-patient ratio well above industry standard, so care never feels rushed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEPARTMENTS ================= -->
+<section id="departments" class="py-24 bg-white border-y border-line">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+      <div class="max-w-xl">
+        <span class="text-teal font-mono-num text-xs font-semibold tracking-widest uppercase">Departments</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-ink mt-3">Nine specialties. One coordinated team.</h2>
+      </div>
+      <a href="#" class="text-primary font-semibold text-sm flex items-center gap-1.5 hover:gap-2.5 transition-all">View all departments <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+      <!-- Card template repeated -->
+      <div class="reveal group rounded-2xl overflow-hidden border border-line card-hover bg-white">
+        <div class="img-zoom h-52 relative">
+          <img src="https://images.unsplash.com/photo-1666214278797-b2cc1b12be76?auto=format&fit=crop&w=800&q=75" class="w-full h-full object-cover" alt="Cardiology consultation">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-primary">🫀 Cardiology</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold text-lg">Cardiology &amp; Heart Care</h3>
+          <p class="text-sm text-ink/60 mt-2">Interventional cardiology, echocardiography, and cardiac rehab from a 24-specialist team.</p>
+          <a href="#" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mt-4">Explore department →</a>
+        </div>
+      </div>
+
+      <div class="reveal group rounded-2xl overflow-hidden border border-line card-hover bg-white">
+        <div class="img-zoom h-52 relative">
+          <img src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=800&q=75" class="w-full h-full object-cover" alt="Neurology specialist">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-primary">🧠 Neurology</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold text-lg">Neurology &amp; Stroke Care</h3>
+          <p class="text-sm text-ink/60 mt-2">Comprehensive stroke unit and neuro-diagnostics for movement, memory, and nerve disorders.</p>
+          <a href="#" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mt-4">Explore department →</a>
+        </div>
+      </div>
+
+      <div class="reveal group rounded-2xl overflow-hidden border border-line card-hover bg-white">
+        <div class="img-zoom h-52 relative">
+          <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=800&q=75" class="w-full h-full object-cover" alt="Orthopedics doctor">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-primary">🦴 Orthopedics</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold text-lg">Orthopedics &amp; Joint Care</h3>
+          <p class="text-sm text-ink/60 mt-2">Sports medicine, joint replacement, and physiotherapy for a full return to movement.</p>
+          <a href="#" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mt-4">Explore department →</a>
+        </div>
+      </div>
+
+      <div class="reveal group rounded-2xl overflow-hidden border border-line card-hover bg-white">
+        <div class="img-zoom h-52 relative">
+          <img src="https://images.unsplash.com/photo-1611764461465-09162da6465a?auto=format&fit=crop&w=800&q=75" class="w-full h-full object-cover" alt="Pediatric care">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-primary">👶 Pediatrics</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold text-lg">Pediatrics</h3>
+          <p class="text-sm text-ink/60 mt-2">Child-friendly spaces and specialists covering newborn to adolescent care.</p>
+          <a href="#" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mt-4">Explore department →</a>
+        </div>
+      </div>
+
+      <div class="reveal group rounded-2xl overflow-hidden border border-line card-hover bg-white">
+        <div class="img-zoom h-52 relative">
+          <img src="https://images.unsplash.com/photo-1584516150909-c43483ee7932?auto=format&fit=crop&w=800&q=75" class="w-full h-full object-cover" alt="Gynecology team">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-primary">👩‍⚕️ Gynecology</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold text-lg">Gynecology &amp; Maternity</h3>
+          <p class="text-sm text-ink/60 mt-2">Prenatal through postpartum care with a dedicated birthing suite and NICU access.</p>
+          <a href="#" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mt-4">Explore department →</a>
+        </div>
+      </div>
+
+      <div class="reveal group rounded-2xl overflow-hidden border border-line card-hover bg-white">
+        <div class="img-zoom h-52 relative">
+          <img src="https://images.unsplash.com/photo-1758691461990-03b49d969495?auto=format&fit=crop&w=800&q=75" class="w-full h-full object-cover" alt="Oncology consultation">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-primary">🎗️ Oncology</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold text-lg">Oncology</h3>
+          <p class="text-sm text-ink/60 mt-2">Tumor board-driven treatment plans spanning chemotherapy, radiation, and surgery.</p>
+          <a href="#" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mt-4">Explore department →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-4 mt-6">
+      <div class="reveal rounded-xl border border-line p-5 flex items-center gap-4 hover:border-primary transition-colors">
+        <span class="text-2xl">📡</span>
+        <div><h4 class="font-semibold text-sm">Radiology</h4><p class="text-xs text-ink/50">MRI · CT · Ultrasound</p></div>
+      </div>
+      <div class="reveal rounded-xl border border-line p-5 flex items-center gap-4 hover:border-primary transition-colors">
+        <span class="text-2xl">🚑</span>
+        <div><h4 class="font-semibold text-sm">Emergency Medicine</h4><p class="text-xs text-ink/50">24/7 trauma response</p></div>
+      </div>
+      <div class="reveal rounded-xl border border-line p-5 flex items-center gap-4 hover:border-primary transition-colors">
+        <span class="text-2xl">🔬</span>
+        <div><h4 class="font-semibold text-sm">General Surgery</h4><p class="text-xs text-ink/50">Minimally invasive options</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="py-24">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="relative reveal">
+      <div class="rounded-[2rem] overflow-hidden shadow-float img-zoom">
+        <img src="https://images.unsplash.com/photo-1517120026326-d87759a7b63b?auto=format&fit=crop&w=1000&q=80" alt="Nurse caring for patient in neonatal unit" class="w-full h-[420px] object-cover">
+      </div>
+      <div class="absolute -bottom-8 -right-6 sm:-right-10 bg-white rounded-2xl shadow-float p-5 w-52">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-teal-soft text-teal flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <div><p class="font-display font-bold text-xl">1:3</p><p class="text-xs text-ink/50 leading-tight">nurse-to-patient ratio</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <span class="text-teal font-mono-num text-xs font-semibold tracking-widest uppercase">Why choose LifeCare</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-ink mt-3">Care built around the patient, not the paperwork</h2>
+      <p class="text-ink/60 mt-4 leading-relaxed">We designed every part of the experience — from triage to discharge — to reduce wait times, increase clarity, and keep families informed at every step.</p>
+
+      <div class="space-y-4 mt-8">
+        <div class="flex gap-4">
+          <span class="mt-0.5 w-6 h-6 rounded-full bg-teal text-white flex items-center justify-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div><h4 class="font-semibold">Board-certified specialists</h4><p class="text-sm text-ink/60">340+ physicians across 9 departments, many trained internationally.</p></div>
+        </div>
+        <div class="flex gap-4">
+          <span class="mt-0.5 w-6 h-6 rounded-full bg-teal text-white flex items-center justify-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div><h4 class="font-semibold">Transparent pricing</h4><p class="text-sm text-ink/60">Upfront estimates before every procedure — no surprise billing.</p></div>
+        </div>
+        <div class="flex gap-4">
+          <span class="mt-0.5 w-6 h-6 rounded-full bg-teal text-white flex items-center justify-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div><h4 class="font-semibold">Digital-first records</h4><p class="text-sm text-ink/60">Your history, prescriptions, and results, always one login away.</p></div>
+        </div>
+      </div>
+
+      <a href="#about" class="inline-flex items-center gap-2 mt-8 text-primary font-semibold">Learn about our story <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURED DOCTORS ================= -->
+<section id="doctors" class="py-24 bg-white border-y border-line">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="text-teal font-mono-num text-xs font-semibold tracking-widest uppercase">Our specialists</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-ink mt-3">Meet a few of our 340+ doctors</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      <div class="reveal rounded-2xl border border-line overflow-hidden card-hover bg-white">
+        <div class="img-zoom h-64"><img src="https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?auto=format&fit=crop&w=600&q=75" class="w-full h-full object-cover" alt="Dr. Amara Chen, Cardiologist"></div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold">Dr. Amara Chen</h3>
+          <p class="text-sm text-primary font-medium">Interventional Cardiologist</p>
+          <p class="text-xs text-ink/50 mt-1">MD · 14 yrs experience</p>
+          <div class="flex items-center gap-1 text-amber-500 text-xs mt-2">★★★★★ <span class="text-ink/50">(214)</span></div>
+          <a href="#appointment" class="block text-center mt-4 rounded-full border border-primary text-primary text-sm font-semibold py-2 hover:bg-primary hover:text-white transition-colors">Book Appointment</a>
+        </div>
+      </div>
+
+      <div class="reveal rounded-2xl border border-line overflow-hidden card-hover bg-white">
+        <div class="img-zoom h-64"><img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=600&q=75" class="w-full h-full object-cover" alt="Dr. Rafael Ortiz, Neurologist"></div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold">Dr. Rafael Ortiz</h3>
+          <p class="text-sm text-primary font-medium">Consultant Neurologist</p>
+          <p class="text-xs text-ink/50 mt-1">MD, DM · 11 yrs experience</p>
+          <div class="flex items-center gap-1 text-amber-500 text-xs mt-2">★★★★★ <span class="text-ink/50">(178)</span></div>
+          <a href="#appointment" class="block text-center mt-4 rounded-full border border-primary text-primary text-sm font-semibold py-2 hover:bg-primary hover:text-white transition-colors">Book Appointment</a>
+        </div>
+      </div>
+
+      <div class="reveal rounded-2xl border border-line overflow-hidden card-hover bg-white">
+        <div class="img-zoom h-64"><img src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=600&q=75" class="w-full h-full object-cover" alt="Dr. Priya Nair, Pediatrician"></div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold">Dr. Priya Nair</h3>
+          <p class="text-sm text-primary font-medium">Senior Pediatrician</p>
+          <p class="text-xs text-ink/50 mt-1">MBBS, MD · 9 yrs experience</p>
+          <div class="flex items-center gap-1 text-amber-500 text-xs mt-2">★★★★★ <span class="text-ink/50">(302)</span></div>
+          <a href="#appointment" class="block text-center mt-4 rounded-full border border-primary text-primary text-sm font-semibold py-2 hover:bg-primary hover:text-white transition-colors">Book Appointment</a>
+        </div>
+      </div>
+
+      <div class="reveal rounded-2xl border border-line overflow-hidden card-hover bg-white">
+        <div class="img-zoom h-64"><img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=600&q=75" class="w-full h-full object-cover" alt="Dr. James Whitfield, Orthopedic Surgeon"></div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold">Dr. James Whitfield</h3>
+          <p class="text-sm text-primary font-medium">Orthopedic Surgeon</p>
+          <p class="text-xs text-ink/50 mt-1">MS Ortho · 16 yrs experience</p>
+          <div class="flex items-center gap-1 text-amber-500 text-xs mt-2">★★★★★ <span class="text-ink/50">(261)</span></div>
+          <a href="#appointment" class="block text-center mt-4 rounded-full border border-primary text-primary text-sm font-semibold py-2 hover:bg-primary hover:text-white transition-colors">Book Appointment</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-10 reveal">
+      <a href="#" class="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 font-semibold text-sm hover:border-primary hover:text-primary transition-colors">View all doctors</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APPOINTMENT BOOKING ================= -->
+<section id="appointment" class="py-24">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <span class="text-teal font-mono-num text-xs font-semibold tracking-widest uppercase">Appointment</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-ink mt-3">Book your visit in under a minute</h2>
+      <p class="text-ink/60 mt-4 leading-relaxed max-w-md">Choose a department, pick your doctor, and select a time that works for you. Prefer to talk it through first? Start an online consultation instead.</p>
+
+      <div class="mt-8 rounded-2xl overflow-hidden img-zoom shadow-card">
+        <img src="https://images.unsplash.com/photo-1758691461990-03b49d969495?auto=format&fit=crop&w=900&q=75" class="w-full h-64 object-cover" alt="Doctor reviewing patient chart before appointment">
+      </div>
+    </div>
+
+    <form class="reveal bg-white rounded-2xl border border-line shadow-card p-7 space-y-5" onsubmit="event.preventDefault(); document.getElementById('booking-success').classList.remove('hidden'); this.reset();">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-sm font-medium text-ink/70">Full Name</label>
+          <input required type="text" placeholder="Jordan Ellis" class="mt-1.5 w-full rounded-xl border border-line px-4 py-2.5 text-sm">
+        </div>
+        <div>
+          <label class="text-sm font-medium text-ink/70">Phone Number</label>
+          <input required type="tel" placeholder="(555) 123-4567" class="mt-1.5 w-full rounded-xl border border-line px-4 py-2.5 text-sm">
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-sm font-medium text-ink/70">Department</label>
+          <select class="mt-1.5 w-full rounded-xl border border-line px-4 py-2.5 text-sm bg-white">
+            <option>Cardiology</option><option>Neurology</option><option>Orthopedics</option>
+            <option>Pediatrics</option><option>Gynecology</option><option>Oncology</option>
+            <option>Radiology</option><option>Emergency Medicine</option><option>General Surgery</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-ink/70">Preferred Doctor</label>
+          <select class="mt-1.5 w-full rounded-xl border border-line px-4 py-2.5 text-sm bg-white">
+            <option>No preference</option><option>Dr. Amara Chen</option><option>Dr. Rafael Ortiz</option>
+            <option>Dr. Priya Nair</option><option>Dr. James Whitfield</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-sm font-medium text-ink/70">Preferred Date</label>
+          <input type="date" class="mt-1.5 w-full rounded-xl border border-line px-4 py-2.5 text-sm">
+        </div>
+        <div>
+          <label class="text-sm font-medium text-ink/70">Preferred Time</label>
+          <input type="time" class="mt-1.5 w-full rounded-xl border border-line px-4 py-2.5 text-sm">
+        </div>
+      </div>
+      <label class="flex items-center gap-2.5 text-sm text-ink/70">
+        <input type="checkbox" class="rounded border-line w-4 h-4 text-primary">
+        This is an online video consultation
+      </label>
+      <button type="submit" class="w-full rounded-xl bg-primary text-white font-semibold py-3.5 hover:bg-primary-600 transition-colors">Confirm Appointment</button>
+      <p id="booking-success" class="hidden text-sm text-teal font-medium text-center">✓ Request received — our team will confirm shortly.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= EMERGENCY ================= -->
+<section id="emergency" class="py-20 bg-ink text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-25">
+    <img src="https://images.unsplash.com/photo-1587351021355-a479a299d2f9?auto=format&fit=crop&w=1600&q=70" class="w-full h-full object-cover" alt="Hospital emergency entrance">
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/95 to-ink/60"></div>
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 relative grid lg:grid-cols-2 gap-10 items-center">
+    <div class="reveal">
+      <span class="text-red-400 font-mono-num text-xs font-semibold tracking-widest uppercase">Emergency Services</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl mt-3">Every second counts. We're ready.</h2>
+      <p class="text-white/60 mt-4 leading-relaxed max-w-md">Our Level I trauma center and fleet of GPS-tracked ambulances mean help is never far away — day or night.</p>
+      <div class="flex flex-wrap gap-3 mt-7">
+        <a href="tel:+18005550199" class="inline-flex items-center gap-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors text-white font-semibold px-6 py-3.5 heartbeat-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Emergency: (800) 555-0199
+        </a>
+        <a href="#" class="inline-flex items-center gap-2 rounded-full border border-white/25 text-white font-semibold px-6 py-3.5 hover:bg-white/10 transition-colors">Request Ambulance</a>
+      </div>
+      <div class="grid grid-cols-3 gap-4 mt-9 max-w-md">
+        <div><p class="font-display font-bold text-2xl text-teal">&lt;8 min</p><p class="text-xs text-white/50">avg. ambulance response</p></div>
+        <div><p class="font-display font-bold text-2xl text-teal">24/7</p><p class="text-xs text-white/50">trauma-ready ER</p></div>
+        <div><p class="font-display font-bold text-2xl text-teal">18</p><p class="text-xs text-white/50">ambulances in fleet</p></div>
+      </div>
+    </div>
+    <div class="reveal rounded-2xl overflow-hidden shadow-float img-zoom hidden lg:block">
+      <img src="https://images.unsplash.com/photo-1666214278797-b2cc1b12be76?auto=format&fit=crop&w=800&q=75" class="w-full h-[380px] object-cover" alt="Emergency medical team responding">
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="py-24 bg-mist">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center max-w-xl mx-auto reveal">
+      <span class="text-teal font-mono-num text-xs font-semibold tracking-widest uppercase">Patient stories</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-ink mt-3">What our patients say</h2>
+    </div>
+
+    <div class="relative max-w-3xl mx-auto mt-12 reveal">
+      <div id="testimonial-track" class="overflow-hidden">
+        <div id="testimonial-slides" class="flex transition-transform duration-500 ease-out">
+          <div class="w-full shrink-0 px-2">
+            <div class="bg-white rounded-2xl border border-line shadow-card p-8 text-center">
+              <div class="flex justify-center text-amber-500 mb-4">★★★★★</div>
+              <p class="text-lg text-ink/75 leading-relaxed">"From the ER to my cardiology follow-ups, every single person treated me like I mattered. I never once felt like a number."</p>
+              <div class="flex items-center justify-center gap-3 mt-6">
+                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=100&q=60" class="w-11 h-11 rounded-full object-cover" alt="Patient portrait">
+                <div class="text-left"><p class="font-semibold text-sm">Marcus Webb</p><p class="text-xs text-ink/50">Cardiology patient</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full shrink-0 px-2">
+            <div class="bg-white rounded-2xl border border-line shadow-card p-8 text-center">
+              <div class="flex justify-center text-amber-500 mb-4">★★★★★</div>
+              <p class="text-lg text-ink/75 leading-relaxed">"Our daughter's surgery went perfectly, and the pediatric team explained every step to us beforehand. That transparency meant everything."</p>
+              <div class="flex items-center justify-center gap-3 mt-6">
+                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=100&q=60" class="w-11 h-11 rounded-full object-cover" alt="Patient portrait">
+                <div class="text-left"><p class="font-semibold text-sm">Leah Fontaine</p><p class="text-xs text-ink/50">Parent, Pediatrics</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full shrink-0 px-2">
+            <div class="bg-white rounded-2xl border border-line shadow-card p-8 text-center">
+              <div class="flex justify-center text-amber-500 mb-4">★★★★★</div>
+              <p class="text-lg text-ink/75 leading-relaxed">"Booking online took two minutes, and I saw a specialist the same week. The whole experience felt genuinely modern."</p>
+              <div class="flex items-center justify-center gap-3 mt-6">
+                <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=100&q=60" class="w-11 h-11 rounded-full object-cover" alt="Patient portrait">
+                <div class="text-left"><p class="font-semibold text-sm">Daniel Osei</p><p class="text-xs text-ink/50">Orthopedics patient</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="moveTestimonial(-1)" class="hidden sm:flex absolute left-[-56px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white border border-line items-center justify-center hover:border-primary hover:text-primary transition-colors" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button onclick="moveTestimonial(1)" class="hidden sm:flex absolute right-[-56px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white border border-line items-center justify-center hover:border-primary hover:text-primary transition-colors" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+
+      <div class="flex justify-center gap-2 mt-6" id="testimonial-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="gallery" class="py-24">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="text-teal font-mono-num text-xs font-semibold tracking-widest uppercase">Inside LifeCare</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-ink mt-3">A look around our hospital</h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 auto-rows-[160px]">
+      <div class="reveal img-zoom rounded-2xl overflow-hidden row-span-2 col-span-2"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1517120026326-d87759a7b63b?auto=format&fit=crop&w=900&q=75" alt="Neonatal care unit"></div>
+      <div class="reveal img-zoom rounded-2xl overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1758691461990-03b49d969495?auto=format&fit=crop&w=500&q=75" alt="Doctor with patient chart"></div>
+      <div class="reveal img-zoom rounded-2xl overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1481026469463-66327c86e544?auto=format&fit=crop&w=500&q=75" alt="Hospital building exterior"></div>
+      <div class="reveal img-zoom rounded-2xl overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=500&q=75" alt="Specialist consultation"></div>
+      <div class="reveal img-zoom rounded-2xl overflow-hidden row-span-2"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1584516150909-c43483ee7932?auto=format&fit=crop&w=500&q=75" alt="Medical staff teamwork"></div>
+      <div class="reveal img-zoom rounded-2xl overflow-hidden col-span-2"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=75" alt="Hospital lobby"></div>
+      <div class="reveal img-zoom rounded-2xl overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1611764461465-09162da6465a?auto=format&fit=crop&w=500&q=75" alt="Pediatric patient with plush toy"></div>
+      <div class="reveal img-zoom rounded-2xl overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?auto=format&fit=crop&w=500&q=75" alt="Doctor and patient conversation"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HEALTH BLOG ================= -->
+<section id="blog" class="py-24 bg-white border-y border-line">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+      <div class="max-w-xl">
+        <span class="text-teal font-mono-num text-xs font-semibold tracking-widest uppercase">Health Blog</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-ink mt-3">Insights for a healthier life</h2>
+      </div>
+      <a href="#" class="text-primary font-semibold text-sm flex items-center gap-1.5">Visit the blog <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+      <a href="#" class="reveal group rounded-2xl overflow-hidden border border-line card-hover bg-white block">
+        <div class="img-zoom h-48"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=700&q=75" alt="Heart health article"></div>
+        <div class="p-5">
+          <span class="text-xs font-semibold text-primary">Cardiology</span>
+          <h3 class="font-display font-semibold text-lg mt-1.5">5 Early Warning Signs of Heart Disease You Shouldn't Ignore</h3>
+          <p class="text-sm text-ink/50 mt-3">6 min read · by Dr. Amara Chen</p>
+        </div>
+      </a>
+      <a href="#" class="reveal group rounded-2xl overflow-hidden border border-line card-hover bg-white block">
+        <div class="img-zoom h-48"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1611764461465-09162da6465a?auto=format&fit=crop&w=700&q=75" alt="Pediatric health article"></div>
+        <div class="p-5">
+          <span class="text-xs font-semibold text-primary">Pediatrics</span>
+          <h3 class="font-display font-semibold text-lg mt-1.5">A Parent's Guide to Childhood Vaccination Schedules</h3>
+          <p class="text-sm text-ink/50 mt-3">4 min read · by Dr. Priya Nair</p>
+        </div>
+      </a>
+      <a href="#" class="reveal group rounded-2xl overflow-hidden border border-line card-hover bg-white block">
+        <div class="img-zoom h-48"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=700&q=75" alt="Neurology health article"></div>
+        <div class="p-5">
+          <span class="text-xs font-semibold text-primary">Neurology</span>
+          <h3 class="font-display font-semibold text-lg mt-1.5">Understanding Stroke Risk: What Changes After 40</h3>
+          <p class="text-sm text-ink/50 mt-3">7 min read · by Dr. Rafael Ortiz</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="py-24">
+  <div class="max-w-4xl mx-auto px-5 lg:px-8">
+    <div class="text-center reveal">
+      <span class="text-teal font-mono-num text-xs font-semibold tracking-widest uppercase">FAQ</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-ink mt-3">Common questions</h2>
+    </div>
+
+    <div class="mt-10 divide-y divide-line border-y border-line reveal" id="faq-list">
+      <div class="py-5">
+        <button class="faq-toggle w-full flex items-center justify-between text-left font-semibold">
+          Do I need a referral to book a specialist?
+          <svg class="faq-icon transition-transform" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <p class="faq-panel hidden text-sm text-ink/60 mt-3 leading-relaxed">No — you can book most specialists directly through our online system. A referral may still be required by certain insurance plans.</p>
+      </div>
+      <div class="py-5">
+        <button class="faq-toggle w-full flex items-center justify-between text-left font-semibold">
+          What insurance providers do you accept?
+          <svg class="faq-icon transition-transform" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <p class="faq-panel hidden text-sm text-ink/60 mt-3 leading-relaxed">We work with all major national providers. Our billing team can verify your specific plan before your visit.</p>
+      </div>
+      <div class="py-5">
+        <button class="faq-toggle w-full flex items-center justify-between text-left font-semibold">
+          Can I have an online video consultation?
+          <svg class="faq-icon transition-transform" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <p class="faq-panel hidden text-sm text-ink/60 mt-3 leading-relaxed">Yes — select "online consultation" while booking, and you'll receive a secure video link ahead of your appointment.</p>
+      </div>
+      <div class="py-5">
+        <button class="faq-toggle w-full flex items-center justify-between text-left font-semibold">
+          What should I bring to the emergency room?
+          <svg class="faq-icon transition-transform" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <p class="faq-panel hidden text-sm text-ink/60 mt-3 leading-relaxed">Bring a photo ID and insurance card if available — but never delay care to gather documents. Treatment always comes first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWSLETTER CTA ================= -->
+<section class="py-16">
+  <div class="max-w-5xl mx-auto px-5 lg:px-8">
+    <div class="reveal bg-primary rounded-[2rem] px-8 py-12 sm:px-14 sm:py-14 relative overflow-hidden">
+      <div class="absolute -right-10 -top-10 w-64 h-64 rounded-full bg-white/10"></div>
+      <div class="relative grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-white">Health tips, straight to your inbox</h2>
+          <p class="text-white/70 mt-2">Monthly guidance from our specialists — no spam, unsubscribe anytime.</p>
+        </div>
+        <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓'; this.querySelector('input').value='';">
+          <input required type="email" placeholder="you@email.com" class="flex-1 rounded-full px-5 py-3.5 text-sm text-ink outline-none">
+          <button class="rounded-full bg-ink text-white font-semibold px-6 py-3.5 text-sm hover:bg-black transition-colors">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="py-24 bg-white border-t border-line">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-12">
+    <div class="reveal">
+      <span class="text-teal font-mono-num text-xs font-semibold tracking-widest uppercase">Contact</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-ink mt-3">Come visit, or reach out anytime</h2>
+
+      <div class="rounded-2xl overflow-hidden border border-line mt-6 h-64">
+        <iframe title="LifeCare Hospital location map" class="w-full h-full grayscale" src="https://maps.google.com/maps?q=hospital&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6 mt-7">
+        <div class="flex gap-3">
+          <span class="w-10 h-10 rounded-full bg-primary-50 text-primary flex items-center justify-center shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><p class="font-semibold text-sm">Phone</p><p class="text-sm text-ink/60">+1 (800) 555-0142</p></div>
+        </div>
+        <div class="flex gap-3">
+          <span class="w-10 h-10 rounded-full bg-primary-50 text-primary flex items-center justify-center shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+          <div><p class="font-semibold text-sm">Email</p><p class="text-sm text-ink/60">care@lifecarehospital.example</p></div>
+        </div>
+        <div class="flex gap-3">
+          <span class="w-10 h-10 rounded-full bg-primary-50 text-primary flex items-center justify-center shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><p class="font-semibold text-sm">Address</p><p class="text-sm text-ink/60">482 Meridian Avenue, Riverbend</p></div>
+        </div>
+        <div class="flex gap-3">
+          <span class="w-10 h-10 rounded-full bg-primary-50 text-primary flex items-center justify-center shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+          <div><p class="font-semibold text-sm">OPD Hours</p><p class="text-sm text-ink/60">Mon–Sat, 8:00 AM – 8:00 PM</p></div>
+        </div>
+      </div>
+    </div>
+
+    <form class="reveal bg-mist rounded-2xl p-7 space-y-4 border border-line">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input required type="text" placeholder="Your Name" class="w-full rounded-xl border border-line px-4 py-2.5 text-sm bg-white">
+        <input required type="email" placeholder="Email Address" class="w-full rounded-xl border border-line px-4 py-2.5 text-sm bg-white">
+      </div>
+      <input type="text" placeholder="Subject" class="w-full rounded-xl border border-line px-4 py-2.5 text-sm bg-white">
+      <textarea rows="4" placeholder="How can we help?" class="w-full rounded-xl border border-line px-4 py-2.5 text-sm bg-white"></textarea>
+      <button type="submit" class="w-full rounded-xl bg-primary text-white font-semibold py-3.5 hover:bg-primary-600 transition-colors">Send Message</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-ink text-white pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round"><path d="M12 21s-7-4.6-9.5-9C.6 8.1 2 4 6 4c2.2 0 3.6 1.3 4.5 2.6C11.4 5.3 12.8 4 15 4c4 0 5.4 4.1 3.5 8-2.5 4.4-9.5 9-9.5 9z"/></svg>
+        </span>
+        <span class="font-display font-bold text-lg">LifeCare Hospital</span>
+      </div>
+      <p class="text-white/50 text-sm mt-4 max-w-xs leading-relaxed">World-class, patient-first care — available around the clock across nine specialties.</p>
+      <div class="flex gap-3 mt-5">
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.6-2.4.7.8-.5 1.5-1.4 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.1 4.1 0 0 1-1.9.1 4.1 4.1 0 0 0 3.8 2.9A8.3 8.3 0 0 1 2 18.4a11.6 11.6 0 0 0 6.3 1.8c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="font-semibold mb-4 text-sm tracking-wide">Departments</h4>
+      <ul class="space-y-2.5 text-sm text-white/50">
+        <li><a href="#departments" class="hover:text-teal transition-colors">Cardiology</a></li>
+        <li><a href="#departments" class="hover:text-teal transition-colors">Neurology</a></li>
+        <li><a href="#departments" class="hover:text-teal transition-colors">Orthopedics</a></li>
+        <li><a href="#departments" class="hover:text-teal transition-colors">Pediatrics</a></li>
+        <li><a href="#departments" class="hover:text-teal transition-colors">Oncology</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-semibold mb-4 text-sm tracking-wide">Quick Links</h4>
+      <ul class="space-y-2.5 text-sm text-white/50">
+        <li><a href="#about" class="hover:text-teal transition-colors">About Us</a></li>
+        <li><a href="#doctors" class="hover:text-teal transition-colors">Our Doctors</a></li>
+        <li><a href="#appointment" class="hover:text-teal transition-colors">Book Appointment</a></li>
+        <li><a href="#blog" class="hover:text-teal transition-colors">Health Blog</a></li>
+        <li><a href="#gallery" class="hover:text-teal transition-colors">Gallery</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-semibold mb-4 text-sm tracking-wide">Emergency</h4>
+      <p class="text-white/50 text-sm leading-relaxed">24/7 Emergency Line</p>
+      <a href="tel:+18005550199" class="text-teal font-display font-semibold text-lg block mt-1">(800) 555-0199</a>
+      <p class="text-white/50 text-sm mt-4">482 Meridian Avenue<br>Riverbend, CA 90210</p>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-xs text-white/40">
+    <p>© 2026 LifeCare Hospital. All rights reserved.</p>
+    <div class="flex gap-5">
+      <a href="#" class="hover:text-white/70">Privacy Policy</a>
+      <a href="#" class="hover:text-white/70">Terms of Service</a>
+      <a href="#" class="hover:text-white/70">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING WIDGETS ================= -->
+<div class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3">
+  <div id="chat-window" class="hidden w-80 bg-white rounded-2xl shadow-float border border-line overflow-hidden">
+    <div class="bg-primary text-white px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-teal animate-pulse"></span>
+        <span class="font-semibold text-sm">LifeCare Assistant</span>
+      </div>
+      <button onclick="document.getElementById('chat-window').classList.add('hidden')" class="text-white/70 hover:text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div id="chat-body" class="p-4 h-64 overflow-y-auto space-y-3 text-sm">
+      <div class="bg-mist rounded-xl rounded-tl-sm px-3.5 py-2.5 max-w-[85%]">Hi! I'm the LifeCare Assistant. Ask me about departments, doctors, or how to book an appointment.</div>
+    </div>
+    <form id="chat-form" class="flex border-t border-line" onsubmit="return sendChat(event)">
+      <input id="chat-input" type="text" placeholder="Type a message…" class="flex-1 px-4 py-3 text-sm outline-none">
+      <button class="px-4 text-primary font-semibold text-sm">Send</button>
+    </form>
+  </div>
+
+  <button onclick="document.getElementById('chat-window').classList.toggle('hidden')" class="w-14 h-14 rounded-full bg-primary text-white shadow-float flex items-center justify-center hover:bg-primary-600 transition-colors" aria-label="Open chat assistant">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+</div>
+
+<a href="tel:+18005550199" class="fixed bottom-5 left-5 z-40 sm:hidden w-14 h-14 rounded-full bg-red-600 text-white shadow-float flex items-center justify-center heartbeat-btn" aria-label="Call emergency">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<script>
+  // Header shadow on scroll
+  const header = document.getElementById('header-main');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('shadow-card');
+    else header.classList.remove('shadow-card');
+  });
+
+  // Mobile menu
+  document.getElementById('menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Animated counters
+  const counters = document.querySelectorAll('.counter');
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = +el.dataset.target;
+      let cur = 0;
+      const step = Math.max(1, Math.ceil(target / 60));
+      const tick = () => {
+        cur += step;
+        if (cur >= target) { el.textContent = target; return; }
+        el.textContent = cur;
+        requestAnimationFrame(tick);
+      };
+      tick();
+      counterIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterIO.observe(c));
+
+  // Testimonial slider
+  let tIndex = 0;
+  const tSlides = document.getElementById('testimonial-slides');
+  const tCount = tSlides.children.length;
+  const tDots = document.getElementById('testimonial-dots');
+  for (let i = 0; i < tCount; i++) {
+    const d = document.createElement('button');
+    d.className = 'w-2 h-2 rounded-full bg-line';
+    d.onclick = () => { tIndex = i; updateTestimonial(); };
+    tDots.appendChild(d);
+  }
+  function updateTestimonial() {
+    tSlides.style.transform = `translateX(-${tIndex * 100}%)`;
+    [...tDots.children].forEach((d, i) => d.className = 'w-2 h-2 rounded-full ' + (i === tIndex ? 'bg-primary' : 'bg-line'));
+  }
+  function moveTestimonial(dir) {
+    tIndex = (tIndex + dir + tCount) % tCount;
+    updateTestimonial();
+  }
+  updateTestimonial();
+  setInterval(() => moveTestimonial(1), 6000);
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = btn.nextElementSibling;
+      const icon = btn.querySelector('.faq-icon');
+      panel.classList.toggle('hidden');
+      icon.style.transform = panel.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    });
+  });
+
+  // Simple chat assistant stub
+  function sendChat(e) {
+    e.preventDefault();
+    const input = document.getElementById('chat-input');
+    const body = document.getElementById('chat-body');
+    const text = input.value.trim();
+    if (!text) return false;
+    const userMsg = document.createElement('div');
+    userMsg.className = 'bg-primary text-white rounded-xl rounded-tr-sm px-3.5 py-2.5 max-w-[85%] ml-auto';
+    userMsg.textContent = text;
+    body.appendChild(userMsg);
+    input.value = '';
+    body.scrollTop = body.scrollHeight;
+    setTimeout(() => {
+      const reply = document.createElement('div');
+      reply.className = 'bg-mist rounded-xl rounded-tl-sm px-3.5 py-2.5 max-w-[85%]';
+      reply.textContent = "Thanks for your message! For urgent matters please call (800) 555-0199. Otherwise, our care team will follow up shortly.";
+      body.appendChild(reply);
+      body.scrollTop = body.scrollHeight;
+    }, 600);
+    return false;
+  }
+</script>
+
+</body>
+</html>

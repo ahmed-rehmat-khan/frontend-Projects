@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Fianchetto — Play Chess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app" id="app">
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">♞</div>
+      <div>
+        <h1>Fianchetto</h1>
+        <p>Play chess</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="flip-btn" title="Flip board">⇅</button>
+      <button class="icon-btn" id="settings-btn" title="Settings">⚙</button>
+    </div>
+  </div>
+
+  <div class="layout">
+
+    <!-- LEFT: controls -->
+    <div class="side-panel">
+      <div class="panel">
+        <h2>Opponent</h2>
+        <div class="segmented">
+          <button class="mode-btn" data-mode="ai">Vs AI</button>
+          <button class="mode-btn" data-mode="human">Vs Human</button>
+        </div>
+
+        <div class="difficulty-row" id="difficulty-row">
+          <span class="field-label" style="margin-top:14px;">Difficulty</span>
+          <div class="segmented">
+            <button class="diff-btn" data-diff="easy">Easy</button>
+            <button class="diff-btn" data-diff="medium">Medium</button>
+            <button class="diff-btn" data-diff="hard">Hard</button>
+          </div>
+        </div>
+
+        <div class="difficulty-row" id="side-row">
+          <span class="field-label" style="margin-top:14px;">Play as</span>
+          <div class="segmented">
+            <button class="side-btn" data-side="w">White</button>
+            <button class="side-btn" data-side="b">Black</button>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn primary" id="new-game-btn">New Game</button>
+          <button class="btn" id="restart-btn">Restart</button>
+          <button class="btn" id="undo-btn">Undo Move</button>
+        </div>
+
+        <div class="status-card" id="status-card"><span class="status-dot"></span><span>White to move</span></div>
+      </div>
+
+      <div class="panel">
+        <h2>Captured Pieces</h2>
+        <div class="field-label">By White</div>
+        <div class="captured-row">
+          <div class="captured-pieces" id="captured-by-white"></div>
+          <div class="material-diff" id="material-diff-white"></div>
+        </div>
+        <div class="field-label" style="margin-top:10px;">By Black</div>
+        <div class="captured-row">
+          <div class="captured-pieces" id="captured-by-black"></div>
+          <div class="material-diff" id="material-diff-black"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER: board -->
+    <div class="board-col">
+      <div class="board-frame">
+        <div class="board-inner" id="board-inner">
+          <div class="board-grid" id="board-grid"></div>
+          <div class="piece-layer" id="piece-layer"></div>
+        </div>
+      </div>
+      <div class="turn-strip" id="turn-strip"></div>
+    </div>
+
+    <!-- RIGHT: history -->
+    <div class="history-col">
+      <div class="panel">
+        <h2>Move History</h2>
+        <div class="history-list" id="history-list"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footnote">Everything runs locally in your browser — no account, no server, no data leaves your device.</div>
+</div>
+
+<!-- Settings modal -->
+<div class="modal-backdrop" id="settings-overlay" style="display:none;">
+  <div class="modal">
+    <h3>Settings</h3>
+    <div class="setting-row">
+      <span>Dark theme</span>
+      <div class="switch" id="theme-switch"></div>
+    </div>
+    <div class="setting-row">
+      <span>Sound effects</span>
+      <div class="switch on" id="sound-switch"></div>
+    </div>
+    <div class="setting-row">
+      <span>Board coordinates</span>
+      <div class="switch on" id="coords-switch"></div>
+    </div>
+    <div class="btn-row modal-close-row">
+      <button class="btn primary" id="settings-close">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- Game over modal -->
+<div class="gameover-overlay" id="gameover-overlay" style="display:none;">
+  <div class="gameover-card">
+    <div class="icon" id="go-icon">♔</div>
+    <h2 id="go-title">Checkmate</h2>
+    <p id="go-desc">White wins the game.</p>
+    <div class="btn-row">
+      <button class="btn primary" id="go-newgame">New Game</button>
+      <button class="btn" id="go-close">Keep Reviewing Board</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="chess.js"></script>
+</body>
+</html>

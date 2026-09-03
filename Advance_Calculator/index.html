@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmed Rehmat Calculator</title>
+  <meta name="description" content="A premium glassmorphism arithmetic calculator by Ahmed Rehmat — Web & Agentic AI Developer." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="calc-root">
+  <div id="cursor-layer" class="cursor-layer" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+
+  <main class="calc-wrap animate-in">
+    <header class="text-center mb-6">
+      <h1 class="calc-title">Ahmed Rehmat Calculator</h1>
+      <p class="calc-subtitle">Web &amp; Agentic AI Developer</p>
+    </header>
+
+    <section class="calc-glass">
+      <div class="calc-display">
+        <div id="expr" class="expr">0</div>
+        <div id="result" class="result">= 0</div>
+      </div>
+
+      <div class="calc-grid" id="grid">
+        <button class="calc-btn btn-danger" data-action="clear">C</button>
+        <button class="calc-btn btn-warn" data-action="delete">⌫</button>
+        <button class="calc-btn btn-op" data-action="percent">%</button>
+        <button class="calc-btn btn-op" data-value="/">÷</button>
+
+        <button class="calc-btn" data-value="7">7</button>
+        <button class="calc-btn" data-value="8">8</button>
+        <button class="calc-btn" data-value="9">9</button>
+        <button class="calc-btn btn-op" data-value="*">×</button>
+
+        <button class="calc-btn" data-value="4">4</button>
+        <button class="calc-btn" data-value="5">5</button>
+        <button class="calc-btn" data-value="6">6</button>
+        <button class="calc-btn btn-op" data-value="-">−</button>
+
+        <button class="calc-btn" data-value="1">1</button>
+        <button class="calc-btn" data-value="2">2</button>
+        <button class="calc-btn" data-value="3">3</button>
+        <button class="calc-btn btn-op" data-value="+">+</button>
+
+        <button class="calc-btn col-span-2" data-value="0">0</button>
+        <button class="calc-btn" data-value=".">.</button>
+        <button class="calc-btn btn-equals" data-action="equals">=</button>
+      </div>
+    </section>
+
+    <footer class="calc-foot">
+      Tip: use your keyboard — Enter to calculate, Esc to clear, Backspace to delete.
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

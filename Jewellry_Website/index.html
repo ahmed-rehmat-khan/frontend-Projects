@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Royal Gems Jewelry — Timeless Elegance, Crafted to Perfection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --onyx:#0b0b0d;
+    --onyx-soft:#141416;
+    --ivory:#f7f3ea;
+    --champagne:#c9a96a;
+    --gold-deep:#9c7a3c;
+    --gold-bright:#f0d59a;
+    --blush:#e9d7c6;
+    --line:rgba(201,169,106,0.25);
+    --shadow:0 20px 60px rgba(0,0,0,0.45);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--onyx);
+    color:var(--ivory);
+    font-family:'Manrope',sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+    margin:0;
+  }
+  .eyebrow{
+    font-family:'Manrope',sans-serif;
+    font-size:11px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--champagne);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:26px;height:1px;
+    background:var(--champagne);
+    display:inline-block;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 40px;}
+  ::selection{background:var(--champagne);color:var(--onyx);}
+
+  /* photo treatment for tonal cohesion across many different source photos */
+  .photo{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;
+    filter:grayscale(12%) sepia(8%) brightness(0.95) contrast(1.05);
+  }
+  .photo-wrap{position:relative;overflow:hidden;}
+  .photo-shade{position:absolute;inset:0;background:linear-gradient(180deg, rgba(11,11,13,0.05) 0%, rgba(11,11,13,0.15) 45%, rgba(11,11,13,0.82) 100%);}
+  .photo-shade.side{background:linear-gradient(90deg, rgba(11,11,13,0.9) 0%, rgba(11,11,13,0.2) 45%, rgba(11,11,13,0.55) 100%);}
+  .photo-shade.flat{background:linear-gradient(180deg, rgba(11,11,13,0.25), rgba(11,11,13,0.55));}
+
+  /* ---------- Facet mark (signature element) ---------- */
+  .facet-mark{position:relative;overflow:visible;}
+  .facet-mark svg{width:100%;height:100%;display:block;}
+  .facet-shimmer{ animation:facetShimmer 5s ease-in-out infinite; }
+  @keyframes facetShimmer{ 0%,100%{opacity:0.35;} 50%{opacity:0.95;} }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    padding:26px 0;
+    transition:all .45s ease;
+    background:linear-gradient(to bottom, rgba(11,11,13,0.85), transparent);
+  }
+  header.solid{
+    background:rgba(11,11,13,0.92);
+    backdrop-filter:blur(14px);
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;}
+  .logo{
+    display:flex;align-items:center;gap:12px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;letter-spacing:0.08em;
+  }
+  .logo .mark{width:28px;height:28px;}
+  .navlinks{display:flex;gap:38px;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;}
+  .navlinks a{position:relative;padding-bottom:4px;opacity:0.85;transition:opacity .3s;}
+  .navlinks a:hover{opacity:1;}
+  .navlinks a::after{
+    content:'';position:absolute;left:0;bottom:0;width:0;height:1px;
+    background:var(--champagne);transition:width .35s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .navicons{display:flex;gap:22px;align-items:center;}
+  .navicons svg{width:18px;height:18px;opacity:0.9;cursor:pointer;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero .photo{filter:grayscale(30%) sepia(14%) brightness(0.55) contrast(1.05);}
+  .hero .photo-shade{background:
+      radial-gradient(ellipse 60% 55% at 50% 30%, rgba(11,11,13,0.35), rgba(11,11,13,0.88) 70%),
+      linear-gradient(180deg, rgba(11,11,13,0.55) 0%, rgba(11,11,13,0.9) 100%);}
+  .hero-facet{
+    position:absolute;top:50%;left:50%;
+    width:min(760px, 110vw);height:min(760px,110vw);
+    transform:translate(-50%,-46%);
+    opacity:0.55;
+    pointer-events:none;
+    z-index:1;
+  }
+  .hero-content{position:relative;z-index:2;padding:0 24px;}
+  .hero-content .eyebrow{justify-content:center;margin-bottom:26px;}
+  .hero-content .eyebrow::before{display:none;}
+  .hero h1{
+    font-size:clamp(42px, 7vw, 92px);
+    line-height:1.05;
+    font-style:italic;
+    color:var(--ivory);
+    max-width:960px;
+    margin:0 auto;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(120deg, var(--gold-bright), var(--champagne) 45%, var(--gold-deep));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.sub{
+    margin:28px auto 0;
+    max-width:520px;
+    font-size:16px;
+    line-height:1.7;
+    color:rgba(247,243,234,0.75);
+    font-weight:300;
+  }
+  .hero-ctas{display:flex;gap:20px;justify-content:center;margin-top:44px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 34px;
+    font-size:12px;letter-spacing:0.18em;text-transform:uppercase;
+    border:1px solid var(--champagne);
+    transition:all .4s ease;
+    cursor:pointer;
+    background:transparent;
+    color:var(--ivory);
+  }
+  .btn-solid{
+    background:linear-gradient(120deg, var(--gold-bright), var(--champagne));
+    color:var(--onyx);
+    border-color:transparent;
+    font-weight:600;
+  }
+  .btn-solid:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 12px 30px rgba(201,169,106,0.25);}
+  .btn:not(.btn-solid):hover{background:rgba(201,169,106,0.1);}
+  .scroll-cue{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(247,243,234,0.5);
+    z-index:2;
+  }
+  .scroll-cue .line{width:1px;height:44px;background:linear-gradient(var(--champagne), transparent);animation:scrollLine 2.2s ease-in-out infinite;}
+  @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}50.01%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+  /* ---------- Marquee ---------- */
+  .marquee{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:20px 0;overflow:hidden;white-space:nowrap;
+  }
+  .marquee-track{display:inline-flex;animation:marquee 28s linear infinite;}
+  .marquee-track span{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:19px;color:var(--champagne);padding:0 34px;opacity:0.85;
+    display:inline-flex;align-items:center;gap:34px;
+  }
+  .marquee-track span::after{content:'✦';color:var(--gold-deep);font-style:normal;}
+  @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- Section shell ---------- */
+  section{padding:130px 0;position:relative;}
+  .section-head{max-width:640px;margin:0 auto 64px;text-align:center;}
+  .section-head h2{font-size:clamp(32px,4.2vw,52px);margin-top:18px;font-style:italic;}
+  .section-head p{margin-top:18px;color:rgba(247,243,234,0.6);font-size:15px;font-weight:300;line-height:1.7;}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease, transform .9s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- Collections (vitrine grid) ---------- */
+  .vitrine{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    grid-template-rows:repeat(2,260px);
+    gap:18px;
+  }
+  .vcard{
+    position:relative;border-radius:2px;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:28px;cursor:pointer;
+    border:1px solid var(--line);
+    transition:transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .55s;
+  }
+  .vcard:hover{transform:translateY(-8px);box-shadow:var(--shadow);}
+  .vcard:hover .photo{transform:scale(1.06);}
+  .vcard .photo{transition:transform .8s ease;}
+  .vcard h3{font-size:26px;font-style:italic;position:relative;z-index:2;}
+  .vcard .vc-tag{position:relative;z-index:2;margin-top:8px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,243,234,0.8);display:flex;align-items:center;gap:8px;}
+  .vcard .vc-tag svg{width:12px;height:12px;transition:transform .3s;}
+  .vcard:hover .vc-tag svg{transform:translateX(6px);}
+  .v-diamond{grid-column:span 3;grid-row:span 2;}
+  .v-bridal{grid-column:span 3;grid-row:span 1;}
+  .v-gold{grid-column:span 2;grid-row:span 1;}
+  .v-watch{grid-column:span 1;grid-row:span 1;}
+  .v-gem{grid-column:span 2;grid-row:span 1;}
+  .v-limited{grid-column:span 1;grid-row:span 1;}
+
+  /* ---------- Best sellers / rails ---------- */
+  .rail-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px;}
+  .rail-head .see-all{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--champagne);display:flex;align-items:center;gap:8px;}
+  .rail{display:flex;gap:24px;overflow-x:auto;padding-bottom:20px;scroll-snap-type:x mandatory;}
+  .rail::-webkit-scrollbar{height:4px;}
+  .rail::-webkit-scrollbar-thumb{background:var(--gold-deep);}
+  .pcard{
+    min-width:290px;scroll-snap-align:start;
+    border:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  }
+  .pcard .pimg{height:320px;position:relative;overflow:hidden;}
+  .pcard .pimg .photo{transition:transform .8s ease;}
+  .pcard:hover .pimg .photo{transform:scale(1.07);}
+  .pcard .pbadge{position:absolute;top:16px;left:16px;z-index:2;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;background:var(--onyx);border:1px solid var(--champagne);color:var(--champagne);padding:6px 12px;}
+  .pcard .pbody{padding:22px;}
+  .pcard .stars{color:var(--champagne);font-size:12px;letter-spacing:2px;margin-bottom:10px;}
+  .pcard h4{font-size:20px;font-weight:500;font-style:italic;font-family:'Cormorant Garamond',serif;}
+  .pcard .pcat{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(247,243,234,0.5);margin-top:6px;}
+  .pcard .prow{display:flex;justify-content:space-between;align-items:center;margin-top:18px;}
+  .pcard .price{font-size:18px;color:var(--gold-bright);font-family:'Cormorant Garamond',serif;}
+  .pcard .addbtn{
+    border:1px solid var(--champagne);padding:9px 16px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+    background:transparent;color:var(--ivory);cursor:pointer;transition:all .3s;
+  }
+  .pcard .addbtn:hover{background:var(--champagne);color:var(--onyx);}
+
+  /* ---------- Craft split ---------- */
+  .craft{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .craft-visual{position:relative;height:480px;border:1px solid var(--line);}
+  .craft-visual .frame-corner{position:absolute;width:22px;height:22px;border:1px solid var(--champagne);z-index:3;}
+  .craft-visual .fc-tl{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .craft-visual .fc-br{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .craft ul{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:26px;}
+  .craft li{display:flex;gap:18px;align-items:flex-start;}
+  .craft li svg{width:24px;height:24px;flex-shrink:0;margin-top:2px;color:var(--champagne);}
+  .craft li h5{font-family:'Manrope';font-size:15px;font-weight:600;margin-bottom:6px;letter-spacing:0.02em;}
+  .craft li p{margin:0;font-size:13.5px;color:rgba(247,243,234,0.6);line-height:1.6;font-weight:300;}
+
+  /* ---------- Gallery masonry ---------- */
+  .masonry{columns:4 220px;column-gap:16px;}
+  .mitem{break-inside:avoid;margin-bottom:16px;position:relative;overflow:hidden;border:1px solid var(--line);}
+  .mitem img{width:100%;display:block;filter:grayscale(10%) sepia(6%) brightness(0.96) contrast(1.03);transition:transform .6s ease;}
+  .mitem:hover img{transform:scale(1.05);}
+
+  /* ---------- Custom CTA banner ---------- */
+  .cta-banner{
+    margin:0 40px;
+    border:1px solid var(--champagne);
+    padding:100px 40px;
+    text-align:center;
+    position:relative;
+    background:
+      radial-gradient(ellipse 70% 100% at 50% 0%, rgba(201,169,106,0.12), transparent 70%);
+  }
+  .cta-banner::before,.cta-banner::after{
+    content:'';position:absolute;width:26px;height:26px;border:1px solid var(--champagne);
+  }
+  .cta-banner::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .cta-banner::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .cta-banner h2{font-size:clamp(30px,4.5vw,56px);font-style:italic;max-width:720px;margin:20px auto 0;}
+  .cta-banner p{max-width:480px;margin:20px auto 0;color:rgba(247,243,234,0.6);font-weight:300;font-size:15px;}
+
+  /* ---------- Testimonials ---------- */
+  .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .tcard{border:1px solid var(--line);padding:36px;background:rgba(255,255,255,0.02);}
+  .tcard .stars{color:var(--champagne);font-size:13px;letter-spacing:2px;margin-bottom:20px;}
+  .tcard p.quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;line-height:1.6;color:var(--ivory);}
+  .tcard .who{margin-top:24px;display:flex;align-items:center;gap:14px;}
+  .tcard .avatar{width:38px;height:38px;border-radius:50%;overflow:hidden;position:relative;}
+  .tcard .who-name{font-size:13px;font-weight:600;}
+  .tcard .who-role{font-size:11px;color:rgba(247,243,234,0.5);}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line);padding:90px 0 30px;}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px;padding-bottom:60px;}
+  .foot-brand .logo{margin-bottom:18px;}
+  .foot-brand p{font-size:13.5px;color:rgba(247,243,234,0.55);max-width:280px;line-height:1.7;font-weight:300;}
+  .foot-social{display:flex;gap:14px;margin-top:24px;}
+  .foot-social a{width:34px;height:34px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all .3s;}
+  .foot-social a:hover{border-color:var(--champagne);background:rgba(201,169,106,0.1);}
+  .foot-social svg{width:14px;height:14px;}
+  .foot-col h6{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--champagne);margin-bottom:22px;}
+  .foot-col ul{list-style:none;padding:0;margin:0;display:grid;gap:13px;}
+  .foot-col a{font-size:13.5px;color:rgba(247,243,234,0.65);transition:color .3s;}
+  .foot-col a:hover{color:var(--ivory);}
+  .foot-news p{font-size:13px;color:rgba(247,243,234,0.55);margin-bottom:18px;line-height:1.6;font-weight:300;}
+  .news-form{display:flex;border-bottom:1px solid var(--line);padding-bottom:10px;}
+  .news-form input{background:transparent;border:none;outline:none;color:var(--ivory);font-size:13px;flex:1;font-family:'Manrope';}
+  .news-form input::placeholder{color:rgba(247,243,234,0.4);}
+  .news-form button{background:none;border:none;color:var(--champagne);cursor:pointer;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:26px;border-top:1px solid var(--line);font-size:11.5px;color:rgba(247,243,234,0.4);flex-wrap:wrap;gap:12px;}
+  .foot-bottom a{color:rgba(247,243,234,0.4);}
+  .foot-bottom a:hover{color:var(--champagne);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px){
+    .navlinks{display:none;}
+    .vitrine{grid-template-columns:repeat(2,1fr);grid-template-rows:none;}
+    .v-diamond,.v-bridal,.v-gold,.v-watch,.v-gem,.v-limited{grid-column:span 1;}
+    .v-diamond{grid-column:span 2;height:340px;}
+    .craft{grid-template-columns:1fr;gap:50px;}
+    .test-grid{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr 1fr;row-gap:40px;}
+    .cta-banner{margin:0 20px;padding:70px 24px;}
+    .masonry{columns:2 160px;}
+  }
+  @media (max-width: 600px){
+    .wrap{padding:0 22px;}
+    section{padding:90px 0;}
+    .foot-top{grid-template-columns:1fr;}
+    .masonry{columns:2 140px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <div class="logo">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="20,3 33,14 27,37 13,37 7,14" stroke="#c9a96a" stroke-width="1"/>
+          <polygon points="20,3 33,14 20,20" fill="#c9a96a" fill-opacity="0.35"/>
+          <polygon points="20,3 7,14 20,20" fill="#f0d59a" fill-opacity="0.25"/>
+          <polygon points="7,14 13,37 20,20" fill="#9c7a3c" fill-opacity="0.3"/>
+          <polygon points="33,14 27,37 20,20" fill="#c9a96a" fill-opacity="0.2"/>
+        </svg>
+        ROYAL&nbsp;GEMS
+      </div>
+      <div class="navlinks">
+        <a href="#collections">Collections</a>
+        <a href="#bestsellers">Best Sellers</a>
+        <a href="#craftsmanship">Craftsmanship</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#custom">Custom Jewelry</a>
+      </div>
+      <div class="navicons">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.7-9.5-9C.6 8.2 2 4 6 4c2.2 0 3.6 1.2 6 3.6C14.4 5.2 15.8 4 18 4c4 0 5.4 4.2 3.5 8-2.5 4.3-9.5 9-9.5 9z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero photo-wrap" style="padding:0;">
+  <img class="photo" src="https://images.unsplash.com/photo-1719924998065-0c60e329ef58?auto=format&fit=crop&w=1800&q=80" alt="Fine diamond rings" />
+  <div class="photo-shade"></div>
+  <svg class="hero-facet" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="facet-shimmer">
+      <polygon points="200,30 320,120 280,340 120,340 80,120" stroke="#c9a96a" stroke-width="0.7" fill="none" opacity="0.7"/>
+      <polygon points="200,30 320,120 200,170" fill="#f0d59a" fill-opacity="0.12"/>
+      <polygon points="200,30 80,120 200,170" fill="#c9a96a" fill-opacity="0.08"/>
+      <polygon points="80,120 120,340 200,170" fill="#9c7a3c" fill-opacity="0.1"/>
+      <polygon points="320,120 280,340 200,170" fill="#c9a96a" fill-opacity="0.06"/>
+      <polygon points="120,340 280,340 200,170" fill="#f0d59a" fill-opacity="0.1"/>
+      <line x1="200" y1="30" x2="200" y2="170" stroke="#c9a96a" stroke-width="0.4" opacity="0.5"/>
+      <line x1="80" y1="120" x2="320" y2="120" stroke="#c9a96a" stroke-width="0.4" opacity="0.5"/>
+    </g>
+  </svg>
+  <div class="hero-content">
+    <span class="eyebrow">Est. Fine Jewelry House</span>
+    <h1>Timeless <em>Elegance</em>,<br/>Crafted to Perfection</h1>
+    <p class="sub">Certified diamonds, 18k gold, and heirloom craftsmanship — each piece hand-finished in our atelier and made to be passed down.</p>
+    <div class="hero-ctas">
+      <a href="#collections" class="btn btn-solid">Shop Collection</a>
+      <a href="#new-arrivals" class="btn">Explore New Arrivals</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Certified Conflict-Free Diamonds</span>
+    <span>Handcrafted In-House</span>
+    <span>Lifetime Warranty</span>
+    <span>Complimentary Worldwide Delivery</span>
+    <span>Certified Conflict-Free Diamonds</span>
+    <span>Handcrafted In-House</span>
+    <span>Lifetime Warranty</span>
+    <span>Complimentary Worldwide Delivery</span>
+  </div>
+</div>
+
+<!-- ============ COLLECTIONS ============ -->
+<section id="collections">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Featured Collections</span>
+      <h2>The House Vitrine</h2>
+      <p>Six worlds of craftsmanship, from icy brilliance to warm antique gold — each collection a distinct signature.</p>
+    </div>
+    <div class="vitrine reveal">
+      <div class="vcard v-diamond photo-wrap">
+        <img class="photo" src="https://images.unsplash.com/photo-1607703829739-c05b7beddf60?auto=format&fit=crop&w=1000&q=80" alt="Diamond ring collection"/>
+        <div class="photo-shade"></div>
+        <h3>Diamond Collection</h3>
+        <div class="vc-tag">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="vcard v-bridal photo-wrap">
+        <img class="photo" src="https://images.unsplash.com/photo-1518370265276-f22b706aeac8?auto=format&fit=crop&w=1000&q=80" alt="Bridal ring on roses"/>
+        <div class="photo-shade"></div>
+        <h3>Bridal Collection</h3>
+        <div class="vc-tag">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="vcard v-gold photo-wrap">
+        <img class="photo" src="https://images.unsplash.com/photo-1611107683227-e9060eccd846?auto=format&fit=crop&w=1000&q=80" alt="Gold chain necklace"/>
+        <div class="photo-shade"></div>
+        <h3>Gold Collection</h3>
+        <div class="vc-tag">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="vcard v-watch photo-wrap">
+        <img class="photo" src="https://images.unsplash.com/photo-1587925358603-c2eea5305bbc?auto=format&fit=crop&w=800&q=80" alt="Luxury chronograph watch"/>
+        <div class="photo-shade"></div>
+        <h3>Luxury Watches</h3>
+        <div class="vc-tag">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="vcard v-gem photo-wrap">
+        <img class="photo" src="https://images.unsplash.com/photo-1770722272510-ef28c6f57541?auto=format&fit=crop&w=1000&q=80" alt="Gemstone jewelry set"/>
+        <div class="photo-shade"></div>
+        <h3>Gemstone Collection</h3>
+        <div class="vc-tag">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="vcard v-limited photo-wrap">
+        <img class="photo" src="https://images.unsplash.com/photo-1605100804567-1ffe942b5cd6?auto=format&fit=crop&w=800&q=80" alt="Limited edition diamond pendant"/>
+        <div class="photo-shade"></div>
+        <h3>Limited Editions</h3>
+        <div class="vc-tag">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEST SELLERS ============ -->
+<section id="bestsellers" style="background:var(--onyx-soft);">
+  <div class="wrap">
+    <div class="rail-head reveal">
+      <div>
+        <span class="eyebrow">Best Sellers</span>
+        <h2 style="margin-top:14px;font-size:38px;font-style:italic;">Most Coveted Pieces</h2>
+      </div>
+      <a href="#" class="see-all">View All <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="rail reveal" id="rail"></div>
+  </div>
+</section>
+
+<!-- ============ CRAFTSMANSHIP ============ -->
+<section id="craftsmanship">
+  <div class="wrap craft">
+    <div class="craft-visual photo-wrap reveal">
+      <img class="photo" src="https://images.unsplash.com/photo-1677045419454-e8b201856472?auto=format&fit=crop&w=1200&q=80" alt="Close-up of ring craftsmanship in a case"/>
+      <div class="photo-shade flat"></div>
+      <div class="frame-corner fc-tl"></div>
+      <div class="frame-corner fc-br"></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Why Choose Royal Gems</span>
+      <h2 style="margin-top:18px;font-size:40px;font-style:italic;">An Heirloom in the Making</h2>
+      <ul class="craft">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          <div><h5>Certified Jewelry</h5><p>Every diamond arrives with independent GIA or IGI certification, so its cut, clarity, and carat are never in question.</p></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg>
+          <div><h5>Master Craftsmanship</h5><p>Each setting is hand-finished by our in-house jewelers, many trained through three generations of the same ateliers.</p></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="9" width="16" height="11" rx="1"/><path d="M8 9V6a4 4 0 018 0v3"/></svg>
+          <div><h5>Secure Payments</h5><p>Bank-level encryption and buyer protection on every transaction, with financing options for bridal purchases.</p></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12h4l2-8 4 16 2-8h6"/></svg>
+          <div><h5>Worldwide Delivery</h5><p>Insured, discreet shipping to over 60 countries, with signature-required delivery on every order.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEW ARRIVALS strip ============ -->
+<section id="new-arrivals" style="padding-top:0;">
+  <div class="wrap">
+    <div class="rail-head reveal">
+      <div>
+        <span class="eyebrow">New Arrivals</span>
+        <h2 style="margin-top:14px;font-size:38px;font-style:italic;">Just Unveiled</h2>
+      </div>
+      <a href="#" class="see-all">View All <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="rail reveal" id="rail2"></div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery" style="background:var(--onyx-soft);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Gallery</span>
+      <h2>Behind Every Setting</h2>
+      <p>A closer look at our pieces, our packaging, and the details that separate fine jewelry from the rest.</p>
+    </div>
+    <div class="masonry reveal" id="masonry"></div>
+  </div>
+</section>
+
+<!-- ============ CUSTOM JEWELRY CTA ============ -->
+<section id="custom" style="padding-top:40px;">
+  <div class="cta-banner reveal">
+    <span class="eyebrow">Bespoke Atelier</span>
+    <h2>Design a Piece as Singular as the Moment It Marks</h2>
+    <p>From custom engagement rings to one-of-a-kind gemstone settings, our master jewelers bring your vision to life — sketch to setting.</p>
+    <div class="hero-ctas" style="margin-top:40px;">
+      <a href="#" class="btn btn-solid">Start Your Design</a>
+      <a href="#" class="btn">Book a Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="journal">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Customer Stories</span>
+      <h2>Worn for a Lifetime</h2>
+    </div>
+    <div class="test-grid reveal">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"The craftsmanship on my engagement ring was beyond anything I'd seen in-store. The setting alone felt like a work of art."</p>
+        <div class="who">
+          <div class="avatar"><img class="photo" style="position:static;" src="https://images.unsplash.com/photo-1481980235850-66e47651e431?auto=format&fit=crop&w=100&q=70" alt=""/></div>
+          <div><div class="who-name">Amelia Hart</div><div class="who-role">Bridal Collection</div></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Ordered a custom pendant for my mother's anniversary. The packaging alone made it feel like a museum piece."</p>
+        <div class="who">
+          <div class="avatar"><img class="photo" style="position:static;" src="https://images.unsplash.com/photo-1623321673989-830eff0fd59f?auto=format&fit=crop&w=100&q=70" alt=""/></div>
+          <div><div class="who-name">Daniel Cross</div><div class="who-role">Custom Atelier</div></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"My watch arrived a day early, insured and beautifully boxed. Royal Gems has earned a customer for life."</p>
+        <div class="who">
+          <div class="avatar"><img class="photo" style="position:static;" src="https://images.unsplash.com/photo-1618215650148-e8e61eae521c?auto=format&fit=crop&w=100&q=70" alt=""/></div>
+          <div><div class="who-name">Priya Nair</div><div class="who-role">Luxury Watches</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="logo">
+          <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="20,3 33,14 27,37 13,37 7,14" stroke="#c9a96a" stroke-width="1"/>
+          </svg>
+          ROYAL&nbsp;GEMS
+        </div>
+        <p>Fine jewelry, certified diamonds, and bespoke design — handcrafted in-house and delivered worldwide since our founding.</p>
+        <div class="foot-social">
+          <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 4.5c-.8.4-1.6.6-2.5.8a4.3 4.3 0 001.9-2.4 8.6 8.6 0 01-2.7 1 4.3 4.3 0 00-7.3 3.9A12.2 12.2 0 013 3.9a4.3 4.3 0 001.3 5.7 4.3 4.3 0 01-1.9-.5v.1a4.3 4.3 0 003.4 4.2 4.3 4.3 0 01-1.9.1 4.3 4.3 0 004 3 8.7 8.7 0 01-6.4 1.8A12.2 12.2 0 0008 20c7.5 0 11.6-6.2 11.6-11.6v-.5A8.4 8.4 0 0022 4.5z"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 2H7a5 5 0 00-5 5v10a5 5 0 005 5h10a5 5 0 005-5V7a5 5 0 00-5-5z"/><path d="M9 9v10M9 9a3 3 0 013-3M9 9V6m0 3h4a3 3 0 013 3v7"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h6>Shop</h6>
+        <ul>
+          <li><a href="#">Rings</a></li>
+          <li><a href="#">Necklaces</a></li>
+          <li><a href="#">Earrings</a></li>
+          <li><a href="#">Bracelets</a></li>
+          <li><a href="#">Watches</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h6>Company</h6>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Craftsmanship</a></li>
+          <li><a href="#">Custom Jewelry</a></li>
+          <li><a href="#">Boutiques</a></li>
+          <li><a href="#">Journal</a></li>
+        </ul>
+      </div>
+      <div class="foot-col foot-news">
+        <h6>Stay in the Light</h6>
+        <p>New collections, private previews, and gifting guides — delivered occasionally, never crowded.</p>
+        <div class="news-form">
+          <input type="email" placeholder="Your email address" />
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Royal Gems Jewelry. All rights reserved.</div>
+      <div style="display:flex;gap:24px;">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Shipping & Returns</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('solid', window.scrollY > 40);
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  function imgUrl(id, w){ return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`; }
+
+  const products = [
+    {name:'The Solitaire Vow', cat:'Diamond Engagement Ring', price:'$4,850', badge:'Bestseller', img:'photo-1589674668791-4889d2bba4c6'},
+    {name:'Aurelia Tennis Bracelet', cat:'18k Gold & Diamond', price:'$3,200', badge:'Bestseller', img:'photo-1628872354761-c289e269092f'},
+    {name:'Meridian Pearl Drop', cat:'Fine Diamond Earrings', price:'$1,480', badge:'', img:'photo-1774504347388-3d01f7cac097'},
+    {name:'Empress Gem Pendant', cat:'Statement Gemstone Set', price:'$5,600', badge:'Rare Find', img:'photo-1770722272510-ef28c6f57541'},
+    {name:'Sovereign Chrono', cat:'Luxury Automatic Watch', price:'$8,900', badge:'', img:'photo-1524805444758-089113d48a6d'},
+  ];
+  const arrivals = [
+    {name:'Halcyon Statement Ring', cat:'Gemstone, 18k White Gold', price:'$3,950', badge:'New', img:'photo-1603561591411-07134e71a2a9'},
+    {name:'Lumen Layered Necklace', cat:'14k Gold Vermeil', price:'$980', badge:'New', img:'photo-1601121141461-9d6647bca1ed'},
+    {name:'Celeste Stud Duo', cat:'Diamond Pavé Earrings', price:'$1,720', badge:'New', img:'photo-1769151591224-2eee6793b885'},
+    {name:'Windsor Chronograph', cat:"Men's Automatic Watch", price:'$7,150', badge:'New', img:'photo-1600003014755-ba31aa59c4b6'},
+  ];
+
+  function renderRail(id, data){
+    const rail = document.getElementById(id);
+    rail.innerHTML = data.map(p => `
+      <div class="pcard">
+        <div class="pimg photo-wrap">
+          ${p.badge ? `<span class="pbadge">${p.badge}</span>` : ''}
+          <img class="photo" src="${imgUrl(p.img, 700)}" alt="${p.name}"/>
+          <div class="photo-shade" style="background:linear-gradient(180deg, rgba(11,11,13,0) 55%, rgba(11,11,13,0.55) 100%);"></div>
+        </div>
+        <div class="pbody">
+          <div class="stars">★★★★★</div>
+          <h4>${p.name}</h4>
+          <div class="pcat">${p.cat}</div>
+          <div class="prow">
+            <span class="price">${p.price}</span>
+            <button class="addbtn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+  renderRail('rail', products);
+  renderRail('rail2', arrivals);
+
+  const galleryImgs = [
+    'photo-1543294001-f7cd5d7fb516','photo-1620656798579-1984d9e87df7','photo-1670177257750-9b47927f68eb',
+    'photo-1693212793204-bcea856c75fe','photo-1685970731194-e27b477e87ba','photo-1613945407943-59cd755fd69e',
+    'photo-1590156118368-607652ab307a','photo-1600003014637-ff82a275e191','photo-1705326454924-f6777522b030',
+    'photo-1724937798223-720f8956cb12','photo-1598560917807-1bae44bd2be8','photo-1634140704051-58a787556cd1'
+  ];
+  document.getElementById('masonry').innerHTML = galleryImgs.map(id => `
+    <div class="mitem"><img src="${imgUrl(id, 500)}" alt="Royal Gems jewelry detail" loading="lazy"/></div>
+  `).join('');
+</script>
+
+</body>
+</html>

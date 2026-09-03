@@ -1,0 +1,126 @@
+:root{
+    --bg:#0f172a;
+    --text:white;
+    --cell:#1e293b;
+    --glow:#00ffff;
+}
+
+.light{
+    --bg:#f1f5f9;
+    --text:#111827;
+    --cell:white;
+    --glow:#ff00ff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Imprint MT Shadow;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:.4s;
+}
+
+.container{
+    text-align:center;
+}
+
+h1{
+    font-size:50px;
+    margin-bottom:20px;
+    animation:neon 2s infinite alternate;
+}
+
+@keyframes neon{
+    from{
+        text-shadow:
+        0 0 10px var(--glow),
+        0 0 20px var(--glow);
+    }
+    to{
+        text-shadow:
+        0 0 20px var(--glow),
+        0 0 40px var(--glow),
+        0 0 60px var(--glow);
+    }
+}
+
+#status{
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+.board{
+    display:grid;
+    grid-template-columns:repeat(3,120px);
+    gap:12px;
+}
+
+.cell{
+    width:120px;
+    height:120px;
+    border:none;
+    border-radius:15px;
+    background:var(--cell);
+    color:var(--text);
+    font-size:50px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 0 15px var(--glow);
+}
+
+.cell:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px var(--glow);
+}
+
+.winner{
+    animation:winnerGlow 1s infinite alternate;
+}
+
+@keyframes winnerGlow{
+    from{
+        box-shadow:0 0 20px lime;
+    }
+    to{
+        box-shadow:0 0 50px lime;
+    }
+}
+
+#restart,
+#themeBtn{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+    background:var(--cell);
+    color:var(--text);
+    box-shadow:0 0 15px var(--glow);
+}
+
+#themeBtn{
+    margin-bottom:20px;
+}
+
+@media(max-width:500px){
+
+.board{
+    grid-template-columns:repeat(3,90px);
+}
+
+.cell{
+    width:90px;
+    height:90px;
+    font-size:40px;
+}
+}

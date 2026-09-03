@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fee Portal - PIAIC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1><span>PIAIC</span> Fee Portal</h1>
+    <div class="stats">
+      <div class="stat-card"><div class="label">Students</div><div class="value" id="statStudents">0</div></div>
+      <div class="stat-card"><div class="label">Collected</div><div class="value" id="statCollected">PKR 0</div></div>
+      <div class="stat-card"><div class="label">Pending</div><div class="value" id="statPending">PKR 0</div></div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>Add Student</h2>
+      <form id="studentForm" autocomplete="off">
+        <div class="form-row">
+          <input type="text" id="studentName" placeholder="Full Name" required>
+          <input type="text" id="fatherName" placeholder="Father's Name">
+          <input type="email" id="studentEmail" placeholder="Email">
+          <input type="text" id="studentPhone" placeholder="Phone Number">
+        </div>
+        <div class="form-row">
+          <input type="text" id="courseName" placeholder="Course (e.g. AI, Blockchain)" required>
+          <input type="number" id="monthlyFee" placeholder="Monthly Fee (PKR)" required min="0">
+          <input type="number" id="totalFee" placeholder="Total Fee (PKR)" required min="0">
+          <select id="batchSelect">
+            <option value="">Select Batch</option>
+            <option value="Batch 1">Batch 1</option>
+            <option value="Batch 2">Batch 2</option>
+            <option value="Batch 3">Batch 3</option>
+            <option value="Batch 4">Batch 4</option>
+            <option value="Batch 5">Batch 5</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Student</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Students</h2>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by name, course, or batch...">
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Father's Name</th>
+              <th>Course</th>
+              <th>Batch</th>
+              <th>Monthly Fee</th>
+              <th>Total Fee</th>
+              <th>Paid</th>
+              <th>Balance</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody"></tbody>
+        </table>
+      </div>
+      <div class="empty-state" id="emptyState">
+        <h3>No students yet</h3>
+        <p>Add a student using the form above.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="editModal">
+    <div class="modal">
+      <h2>Edit Student</h2>
+      <form id="editForm" autocomplete="off">
+        <input type="hidden" id="editId">
+        <div class="form-row">
+          <input type="text" id="editName" placeholder="Full Name" required>
+          <input type="text" id="editFather" placeholder="Father's Name">
+        </div>
+        <div class="form-row">
+          <input type="email" id="editEmail" placeholder="Email">
+          <input type="text" id="editPhone" placeholder="Phone">
+        </div>
+        <div class="form-row">
+          <input type="text" id="editCourse" placeholder="Course" required>
+          <input type="number" id="editMonthlyFee" placeholder="Monthly Fee" required min="0">
+          <input type="number" id="editTotalFee" placeholder="Total Fee" required min="0">
+          <select id="editBatch"></select>
+        </div>
+        <div class="form-row">
+          <input type="number" id="editPaid" placeholder="Amount Paid" min="0">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-danger" onclick="closeEditModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Estates | Luxury Real Estate Agency</title>
+  <meta name="description" content="Elite Estates is a luxury real estate agency specializing in premium residential, commercial, and investment properties with world-class concierge service.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Elite Estates",
+    "url": "https://www.eliteestates.example",
+    "logo": "https://www.eliteestates.example/logo.png",
+    "description": "Luxury real estate brokerage specializing in premium residential, commercial and investment properties.",
+    "areaServed": "Worldwide",
+    "sameAs": ["https://www.facebook.com/eliteestates","https://www.instagram.com/eliteestates","https://www.linkedin.com/company/eliteestates"]
+  }
+  </script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand"><span>Elite</span>Estates</a>
+      <button class="menu-toggle" aria-label="Toggle navigation"><span></span></button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="agents.html">Agents</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-inner container fade-up">
+        <small>Luxury Real Estate · Global Portfolio</small>
+        <h1>Discover Iconic Residences and Signature Investments</h1>
+        <p>Elite Estates delivers an elevated buying, renting, and selling experience for discerning clients seeking exceptional properties across the world's most coveted destinations.</p>
+        <div class="hero-buttons">
+          <a href="properties.html" class="button-primary">Explore Listings</a>
+          <a href="contact.html" class="button-secondary">Book a Private Tour</a>
+        </div>
+        <form class="search-panel" onsubmit="event.preventDefault(); alert('Search launched. Browse properties or contact our advisors.');">
+          <select aria-label="Transaction type">
+            <option>Buy</option>
+            <option>Rent</option>
+            <option>Sell</option>
+          </select>
+          <input type="text" placeholder="Search locations, neighborhoods or property IDs" aria-label="Search location">
+          <select aria-label="Property type">
+            <option>Luxury Villa</option>
+            <option>Penthouse</option>
+            <option>Mansion</option>
+            <option>Commercial</option>
+          </select>
+          <button type="submit">Search Properties</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span>Featured Properties</span>
+          <h2>Exclusive homes tailored for the world's most refined lifestyles</h2>
+          <p>Each property is hand-selected for its architecture, amenities and investment potential. Browse exceptional residences, smart homes, waterfront estates, and prime urban addresses.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card fade-up">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" alt="Modern waterfront villa">
+            </div>
+            <div class="card-content">
+              <span class="card-badge">Waterfront Villa</span>
+              <h3 class="card-title">Sunset Bay Estate</h3>
+              <p class="card-subtitle">Malibu, California</p>
+              <p class="card-label">$14,500,000 · 6 beds · 7 baths · 10,200 sqft</p>
+              <div class="feature-list">
+                <span class="feature-chip">Infinity Pool</span>
+                <span class="feature-chip">Private Marina</span>
+                <span class="feature-chip">Smart Home</span>
+              </div>
+              <div class="button-group">
+                <a href="property-detail.html" class="cta-button">View Details</a>
+              </div>
+            </div>
+          </article>
+          <article class="card fade-up">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Luxury penthouse interior">
+            </div>
+            <div class="card-content">
+              <span class="card-badge">Penthouse</span>
+              <h3 class="card-title">Skyline Meridian</h3>
+              <p class="card-subtitle">Dubai Marina, UAE</p>
+              <p class="card-label">$9,200,000 · 4 beds · 5 baths · 7,400 sqft</p>
+              <div class="feature-list">
+                <span class="feature-chip">City Views</span>
+                <span class="feature-chip">Rooftop Lounge</span>
+                <span class="feature-chip">Concierge Services</span>
+              </div>
+              <div class="button-group">
+                <a href="property-detail.html" class="cta-button">View Details</a>
+              </div>
+            </div>
+          </article>
+          <article class="card fade-up">
+            <div class="card-image">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXA3XI08_aE_Ln9weqraIuP-N6oE1YivuhP6EmE1LMXg&s=10" alt="Luxury mansion exterior with pool">
+            </div>
+            <div class="card-content">
+              <span class="card-badge">Modern Mansion</span>
+              <h3 class="card-title">Emerald Ridge Manor</h3>
+              <p class="card-subtitle">Côte d'Azur, France</p>
+              <p class="card-label">$18,750,000 · 8 beds · 11 baths · 15,300 sqft</p>
+              <div class="feature-list">
+                <span class="feature-chip">Private Cinema</span>
+                <span class="feature-chip">Luxury Spa</span>
+                <span class="feature-chip">Seaside Terrace</span>
+              </div>
+              <div class="button-group">
+                <a href="property-detail.html" class="cta-button">View Details</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span>Why Choose Elite Estates</span>
+          <h2>Trust, experience and a global network for every transaction</h2>
+          <p>From landmark developments to private residences, our team delivers high-touch strategy, market intelligence and exceptional service for buyers, sellers and investors.</p>
+        </div>
+        <div class="highlight-grid fade-up">
+          <div class="highlight-card">
+            <h3>25+</h3>
+            <p>Years of expertise in luxury real estate</p>
+          </div>
+          <div class="highlight-card">
+            <h3>1,200+</h3>
+            <p>Properties sold across premium global markets</p>
+          </div>
+          <div class="highlight-card">
+            <h3>98%</h3>
+            <p>Client satisfaction with tailored concierge service</p>
+          </div>
+          <div class="highlight-card">
+            <h3>46</h3>
+            <p>Awards for innovation, design and investment advisory</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span>Luxury Property Showcase</span>
+          <h2>Immersive visuals and cinematic spaces curated for elite lifestyles</h2>
+        </div>
+        <div class="gallery-grid fade-up">
+          <div class="gallery-card gallery-large">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Luxury interior with architecture">
+          </div>
+          <div class="gallery-sm">
+            <div class="gallery-card"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Luxury penthouse views"></div>
+            <div class="gallery-card"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80" alt="Modern villa poolside"></div>
+          </div>
+          <div class="gallery-card gallery-large">
+            <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1200&q=80" alt="Designer living room">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span>Premium Digital Experience</span>
+          <h2>Modern tools that enhance every phase of your property journey</h2>
+          <p>Exclusive digital services designed to empower your selection, financing and ownership decisions with clarity and confidence.</p>
+        </div>
+        <div class="highlight-grid fade-up">
+          <div class="highlight-card">
+            <h3>AI Property Assistant</h3>
+            <p>Personalized property recommendations and instant market guidance for high-net-worth buyers.</p>
+          </div>
+          <div class="highlight-card">
+            <h3>Live Chat & WhatsApp</h3>
+            <p>Immediate concierge support, virtual tours and direct access to our luxury client advisors.</p>
+          </div>
+          <div class="highlight-card">
+            <h3>Saved Properties</h3>
+            <p>Bookmark favorite listings, compare premium residences and revisit curated selections anytime.</p>
+          </div>
+          <div class="highlight-card">
+            <h3>Virtual Tours</h3>
+            <p>Immersive property walkthroughs, aerial previews and digital previews for discerning global buyers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span>Client Testimonials</span>
+          <h2>Stories from buyers, sellers and investors who chose excellence</h2>
+        </div>
+        <div class="testimonial-slider fade-up">
+          <article class="testimonial-card">
+            <p>"Elite Estates guided us through a seamless purchase of our waterfront home. The market insight and attention to every detail made it exceptional."</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Client portrait">
+              <div class="testimonial-author-info">
+                <h4>Olivia Harper</h4>
+                <span>Homeowner, Miami</span>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial-card">
+            <p>"The team delivered a custom selling strategy for our estate. It sold in record time and exceeded our expectations on price and privacy."</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=120&q=80" alt="Client portrait">
+              <div class="testimonial-author-info">
+                <h4>Marcus Lee</h4>
+                <span>Seller, London</span>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial-card">
+            <p>"Elite Estates helped us identify a prime investment asset with incredible upside. Their advisory team is unmatched in both strategy and execution."</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Client portrait">
+              <div class="testimonial-author-info">
+                <h4>Sophia Chen</h4>
+                <span>Investor, Hong Kong</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span>Elite Agents</span>
+          <h2>Professional advisors who deliver discreet and sophisticated service</h2>
+        </div>
+        <div class="agent-grid fade-up">
+          <div class="agent-card card">
+            <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80" alt="Agent portrait">
+            <h3>Isabella Scott</h3>
+            <p>Global Director of Luxury Sales</p>
+            <span>12 years experience • 190 deals closed</span>
+          </div>
+          <div class="agent-card card">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Agent portrait">
+            <h3>Alexander Moore</h3>
+            <p>Investment & Commercial Specialist</p>
+            <span>14 years experience • .3B in transactions</span>
+          </div>
+          <div class="agent-card card">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Agent portrait">
+            <h3>Elena Rossi</h3>
+            <p>Residences and Portfolio Advisor</p>
+            <span>10 years experience • 120 luxury listings</span>
+          </div>
+          <div class="agent-card card">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Agent portrait">
+            <h3>Julian Carter</h3>
+            <p>Key Client Relationship Lead</p>
+            <span>15 years experience • Private client service</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span>Lead with Confidence</span>
+          <h2>Begin your next chapter with a dedicated luxury property expert</h2>
+        </div>
+        <div class="button-group fade-up">
+          <a href="contact.html" class="cta-button">Request a Private Consultation</a>
+          <a href="services.html" class="button-secondary">See Our Services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <a href="index.html" class="brand"><span>Elite</span>Estates</a>
+        <p>Global luxury real estate advisory, bespoke investments, and high-end residential marketing designed for elite clients.</p>
+      </div>
+      <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <a href="contact.html">Contact</a>
+        <a href="blog.html">Market Insights</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <small>© 2026 Elite Estates. Crafted for the modern luxury property experience.</small>
+      <small>Designed for trust, performance and timeless luxury.</small>
+    </div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
+
