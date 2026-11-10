@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quill Notes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap">
+<style>
+/* ========== CSS ========== */
+:root {
+  --bg: #e6ecec; --panel: #f6f9f8; --ink: #17262b; --muted: #5f7378; --line: #d0dada;
+  --accent: #2f7f79; --on-accent: #ffffff; --hover: #e9f0ef; --danger: #b8402f;
+  --c-sage: #6aa889; --c-sky: #5b9bd0; --c-amber: #d9a13b; --c-rose: #d4707f;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1517; --panel: #142023; --ink: #e6f0ef; --muted: #8ba3a6; --line: #25363a;
+    --accent: #5cc7bd; --on-accent: #0c1517; --hover: #1b2c30; --danger: #f08a78;
+    --c-sage: #7fc39f; --c-sky: #72b2e6; --c-amber: #eab654; --c-rose: #e88797;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1517; --panel: #142023; --ink: #e6f0ef; --muted: #8ba3a6; --line: #25363a;
+  --accent: #5cc7bd; --on-accent: #0c1517; --hover: #1b2c30; --danger: #f08a78;
+  --c-sage: #7fc39f; --c-sky: #72b2e6; --c-amber: #eab654; --c-rose: #e88797;
+  color-scheme: dark;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+  font-family: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Layout: two panes on desktop, one at a time on phones */
+.app {
+  height: 100%; max-width: 1100px; margin: 0 auto; display: grid;
+  grid-template-columns: 320px 1fr; background: var(--panel);
+}
+@media (min-width: 1140px) { .app { height: calc(100% - 48px); margin-top: 24px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(8, 25, 30, .18); } }
+
+/* Sidebar */
+.side { display: flex; flex-direction: column; min-height: 0; border-right: 1px solid var(--line); }
+.side-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 18px 10px; }
+h1 { margin: 0; font-family: "Newsreader", Georgia, serif; font-size: 1.7rem; font-weight: 600; letter-spacing: -0.02em; }
+.new {
+  border: 0; border-radius: 999px; background: var(--accent); color: var(--on-accent);
+  padding: 8px 16px; font-weight: 700; font-size: .9rem;
+}
+.search { padding: 0 18px 12px; }
+.search input {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--bg);
+}
+.count { padding: 0 18px 8px; color: var(--muted); font-size: .8rem; }
+.list { list-style: none; margin: 0; padding: 0 8px 12px; overflow-y: auto; flex: 1; }
+.item {
+  display: block; width: 100%; text-align: left; border: 0; background: none;
+  padding: 12px 12px 12px 14px; margin-bottom: 2px; border-radius: 10px;
+  border-left: 4px solid transparent;
+}
+.item:hover { background: var(--hover); }
+.item.active { background: var(--hover); box-shadow: inset 0 0 0 1px var(--line); }
+.item[data-color="sage"] { border-left-color: var(--c-sage); }
+.item[data-color="sky"] { border-left-color: var(--c-sky); }
+.item[data-color="amber"] { border-left-color: var(--c-amber); }
+.item[data-color="rose"] { border-left-color: var(--c-rose); }
+.item .top { display: flex; justify-content: space-between; gap: 8px; }
+.item strong { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.item time { color: var(--muted); font-size: .78rem; white-space: nowrap; }
+.item p { margin: 3px 0 0; color: var(--muted); font-size: .88rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.none { padding: 24px 12px; text-align: center; color: var(--muted); font-size: .9rem; }
+
+/* Editor */
+.editor { display: flex; flex-direction: column; min-height: 0; min-width: 0; }
+.bar { display: flex; align-items: center; gap: 6px; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+.bar .spacer { flex: 1; }
+.icon {
+  border: 1px solid transparent; background: none; border-radius: 8px; padding: 6px 10px;
+  color: var(--muted); font-size: .88rem;
+}
+.icon:hover { background: var(--hover); color: var(--ink); }
+.icon[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); font-weight: 700; }
+.icon.del:hover { color: var(--danger); }
+.back { display: none; }
+.swatches { display: flex; gap: 8px; margin-right: 8px; }
+.sw {
+  width: 20px; height: 20px; border-radius: 50%; padding: 0; border: 2px solid var(--line);
+  background: var(--bg);
+}
+.sw[data-c="sage"] { background: var(--c-sage); } .sw[data-c="sky"] { background: var(--c-sky); }
+.sw[data-c="amber"] { background: var(--c-amber); } .sw[data-c="rose"] { background: var(--c-rose); }
+.sw[aria-pressed="true"] { border-color: var(--ink); transform: scale(1.15); }
+.paper { flex: 1; display: flex; flex-direction: column; min-height: 0; padding: 28px 36px 12px; }
+#title {
+  border: 0; background: none; width: 100%; padding: 0 0 12px;
+  font-family: "Newsreader", Georgia, serif; font-size: clamp(1.6rem, 5vw, 2.3rem); font-weight: 600; letter-spacing: -0.02em;
+}
+#body {
+  flex: 1; border: 0; background: none; resize: none; width: 100%; padding: 0;
+  font-family: "Newsreader", Georgia, serif; font-size: 1.15rem; line-height: 1.75;
+}
+#title::placeholder, #body::placeholder { color: var(--muted); opacity: .7; }
+.meta { padding: 10px 36px 16px; color: var(--muted); font-size: .8rem; display: flex; justify-content: space-between; }
+.empty { flex: 1; display: none; place-content: center; text-align: center; padding: 24px; color: var(--muted); }
+.empty h2 { font-family: "Newsreader", Georgia, serif; color: var(--ink); margin: 0 0 6px; }
+.editor.is-empty .bar, .editor.is-empty .paper, .editor.is-empty .meta { display: none; }
+.editor.is-empty .empty { display: grid; }
+
+/* Undo toast */
+.toast {
+  position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); translate: -50% 0;
+  display: none; align-items: center; gap: 14px; padding: 10px 14px 10px 18px;
+  background: var(--ink); color: var(--bg); border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, .25); z-index: 10;
+}
+.toast.show { display: flex; }
+.toast button { border: 0; background: none; color: inherit; font-weight: 700; text-decoration: underline; }
+
+@media (max-width: 760px) {
+  .app { grid-template-columns: 1fr; }
+  .app .editor { display: none; }
+  .app.editing .editor { display: flex; }
+  .app.editing .side { display: none; }
+  .back { display: inline-block; }
+  .paper { padding: 20px 20px 8px; }
+  .meta { padding: 8px 20px 14px; }
+  .bar { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HTML ========== -->
+<div class="app" id="app">
+  <aside class="side">
+    <div class="side-head">
+      <h1>Notes</h1>
+      <button type="button" class="new" id="newBtn">+ New note</button>
+    </div>
+    <div class="search"><input id="search" type="search" placeholder="Search notes" aria-label="Search notes" autocomplete="off"></div>
+    <div class="count" id="count"></div>
+    <ul class="list" id="list"></ul>
+  </aside>
+
+  <section class="editor" id="editor">
+    <div class="bar">
+      <button type="button" class="icon back" id="backBtn">‹ Notes</button>
+      <div class="swatches" id="swatches" role="group" aria-label="Note color">
+        <button type="button" class="sw" data-c="none" aria-label="No color" aria-pressed="true"></button>
+        <button type="button" class="sw" data-c="sage" aria-label="Sage" aria-pressed="false"></button>
+        <button type="button" class="sw" data-c="sky" aria-label="Sky" aria-pressed="false"></button>
+        <button type="button" class="sw" data-c="amber" aria-label="Amber" aria-pressed="false"></button>
+        <button type="button" class="sw" data-c="rose" aria-label="Rose" aria-pressed="false"></button>
+      </div>
+      <span class="spacer"></span>
+      <button type="button" class="icon" id="pinBtn" aria-pressed="false">Pin</button>
+      <button type="button" class="icon del" id="delBtn">Delete</button>
+    </div>
+    <div class="paper">
+      <input id="title" placeholder="Untitled" maxlength="100" autocomplete="off" aria-label="Note title">
+      <textarea id="body" placeholder="Start writing…" aria-label="Note text"></textarea>
+    </div>
+    <div class="meta"><span id="words"></span><span id="saved"></span></div>
+    <div class="empty">
+      <div><h2>No note selected</h2><p>Create a note to start writing.</p></div>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status"><span>Note deleted</span><button type="button" id="undoBtn">Undo</button></div>
+
+<script>
+/* ========== JavaScript ========== */
+
+// 1. State
+const KEY = "quill-notes-v1";
+let notes = [];          // each note: { id, title, body, pinned, color, updated }
+let activeId = null;     // which note is open in the editor
+let query = "";
+let lastDeleted = null;  // remembered so Undo can bring it back
+let toastTimer = null;
+
+const $ = (id) => document.getElementById(id);
+
+// 2. Load and save (localStorage)
+function load() {
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (raw !== null) { notes = JSON.parse(raw) || []; return; }
+  } catch (e) {}
+  // First visit: add a welcome note
+  notes = [{
+    id: Date.now(), pinned: true, color: "sage", updated: Date.now(),
+    title: "Welcome to Quill Notes",
+    body: "Everything you write is saved automatically in this browser.\n\nTry these:\n• Pin a note to keep it at the top\n• Pick a color to tag it\n• Search by title or text\n• Delete a note, then tap Undo"
+  }];
+  save();
+}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(notes)); } catch (e) {} }
+
+// 3. Helpers
+const getNote = (id) => notes.find((n) => n.id === id);
+function sorted() {
+  return notes.slice().sort((a, b) => (b.pinned - a.pinned) || (b.updated - a.updated));
+}
+function visible() {
+  const q = query.trim().toLowerCase();
+  return sorted().filter((n) => !q || (n.title + " " + n.body).toLowerCase().includes(q));
+}
+function shortDate(ts) {
+  const d = new Date(ts), now = new Date();
+  return d.toDateString() === now.toDateString()
+    ? d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
+    : d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+}
+
+// 4. Draw the list of notes (sidebar)
+function renderList() {
+  const list = $("list");
+  list.innerHTML = "";
+  const items = visible();
+  $("count").textContent = notes.length + (notes.length === 1 ? " note" : " notes");
+
+  if (!items.length) {
+    const li = document.createElement("li");
+    li.className = "none";
+    li.textContent = query ? "No notes match your search." : "No notes yet. Tap “New note”.";
+    list.appendChild(li);
+    return;
+  }
+  items.forEach((n) => {
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "item" + (n.id === activeId ? " active" : "");
+    btn.dataset.color = n.color;
+
+    const top = document.createElement("div");
+    top.className = "top";
+    const title = document.createElement("strong");
+    title.textContent = (n.pinned ? "📌 " : "") + (n.title || "Untitled");
+    const time = document.createElement("time");
+    time.textContent = shortDate(n.updated);
+    top.append(title, time);
+
+    const preview = document.createElement("p");
+    preview.textContent = n.body.replace(/\s+/g, " ").trim() || "No text yet";
+
+    btn.append(top, preview);
+    btn.addEventListener("click", () => openNote(n.id, true));
+    li.appendChild(btn);
+    list.appendChild(li);
+  });
+}
+
+// 5. Show one note in the editor
+function openNote(id, showEditor) {
+  activeId = id;
+  const n = getNote(id);
+  $("editor").classList.toggle("is-empty", !n);
+  if (n) {
+    $("title").value = n.title;
+    $("body").value = n.body;
+    $("pinBtn").setAttribute("aria-pressed", String(n.pinned));
+    $("pinBtn").textContent = n.pinned ? "Pinned" : "Pin";
+    document.querySelectorAll(".sw").forEach((s) => s.setAttribute("aria-pressed", String(s.dataset.c === n.color)));
+    updateMeta(n, false);
+  }
+  if (showEditor) $("app").classList.add("editing");   // on phones: switch to the editor view
+  renderList();
+}
+function updateMeta(n, justSaved) {
+  const words = n.body.trim() ? n.body.trim().split(/\s+/).length : 0;
+  $("words").textContent = words + (words === 1 ? " word" : " words");
+  $("saved").textContent = justSaved ? "Saved" : "Edited " + shortDate(n.updated);
+}
+
+// 6. Create a note
+function newNote() {
+  const n = { id: Date.now(), title: "", body: "", pinned: false, color: "none", updated: Date.now() };
+  notes.push(n);
+  query = ""; $("search").value = "";
+  save();
+  openNote(n.id, true);
+  $("title").focus();
+}
+
+// 7. Auto-save while typing
+function onType() {
+  const n = getNote(activeId);
+  if (!n) return;
+  n.title = $("title").value;
+  n.body = $("body").value;
+  n.updated = Date.now();
+  save();
+  updateMeta(n, true);
+  renderList();
+}
+$("title").addEventListener("input", onType);
+$("body").addEventListener("input", onType);
+
+// 8. Pin and color
+$("pinBtn").addEventListener("click", () => {
+  const n = getNote(activeId);
+  if (!n) return;
+  n.pinned = !n.pinned;
+  save(); openNote(n.id, false);
+});
+$("swatches").addEventListener("click", (e) => {
+  const sw = e.target.closest(".sw");
+  const n = getNote(activeId);
+  if (!sw || !n) return;
+  n.color = sw.dataset.c;
+  save(); openNote(n.id, false);
+});
+
+// 9. Delete with Undo
+function showToast() {
+  $("toast").classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => $("toast").classList.remove("show"), 6000);
+}
+$("delBtn").addEventListener("click", () => {
+  const n = getNote(activeId);
+  if (!n) return;
+  lastDeleted = n;
+  notes = notes.filter((x) => x.id !== n.id);
+  save();
+  const next = sorted()[0];
+  openNote(next ? next.id : null, false);
+  $("app").classList.remove("editing");
+  showToast();
+});
+$("undoBtn").addEventListener("click", () => {
+  if (!lastDeleted) return;
+  notes.push(lastDeleted);
+  save();
+  openNote(lastDeleted.id, false);
+  lastDeleted = null;
+  $("toast").classList.remove("show");
+});
+
+// 10. Other buttons
+$("newBtn").addEventListener("click", newNote);
+$("backBtn").addEventListener("click", () => $("app").classList.remove("editing"));
+$("search").addEventListener("input", (e) => { query = e.target.value; renderList(); });
+
+// Start
+load();
+const first = sorted()[0];
+openNote(first ? first.id : null, false);   // don't force the editor open on phones
+</script>
+</body>
+</html>
