@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cosmic Match</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap">
+<style>
+/* ========== CSS ========== */
+:root {
+  --bg: #eceaf4; --panel: #ffffff; --ink: #1b1a3a; --muted: #6a688c; --line: #d8d5ea;
+  --back-1: #2d2b66; --back-2: #1a1941; --face: #ffffff; --gold: #e0a526; --good: #1f9d6b;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e0d1f; --panel: #1a1936; --ink: #efeefb; --muted: #9a98c4; --line: #2e2c58;
+    --back-1: #3a3787; --back-2: #1f1d4d; --face: #262450; --gold: #f2bd45; --good: #4cd6a0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e0d1f; --panel: #1a1936; --ink: #efeefb; --muted: #9a98c4; --line: #2e2c58;
+  --back-1: #3a3787; --back-2: #1f1d4d; --face: #262450; --gold: #f2bd45; --good: #4cd6a0;
+  color-scheme: dark;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; color: var(--ink);
+  font-family: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 15% 0%, color-mix(in srgb, var(--back-1) 35%, transparent), transparent 45%),
+    radial-gradient(circle at 90% 100%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 40%),
+    var(--bg);
+}
+.app { max-width: 640px; margin: 0 auto; padding: 24px 16px 40px; }
+
+/* Header */
+header { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+h1 { margin: 0; font-size: clamp(1.8rem, 8vw, 2.6rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+.sub { margin: 6px 0 0; color: var(--muted); font-size: .9rem; }
+.levels { display: flex; gap: 4px; padding: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; }
+.levels button {
+  border: 0; background: none; color: var(--muted); font: inherit; font-size: .85rem;
+  padding: 7px 14px; border-radius: 999px; cursor: pointer;
+}
+.levels button[aria-pressed="true"] { background: var(--ink); color: var(--bg); font-weight: 600; }
+
+/* Stats */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr) auto; gap: 10px; margin: 20px 0; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; }
+.stat small { display: block; color: var(--muted); font-size: .75rem; }
+.stat b { font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+.restart {
+  border: 0; border-radius: 14px; padding: 0 18px; cursor: pointer; font: inherit; font-weight: 600;
+  background: var(--gold); color: #1b1a3a;
+}
+button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* Board */
+.board { display: grid; gap: 10px; grid-template-columns: repeat(var(--cols, 4), 1fr); perspective: 1000px; }
+.card { position: relative; aspect-ratio: 3 / 4; border: 0; padding: 0; background: none; cursor: pointer; }
+.inner { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .5s cubic-bezier(.3, .8, .3, 1); }
+.card.flipped .inner, .card.matched .inner { transform: rotateY(180deg); }
+.side {
+  position: absolute; inset: 0; border-radius: 14px; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  display: grid; place-items: center;
+}
+/* Back of the card: a star-field pattern drawn in pure CSS */
+.back {
+  background:
+    radial-gradient(circle at 25% 30%, rgba(255,255,255,.9) 0 1.2px, transparent 2px),
+    radial-gradient(circle at 70% 20%, rgba(255,255,255,.6) 0 1px, transparent 2px),
+    radial-gradient(circle at 60% 75%, rgba(255,255,255,.8) 0 1.4px, transparent 2px),
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,.5) 0 1px, transparent 2px),
+    linear-gradient(145deg, var(--back-1), var(--back-2));
+  border: 2px solid color-mix(in srgb, var(--gold) 70%, transparent);
+  box-shadow: 0 6px 16px rgba(10, 8, 40, .25);
+}
+.back::after { content: "✦"; color: var(--gold); font-size: clamp(1rem, 4vw, 1.6rem); opacity: .9; }
+.card:hover:not(.flipped):not(.matched) .inner { transform: translateY(-3px); }
+.front {
+  transform: rotateY(180deg); background: var(--face); border: 2px solid var(--line);
+  font-size: clamp(1.6rem, 8vw, 2.8rem); box-shadow: 0 6px 16px rgba(10, 8, 40, .18);
+}
+.board.hard .front { font-size: clamp(1.3rem, 6vw, 2.2rem); }
+.card.matched .front { border-color: var(--good); animation: glow .7s ease-out; }
+@keyframes glow { 0% { box-shadow: 0 0 0 0 var(--good); } 100% { box-shadow: 0 0 0 14px transparent; } }
+.card.wrong .front { animation: shake .35s; }
+@keyframes shake { 25% { translate: -4px 0; } 75% { translate: 4px 0; } }
+
+/* Win dialog */
+.overlay {
+  position: fixed; inset: 0; display: none; place-items: center; padding: 16px;
+  background: rgba(8, 6, 30, .6); backdrop-filter: blur(4px); z-index: 20;
+}
+.overlay.show { display: grid; }
+.modal {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 22px;
+  padding: 28px 24px; width: min(360px, 100%); text-align: center;
+  animation: pop .35s cubic-bezier(.3, 1.4, .5, 1);
+}
+@keyframes pop { from { transform: scale(.85); opacity: 0; } }
+.stars { font-size: 2rem; letter-spacing: .2em; color: var(--gold); }
+.stars .off { color: var(--line); }
+.modal h2 { margin: 6px 0 4px; font-size: 1.6rem; }
+.modal p { margin: 0 0 4px; color: var(--muted); }
+.best { color: var(--gold); font-weight: 600; min-height: 1.4em; }
+.modal .restart { margin-top: 16px; padding: 12px 24px; }
+
+@media (max-width: 420px) {
+  .stats { grid-template-columns: repeat(3, 1fr); }
+  .restart.top { grid-column: 1 / -1; padding: 12px; }
+  .board { gap: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .inner { transition: none; }
+  .card.matched .front, .card.wrong .front, .modal { animation: none; }
+}
+</style>
+</head>
+<body>
+<main class="app">
+
+  <!-- ========== HTML ========== -->
+  <header>
+    <div>
+      <h1>Cosmic Match</h1>
+      <p class="sub">Find every matching pair in as few moves as you can.</p>
+    </div>
+    <div class="levels" id="levels" role="group" aria-label="Difficulty">
+      <button type="button" data-level="easy" aria-pressed="false">Easy</button>
+      <button type="button" data-level="medium" aria-pressed="true">Medium</button>
+      <button type="button" data-level="hard" aria-pressed="false">Hard</button>
+    </div>
+  </header>
+
+  <section class="stats" aria-live="polite">
+    <div class="stat"><small>Moves</small><b id="moves">0</b></div>
+    <div class="stat"><small>Time</small><b id="time">0:00</b></div>
+    <div class="stat"><small>Best</small><b id="best">–</b></div>
+    <button type="button" class="restart top" id="restart">New game</button>
+  </section>
+
+  <section class="board" id="board" aria-label="Memory cards"></section>
+</main>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+  <div class="modal">
+    <div class="stars" id="stars" aria-hidden="true"></div>
+    <h2 id="winTitle">You did it!</h2>
+    <p id="winText"></p>
+    <p class="best" id="winBest"></p>
+    <button type="button" class="restart" id="again">Play again</button>
+  </div>
+</div>
+
+<script>
+/* ========== JavaScript ========== */
+
+// 1. Settings for each difficulty: columns and how many pairs
+const LEVELS = {
+  easy:   { cols: 4, pairs: 6 },
+  medium: { cols: 4, pairs: 8 },
+  hard:   { cols: 6, pairs: 12 }
+};
+const SYMBOLS = ["🪐", "🌙", "⭐", "☄️", "🚀", "🛸", "🌍", "🔭", "🌞", "🌌", "👽", "🛰️"];
+
+// 2. Game state
+let level = "medium";
+let first = null, second = null;   // the two cards currently flipped
+let locked = false;                // blocks clicks while two cards are being checked
+let moves = 0, matches = 0;
+let startTime = 0, timer = null;
+
+const $ = (id) => document.getElementById(id);
+
+// 3. Best scores are saved per difficulty in localStorage
+function getBests() {
+  try { return JSON.parse(localStorage.getItem("cosmic-match-best")) || {}; } catch (e) { return {}; }
+}
+function saveBest(lv, value) {
+  const bests = getBests();
+  bests[lv] = value;
+  try { localStorage.setItem("cosmic-match-best", JSON.stringify(bests)); } catch (e) {}
+}
+function showBest() {
+  const b = getBests()[level];
+  $("best").textContent = b ? b + " moves" : "–";
+}
+
+// 4. Shuffle (Fisher–Yates): swap each item with a random earlier one
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// 5. Timer
+function formatTime(s) { return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
+function startTimer() {
+  startTime = Date.now();
+  timer = setInterval(() => {
+    $("time").textContent = formatTime(Math.floor((Date.now() - startTime) / 1000));
+  }, 250);
+}
+function stopTimer() { clearInterval(timer); timer = null; }
+
+// 6. Start a new game: build the cards and put them on the board
+function newGame() {
+  stopTimer();
+  first = second = null; locked = false; moves = 0; matches = 0;
+  $("moves").textContent = "0";
+  $("time").textContent = "0:00";
+  $("overlay").classList.remove("show");
+  showBest();
+
+  const { cols, pairs } = LEVELS[level];
+  const deck = shuffle([...SYMBOLS.slice(0, pairs), ...SYMBOLS.slice(0, pairs)]);
+
+  const board = $("board");
+  board.innerHTML = "";
+  board.style.setProperty("--cols", cols);
+  board.className = "board " + level;
+
+  deck.forEach((symbol) => {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "card";
+    card.dataset.symbol = symbol;
+    card.setAttribute("aria-label", "Hidden card");
+    card.innerHTML = '<div class="inner"><div class="side back"></div><div class="side front"></div></div>';
+    card.querySelector(".front").textContent = symbol;
+    card.addEventListener("click", () => flip(card));
+    board.appendChild(card);
+  });
+}
+
+// 7. Flip a card
+function flip(card) {
+  if (locked || card === first || card.classList.contains("matched")) return;
+  if (!timer) startTimer();                       // timer starts on the first flip
+
+  card.classList.add("flipped");
+  card.setAttribute("aria-label", "Card " + card.dataset.symbol);
+
+  if (!first) { first = card; return; }           // first card of the pair
+
+  second = card;                                  // second card: check the pair
+  moves++;
+  $("moves").textContent = moves;
+  locked = true;
+
+  if (first.dataset.symbol === second.dataset.symbol) {
+    first.classList.add("matched");
+    second.classList.add("matched");
+    first = second = null;
+    locked = false;
+    if (++matches === LEVELS[level].pairs) setTimeout(win, 700);
+  } else {
+    first.classList.add("wrong");
+    second.classList.add("wrong");
+    setTimeout(() => {
+      [first, second].forEach((c) => {
+        c.classList.remove("flipped", "wrong");
+        c.setAttribute("aria-label", "Hidden card");
+      });
+      first = second = null;
+      locked = false;
+    }, 850);
+  }
+}
+
+// 8. Win: stop the timer, give 1–3 stars, save the best score
+function win() {
+  stopTimer();
+  const seconds = Math.floor((Date.now() - startTime) / 1000);
+  const pairs = LEVELS[level].pairs;
+  const stars = moves <= pairs * 1.5 ? 3 : moves <= pairs * 2.2 ? 2 : 1;
+
+  $("stars").innerHTML = [1, 2, 3].map((n) => '<span class="' + (n > stars ? "off" : "") + '">★</span>').join("");
+  $("winText").textContent = moves + " moves in " + formatTime(seconds) + ".";
+
+  const best = getBests()[level];
+  if (!best || moves < best) {
+    saveBest(level, moves);
+    $("winBest").textContent = best ? "New personal best!" : "First best score saved.";
+  } else {
+    $("winBest").textContent = "Your best is " + best + " moves.";
+  }
+  showBest();
+  $("overlay").classList.add("show");
+  $("again").focus();
+}
+
+// 9. Buttons
+$("restart").addEventListener("click", newGame);
+$("again").addEventListener("click", newGame);
+$("levels").addEventListener("click", (e) => {
+  const btn = e.target.closest("button");
+  if (!btn) return;
+  level = btn.dataset.level;
+  document.querySelectorAll("#levels button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+  newGame();
+});
+
+newGame();
+</script>
+</body>
+</html>

@@ -81,6 +81,7 @@ Below is every project in this repository, grouped by category. Click a project 
 | Project | Description | Key Features |
 |---------|-------------|--------------|
 | [**Chess**](./Chess) | Fianchetto — play chess in the browser. | Board UI, move logic, two-player gameplay |
+| [**Cosmic_Math**](./Cosmic_Math) | Cosmic Match — a cosmic matching game. | Match gameplay, space theme |
 | [**Tic-Tac-Toe**](./Tic-Tac-Toe) | AR Tic Tac Toe — classic Xs and Os. | Two-player mode, win detection, reset |
 
 ### 🏥 Health
