@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+.netlify/
+netlify/
+netlify.toml
+.env.example
+node_modules/

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLX Pakistan | Buy and Sell for free anywhere in Pakistan</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="logo" aria-label="OLX Home">
+      <span class="logo-badge">OLX</span>
+    </a>
+
+    <button class="location-btn" type="button">
+      <svg viewBox="0 0 24 24" class="icon"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 7 11.5 7.3 11.7.2.2.5.3.7.3s.5-.1.7-.3C13 21.5 20 15.4 20 10c0-4.4-3.6-8-8-8zm0 11c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z"/></svg>
+      <span>All Pakistan</span>
+      <svg viewBox="0 0 24 24" class="icon chevron"><path d="M7 10l5 5 5-5z"/></svg>
+    </button>
+
+    <form class="search-bar" role="search">
+      <select class="search-category" aria-label="Category">
+        <option>All Categories</option>
+        <option>Mobile Phones</option>
+        <option>Vehicles</option>
+        <option>Property</option>
+        <option>Bikes</option>
+        <option>Jobs</option>
+      </select>
+      <span class="search-divider"></span>
+      <input type="text" placeholder="Find Cars, Mobile Phones and more..." aria-label="Search">
+      <button type="submit" class="search-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" class="icon"><path d="M15.5 14h-.8l-.3-.3c1-1.1 1.6-2.6 1.6-4.2C16 5.9 13.1 3 9.5 3S3 5.9 3 9.5 5.9 16 9.5 16c1.6 0 3.1-.6 4.2-1.6l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0C7 14 5 12 5 9.5S7 5 9.5 5 14 7 14 9.5 12 14 9.5 14z"/></svg>
+      </button>
+    </form>
+
+    <div class="topbar-actions">
+      <a href="#" class="lang-toggle">اردو</a>
+      <a href="#" class="login-link">
+        <svg viewBox="0 0 24 24" class="icon"><path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z"/></svg>
+        <span>Login</span>
+      </a>
+      <a href="#" class="sell-btn">
+        <svg viewBox="0 0 24 24" class="icon"><path d="M12 5v14M5 12h14"/></svg>
+        SELL
+      </a>
+    </div>
+  </div>
+
+  <nav class="category-nav" aria-label="Categories">
+    <div class="category-nav-inner">
+      <a href="#" class="cat-tab active">Motors</a>
+      <a href="#" class="cat-tab">Property</a>
+      <a href="#" class="cat-tab-sep"></a>
+      <a href="#" class="cat-tab">Mobiles</a>
+      <a href="#" class="cat-tab">Vehicles</a>
+      <a href="#" class="cat-tab">Property for Sale</a>
+      <a href="#" class="cat-tab">Property for Rent</a>
+      <a href="#" class="cat-tab">Electronics &amp; Home Appliances</a>
+      <a href="#" class="cat-tab">Bikes</a>
+      <a href="#" class="cat-tab">Business, Industrial &amp; Agriculture</a>
+      <a href="#" class="cat-tab">Services</a>
+      <a href="#" class="cat-tab">Jobs</a>
+      <a href="#" class="cat-tab">Animals</a>
+      <a href="#" class="cat-tab">Furniture &amp; Home Decor</a>
+      <a href="#" class="cat-tab">Fashion &amp; Beauty</a>
+      <a href="#" class="cat-tab">Books, Sports &amp; Hobbies</a>
+      <a href="#" class="cat-tab">Kids</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ CATEGORY TILES ============ -->
+  <section class="section categories-section">
+    <div class="container">
+      <div class="cat-grid">
+
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 3v13h10V5H7zm5 14.2a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg></span>
+          <span class="cat-label">Mobile Phones</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M5 17h14v-1.6l-1.6-4.9a2 2 0 0 0-1.9-1.5H8.5a2 2 0 0 0-1.9 1.5L5 15.4V17zm2.5-6h9l1 3h-11l1-3zM6.5 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm11 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg></span>
+          <span class="cat-label">Vehicles</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M12 3 2 11h3v9h6v-6h2v6h6v-9h3L12 3z"/></svg></span>
+          <span class="cat-label">Property for Sale</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-6 8 6v12h-6v-6H10v6H4z"/></svg></span>
+          <span class="cat-label">Property for Rent</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H4V5zm2 13h12v2H6v-2zM9 8h6v2H9V8z"/></svg></span>
+          <span class="cat-label">Electronics &amp; Appliances</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M6.5 16a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm11 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM7 15l1.6-6.3H6V7h4l.6 2H17l-2 7H8.8L7 15z"/></svg></span>
+          <span class="cat-label">Bikes</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M4 8h16v11H4V8zm4-4h8v3H8V4zm2 8h4v2h-4v-2z"/></svg></span>
+          <span class="cat-label">Business &amp; Industrial</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M10.6 3.4 12 2l1.4 1.4-1.4 1.4-1.4-1.4zM4 12l7-7 2 2-7 7-2-2zm12 5.5c.9-2 2.9-3.5 5-3.5-1 2-1 4.5 1 6.5-3.5 1.5-6.5-1-6-3zM3 21l6-2 8-8-4-4-8 8-2 6z"/></svg></span>
+          <span class="cat-label">Services</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M9 3h6v3h5v4H4V6h5V3zm-5 8h16v10H4V11zm4 3v4h2v-4H8zm4 0v4h2v-4h-2z"/></svg></span>
+          <span class="cat-label">Jobs</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM3 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm18 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm-9 7c-3 0-6-1.6-6-4.5S9 12 12 12s6 2.6 6 4.5S15 21 12 21z"/></svg></span>
+          <span class="cat-label">Animals</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M4 13h16v6H4v-6zm0-2v-1a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v1H4zm1 8v2h2v-2H5zm12 0v2h2v-2h-2z"/></svg></span>
+          <span class="cat-label">Furniture &amp; Home Decor</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M9 3h6l1 3h3v2h-2l-1 13H8L7 8H5V6h3l1-3zm1 5v9h4V8h-4z"/></svg></span>
+          <span class="cat-label">Fashion &amp; Beauty</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M4 4h9a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3V4zm11 3v13h4a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-4z"/></svg></span>
+          <span class="cat-label">Books, Sports &amp; Hobbies</span>
+        </a>
+        <a class="cat-tile" href="#">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 1 3 3c0 1-.5 1.8-1.3 2.4L15 9h4v2h-3.2l1 8H7.2l1-8H5V9h4l1.3-1.6C9.5 6.8 9 6 9 5a3 3 0 0 1 3-3z"/></svg></span>
+          <span class="cat-label">Kids</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LISTING SECTIONS ============ -->
+
+  <section class="section listing-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Mobile Phones</h2>
+        <a href="#" class="view-more">View more</a>
+      </div>
+      <div class="card-grid">
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-1"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 1.45 Lac</p>
+            <h3 class="ad-title">iPhone 15 Pro Max 256GB non PTA</h3>
+            <p class="ad-meta">Model Town Link Road, Lahore</p>
+            <p class="ad-time">5 days ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-2"><span class="ad-fav">&#9825;</span><span class="ad-badge">Featured</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 5.70 Lac</p>
+            <h3 class="ad-title">Apple iPhone 18 Pro Max 256GB – Silver / Burgundy, stock available</h3>
+            <p class="ad-meta">DHA Defence, Lahore</p>
+            <p class="ad-time">18 hours ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-3"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 11,900</p>
+            <h3 class="ad-title">Vivo Y500 (8/256GB) Available On Easy Installment Plan</h3>
+            <p class="ad-meta">Gulberg, Lahore</p>
+            <p class="ad-time">3 weeks ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-4"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 82,000</p>
+            <h3 class="ad-title">Google Pixel 8 8/128GB Official PTA Approved</h3>
+            <p class="ad-meta">Saddar, Rawalpindi</p>
+            <p class="ad-time">23 hours ago</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section listing-section alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Cars</h2>
+        <a href="#" class="view-more">View more</a>
+      </div>
+      <div class="card-grid">
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-5"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 17.50 Lacs</p>
+            <h3 class="ad-title">Daihatsu Esse 2010</h3>
+            <p class="ad-specs">2010 &bull; 98,000 km &bull; Petrol</p>
+            <p class="ad-meta">Nazimabad 1, Karachi</p>
+            <p class="ad-time">19 hours ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-6"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 1.10 Crore</p>
+            <h3 class="ad-title">Toyota Hilux 2020</h3>
+            <p class="ad-specs">2020 &bull; 63,000 km &bull; Diesel</p>
+            <p class="ad-meta">Kirani Road, Quetta</p>
+            <p class="ad-time">3 days ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-7"><span class="ad-fav">&#9825;</span><span class="ad-badge">Featured</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 65 Lacs</p>
+            <h3 class="ad-title">Toyota Altis Grande 2022</h3>
+            <p class="ad-specs">2022 &bull; 67,000 km &bull; Petrol</p>
+            <p class="ad-meta">Garden West, Karachi</p>
+            <p class="ad-time">5 days ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-8"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 6.65 Lac</p>
+            <h3 class="ad-title">Suzuki Cultus 2006, good condition, family use car</h3>
+            <p class="ad-specs">2006 &bull; New &bull; Petrol</p>
+            <p class="ad-meta">Farid Town, Gujranwala</p>
+            <p class="ad-time">1 week ago</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section listing-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Bikes &amp; Motorcycles</h2>
+        <a href="#" class="view-more">View more</a>
+      </div>
+      <div class="card-grid">
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-9"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 4 Lac</p>
+            <h3 class="ad-title">Yamaha YBR 125G, Model 2024, Total Genuine, Urgent Sale</h3>
+            <p class="ad-meta">Gulberg, Lahore</p>
+            <p class="ad-time">1 week ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-10"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 6.85 Lac</p>
+            <h3 class="ad-title">New Asia Carrera 250cc 2026 – Premium Adventure Tourer</h3>
+            <p class="ad-meta">Bhara Kahu, Islamabad</p>
+            <p class="ad-time">5 days ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-11"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 2.80 Lac</p>
+            <h3 class="ad-title">Honda CG 125 2026</h3>
+            <p class="ad-meta">Farooqabad, Sheikhupura</p>
+            <p class="ad-time">5 days ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-12"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 8.25 Lac</p>
+            <h3 class="ad-title">Benelli TNT 25 (2018) – Mint Condition, Low Mileage</h3>
+            <p class="ad-meta">Ghausia Colony, Lahore</p>
+            <p class="ad-time">2 weeks ago</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section listing-section alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Houses</h2>
+        <a href="#" class="view-more">View more</a>
+      </div>
+      <div class="card-grid">
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-13"><span class="ad-fav">&#9825;</span><span class="ad-badge">Featured</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 17.50 Crore</p>
+            <h3 class="ad-title">56.5 Marla Sami Furnished House For Sale, Valencia Town</h3>
+            <p class="ad-specs">6 Beds &bull; 7 Baths &bull; 54 Marla</p>
+            <p class="ad-meta">Valencia Town, Lahore</p>
+            <p class="ad-time">1 week ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-14"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 60 Lacs</p>
+            <h3 class="ad-title">Ground Floor Portion For Sale</h3>
+            <p class="ad-specs">2 Beds &bull; 2 Baths &bull; 120 SQFT</p>
+            <p class="ad-meta">Gulistan-e-Jauhar Block 10, Karachi</p>
+            <p class="ad-time">3 weeks ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-15"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 5 Crore</p>
+            <h3 class="ad-title">Urgent Sale, Investor Rate Deal, 10 Marla House, Diamond City</h3>
+            <p class="ad-specs">5 Beds &bull; 7 Baths &bull; 10 Marla</p>
+            <p class="ad-meta">Diamond City, Sialkot</p>
+            <p class="ad-time">1 week ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-16"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 18.50 Crore</p>
+            <h3 class="ad-title">Luxury House For Sale In Gulshan-e-Jamal</h3>
+            <p class="ad-specs">6 Beds &bull; 6 Baths &bull; 550 SQYD</p>
+            <p class="ad-meta">Gulshan-e-Jamal Block B, Karachi</p>
+            <p class="ad-time">4 days ago</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section listing-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Land &amp; Plots</h2>
+        <a href="#" class="view-more">View more</a>
+      </div>
+      <div class="card-grid">
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-17"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 12 Lacs</p>
+            <h3 class="ad-title">Apna Cattle Farm Sirf 12 Lakh Mein!</h3>
+            <p class="ad-meta">Al-Ghafoor Green City, Karachi</p>
+            <p class="ad-time">19 hours ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-18"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 30 Lacs</p>
+            <h3 class="ad-title">Cheap Land For Agriculture And Farmhouse</h3>
+            <p class="ad-meta">Jia Baga Road, Lahore</p>
+            <p class="ad-time">2 weeks ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-19"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 2.25 Crore</p>
+            <h3 class="ad-title">Naya Nazimabad Block M, Extra Land Corner Park Face Plot</h3>
+            <p class="ad-meta">Naya Nazimabad, Karachi</p>
+            <p class="ad-time">2 days ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-thumb ph-20"><span class="ad-fav">&#9825;</span></div>
+          <div class="ad-body">
+            <p class="ad-price">Rs 28.75 Lacs</p>
+            <h3 class="ad-title">Prime Location 5 Marla Plot, AlGhani Garden Phase 6</h3>
+            <p class="ad-meta">GT Road, Lahore</p>
+            <p class="ad-time">1 week ago</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section listing-section alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Jobs</h2>
+        <a href="#" class="view-more">View more</a>
+      </div>
+      <div class="card-grid">
+
+        <article class="ad-card job-card">
+          <div class="ad-body">
+            <p class="ad-price">Online Jobs, Assignment Writing, Data Entry, Typing Job, Part Time</p>
+            <p class="ad-meta">Gulberg, Lahore</p>
+            <p class="ad-time">3 days ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card job-card">
+          <div class="ad-body">
+            <p class="ad-price">Call Center Jobs, Sales Agents Required, Sales Jobs (Night Shift)</p>
+            <p class="ad-meta">DHA Phase 8, Lahore</p>
+            <p class="ad-time">15 hours ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card job-card">
+          <div class="ad-body">
+            <p class="ad-price">Call Center Job For Female Only</p>
+            <p class="ad-meta">H-13, Islamabad</p>
+            <p class="ad-time">5 days ago</p>
+          </div>
+        </article>
+
+        <article class="ad-card job-card">
+          <div class="ad-body">
+            <p class="ad-price">Home Base, Assignment Work, Part Time Job, Online Writing Job</p>
+            <p class="ad-meta">University Road, Peshawar</p>
+            <p class="ad-time">18 hours ago</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APP BANNER ============ -->
+  <section class="app-banner">
+    <div class="container app-banner-inner">
+      <div class="app-banner-text">
+        <h2>Find amazing deals on the go.</h2>
+        <p>Download OLX app now!</p>
+        <div class="app-badges">
+          <a href="#" class="store-badge">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M3 3v18l14-9L3 3z"/></svg>
+            Google Play
+          </a>
+          <a href="#" class="store-badge">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M16.5 2c.1 1.2-.4 2.4-1.1 3.3-.7.9-1.9 1.6-3 1.5-.1-1.2.5-2.4 1.2-3.2.8-.9 2.1-1.6 2.9-1.6zM20 17.2c-.6 1.3-.9 1.9-1.7 3-1.1 1.6-2.6 3.6-4.5 3.6-1.7 0-2.1-1.1-4.4-1.1-2.3 0-2.8 1.1-4.5 1.1-1.9 0-3.3-1.8-4.4-3.4C-1.8 16.8-1 9.6 3 7.4c1.4-.8 2.9-.9 4.3-.3 1 .4 1.8.6 2.5.6.6 0 1.6-.3 2.7-.7 1.6-.6 3.2-.4 4.4.3-2.9 1.7-3.4 5.6 0 7.4-.4 1-.6 1.4-.9 2.5z"/></svg>
+            App Store
+          </a>
+        </div>
+      </div>
+      <div class="app-banner-art" aria-hidden="true">
+        <div class="phone-mock">
+          <div class="phone-notch"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+
+    <div class="footer-col">
+      <h4>Popular Categories</h4>
+      <ul>
+        <li><a href="#">Cars</a></li>
+        <li><a href="#">Flats for rent</a></li>
+        <li><a href="#">Mobile Phones</a></li>
+        <li><a href="#">Jobs</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Trending Searches</h4>
+      <ul>
+        <li><a href="#">Bikes</a></li>
+        <li><a href="#">Watches</a></li>
+        <li><a href="#">Books</a></li>
+        <li><a href="#">Dogs</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <ul>
+        <li><a href="#">OLX Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">OLX for Businesses</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>OLX</h4>
+      <ul>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Sitemap</a></li>
+        <li><a href="#">Terms of use</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <div class="social-row">
+        <a href="#" class="social-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.9.2-1.5 1.5-1.5h1.6V4.3C16.3 4.2 15.3 4 14.2 4c-2.3 0-3.9 1.4-3.9 4v2.5H7.8v3h2.5V21h3.2z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 8.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zM4 4h16v16H4V4zm12.5 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="X">
+          <svg viewBox="0 0 24 24"><path d="M4 4l7 8.6L4.4 20h2.3l5.6-6.2L16.8 20H20l-7.4-9L19.7 4h-2.3l-5.2 5.7L8 4H4z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M21.6 7.4c-.3-1-1-1.7-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.4c-1 .3-1.7 1-2 2C2 9.1 2 12 2 12s0 2.9.4 4.6c.3 1 1 1.7 2 2C6.1 19 12 19 12 19s5.9 0 7.6-.4c1-.3 1.7-1 2-2 .4-1.7.4-4.6.4-4.6s0-2.9-.4-4.6zM10 15V9l5 3-5 3z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span class="footer-logo">OLX</span>
+      <p>Classifieds in Pakistan. &copy; 2006 &ndash; 2026 OLX</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
