@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Expense Tracker</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&display=swap">
+<style>
+/* ========== CSS: colors are variables so light/dark mode is easy ========== */
+:root {
+  --bg: #eef2f0; --surface: #ffffff; --ink: #14211c; --muted: #5b6b64;
+  --line: #d5ded9; --income: #0e7c5a; --expense: #c2412d;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101715; --surface: #18221f; --ink: #e8f0ec; --muted: #93a59d;
+    --line: #2a3833; --income: #4cc9a0; --expense: #f0866f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101715; --surface: #18221f; --ink: #e8f0ec; --muted: #93a59d;
+  --line: #2a3833; --income: #4cc9a0; --expense: #f0866f;
+  color-scheme: dark;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+.app { max-width: 560px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 1rem; font-weight: 500; color: var(--muted); margin: 0 0 4px; }
+
+/* Balance: the one big thing on the page */
+.balance { font-size: clamp(2.4rem, 12vw, 3.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+.balance.negative { color: var(--expense); }
+.bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; background: var(--line); margin: 16px 0 10px; }
+.bar span { display: block; transition: width .3s; }
+#barIncome { background: var(--income); }
+#barExpense { background: var(--expense); }
+.totals { display: flex; justify-content: space-between; font-size: .95rem; }
+.totals b { display: block; font-size: 1.15rem; }
+.in b { color: var(--income); }
+.out { text-align: right; }
+.out b { color: var(--expense); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-top: 24px; }
+h2 { font-size: 1.05rem; margin: 0 0 12px; }
+
+/* Form */
+form { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+form .full { grid-column: 1 / -1; }
+label { font-size: .85rem; color: var(--muted); display: block; margin-bottom: 3px; }
+input, select, button { font: inherit; }
+input, select {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg); color: var(--ink);
+}
+input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--income); outline-offset: 2px; }
+.type { display: flex; gap: 8px; }
+.type label { flex: 1; margin: 0; cursor: pointer; }
+.type input { position: absolute; opacity: 0; width: 0; }
+.type span {
+  display: block; text-align: center; padding: 10px; border: 1px solid var(--line);
+  border-radius: 8px; color: var(--ink); background: var(--bg);
+}
+.type input:checked + span { color: #fff; border-color: transparent; }
+.type input[value="income"]:checked + span { background: var(--income); }
+.type input[value="expense"]:checked + span { background: var(--expense); }
+.type input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
+.add {
+  padding: 12px; border: 0; border-radius: 8px; cursor: pointer; font-weight: 700;
+  background: var(--ink); color: var(--bg);
+}
+.error { color: var(--expense); font-size: .85rem; min-height: 1.2em; margin: 0; }
+
+/* List */
+.head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.filters { display: flex; gap: 4px; }
+.filters button {
+  border: 1px solid var(--line); background: none; color: var(--muted);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer; font-size: .85rem;
+}
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+ul { list-style: none; margin: 0; padding: 0; }
+li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+li:first-child { border-top: 0; }
+.info { flex: 1; min-width: 0; }
+.info strong { display: block; overflow-wrap: anywhere; }
+.info small { color: var(--muted); }
+.amt { font-weight: 700; white-space: nowrap; }
+.amt.income { color: var(--income); }
+.amt.expense { color: var(--expense); }
+.del { background: none; border: 0; color: var(--muted); font-size: 1.3rem; cursor: pointer; padding: 4px 8px; border-radius: 6px; }
+.del:hover { color: var(--expense); }
+.empty { color: var(--muted); text-align: center; padding: 16px 0 4px; }
+.foot { text-align: center; margin-top: 16px; }
+.foot button { background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; font-size: .85rem; }
+</style>
+</head>
+<body>
+<main class="app">
+
+  <!-- ========== HTML: structure ========== -->
+  <h1>Current balance</h1>
+  <div class="balance" id="balance">Rs 0</div>
+  <div class="bar" aria-hidden="true"><span id="barIncome"></span><span id="barExpense"></span></div>
+  <div class="totals">
+    <div class="in">Income<b id="totalIncome">Rs 0</b></div>
+    <div class="out">Expenses<b id="totalExpense">Rs 0</b></div>
+  </div>
+
+  <section class="card">
+    <h2>Add a transaction</h2>
+    <form id="form" novalidate>
+      <div class="full type" role="radiogroup" aria-label="Type">
+        <label><input type="radio" name="type" value="expense" checked><span>Expense</span></label>
+        <label><input type="radio" name="type" value="income"><span>Income</span></label>
+      </div>
+      <div class="full">
+        <label for="title">What was it for?</label>
+        <input id="title" maxlength="60" placeholder="e.g. Rickshaw fare" autocomplete="off">
+      </div>
+      <div>
+        <label for="amount">Amount (Rs)</label>
+        <input id="amount" type="number" min="1" step="any" inputmode="decimal" placeholder="500">
+      </div>
+      <div>
+        <label for="category">Category</label>
+        <select id="category">
+          <option>Food</option><option>Transport</option><option>Bills</option>
+          <option>Shopping</option><option>Salary</option><option>Other</option>
+        </select>
+      </div>
+      <p class="error full" id="error" role="alert"></p>
+      <button class="add full" type="submit">Add transaction</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <div class="head">
+      <h2>History</h2>
+      <div class="filters" id="filters">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="income" aria-pressed="false">Income</button>
+        <button type="button" data-filter="expense" aria-pressed="false">Expenses</button>
+      </div>
+    </div>
+    <ul id="list"></ul>
+  </section>
+
+  <div class="foot"><button type="button" id="clear">Clear all transactions</button></div>
+</main>
+
+<script>
+/* ========== JavaScript: the logic ========== */
+
+// 1. Data: an array of transaction objects. We load it from localStorage if saved.
+let transactions = [];
+let filter = "all";
+const KEY = "expense-tracker-v1";
+
+try {
+  transactions = JSON.parse(localStorage.getItem(KEY)) || [];
+} catch (e) {
+  transactions = []; // storage unavailable or broken: start empty
+}
+
+// 2. Save to the browser so data stays after refresh
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(transactions)); } catch (e) {}
+}
+
+// 3. Helpers
+const $ = (id) => document.getElementById(id);
+const money = (n) => "Rs " + Math.abs(n).toLocaleString("en-PK", { maximumFractionDigits: 2 });
+
+// 4. Draw everything on screen from the data
+function render() {
+  const income = transactions.filter(t => t.type === "income").reduce((s, t) => s + t.amount, 0);
+  const expense = transactions.filter(t => t.type === "expense").reduce((s, t) => s + t.amount, 0);
+  const balance = income - expense;
+
+  $("balance").textContent = (balance < 0 ? "−" : "") + money(balance);
+  $("balance").classList.toggle("negative", balance < 0);
+  $("totalIncome").textContent = money(income);
+  $("totalExpense").textContent = money(expense);
+
+  // Income vs expense bar
+  const total = income + expense;
+  $("barIncome").style.width = total ? (income / total) * 100 + "%" : "0";
+  $("barExpense").style.width = total ? (expense / total) * 100 + "%" : "0";
+
+  // History list (newest first, respecting the filter)
+  const list = $("list");
+  list.innerHTML = "";
+  const shown = transactions.filter(t => filter === "all" || t.type === filter).slice().reverse();
+
+  if (shown.length === 0) {
+    const p = document.createElement("p");
+    p.className = "empty";
+    p.textContent = "Nothing here yet. Add your first transaction above.";
+    list.appendChild(p);
+    return;
+  }
+
+  shown.forEach(t => {
+    const li = document.createElement("li");
+    const date = new Date(t.date).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+
+    const info = document.createElement("div");
+    info.className = "info";
+    const title = document.createElement("strong");
+    title.textContent = t.title;               // textContent is safe (no HTML injection)
+    const meta = document.createElement("small");
+    meta.textContent = t.category + ", " + date;
+    info.append(title, meta);
+
+    const amt = document.createElement("span");
+    amt.className = "amt " + t.type;
+    amt.textContent = (t.type === "income" ? "+" : "−") + money(t.amount);
+
+    const del = document.createElement("button");
+    del.className = "del";
+    del.type = "button";
+    del.textContent = "×";
+    del.setAttribute("aria-label", "Delete " + t.title);
+    del.addEventListener("click", () => removeTransaction(t.id));
+
+    li.append(info, amt, del);
+    list.appendChild(li);
+  });
+}
+
+// 5. Add a transaction when the form is submitted
+$("form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const title = $("title").value.trim();
+  const amount = parseFloat($("amount").value);
+  const type = document.querySelector('input[name="type"]:checked').value;
+
+  if (!title) { $("error").textContent = "Please enter what the transaction was for."; return; }
+  if (!amount || amount <= 0) { $("error").textContent = "Enter an amount greater than 0."; return; }
+  $("error").textContent = "";
+
+  transactions.push({
+    id: Date.now(),
+    title, amount, type,
+    category: $("category").value,
+    date: new Date().toISOString()
+  });
+  save();
+  render();
+  $("title").value = "";
+  $("amount").value = "";
+  $("title").focus();
+});
+
+// 6. Delete one transaction
+function removeTransaction(id) {
+  transactions = transactions.filter(t => t.id !== id);
+  save();
+  render();
+}
+
+// 7. Filter buttons
+$("filters").addEventListener("click", (e) => {
+  const btn = e.target.closest("button");
+  if (!btn) return;
+  filter = btn.dataset.filter;
+  document.querySelectorAll("#filters button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b === btn)));
+  render();
+});
+
+// 8. Clear everything (asks first)
+$("clear").addEventListener("click", () => {
+  if (transactions.length && confirm("Delete all transactions? This cannot be undone.")) {
+    transactions = [];
+    save();
+    render();
+  }
+});
+
+render();
+</script>
+</body>
+</html>

@@ -71,6 +71,7 @@ Below is every project in this repository, grouped by category. Click a project 
 | [**Fee-Portal**](./Fee-Portal) | PIAIC Fee Portal — student fee management. | Fee records, payment UI, student portal |
 | [**HireSpera**](./HireSpera) | Human Capital Management Lite app (Saylani Hackathon). | Admin/Employee dashboards, attendance, leaves, payslips |
 | [**To-Do Lists**](./To-Do Lists) | AR To-do Lists App — task productivity tool. | Add, complete, and delete tasks |
+| [**Expense_Tracker**](./Expense_Tracker) | Expense Tracker — track income and expenses. | Add transactions, filters, balance, local storage |
 | [**Advance_Calculator**](./Advance_Calculator) | Ahmed Rehmat Calculator — advanced computation. | Scientific-style operations, clean keypad |
 | [**CALCULATOR**](./CALCULATOR) | Classic calculator — simple arithmetic. | Basic operations, responsive keypad |
 | [**Whether_App**](./Whether_App) | AR Weather App — weather reimagined. | Weather lookup, condition display, city search |
